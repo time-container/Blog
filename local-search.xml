@@ -4,19 +4,6 @@
   
   
   <entry>
-    <title></title>
-    <link href="/blog/README/"/>
-    <url>/blog/README/</url>
-    
-    <content type="html"><![CDATA[<h1 id="blog"><a href="#blog" class="headerlink" title="blog"></a>blog</h1><p>My blog 📘</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>分布式与集群</title>
     <link href="/blog/dots_Distributed_and_clustered/"/>
     <url>/blog/dots_Distributed_and_clustered/</url>
