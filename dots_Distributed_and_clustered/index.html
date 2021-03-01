@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/rabbit900.webp">
-  <link rel="icon" href="/blog/img/rabbit900.webp">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/rabbit900.webp">
+  <link rel="icon" href="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/rabbit900.webp">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -196,7 +196,7 @@
                   
                   
                   
-                  <a class="dropdown-item" href="/blog/">
+                  <a class="dropdown-item" href="/blog/music/">
                     
                     音乐
                   </a>
@@ -204,9 +204,9 @@
                   
                   
                   
-                  <a class="dropdown-item" href="/blog/">
+                  <a class="dropdown-item" href="/blog/video/">
                     
-                    视频
+                    音乐
                   </a>
                 
               </div>
@@ -231,7 +231,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/blog/img/post_pic_default.png') no-repeat center center;
+         style="background: url('https://static-images-1253741713.cos.ap-beijing.myqcloud.com/post_pic_default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -319,30 +319,30 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 小时前
+                  本文最后更新于：2 小时前
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="01-分布式"><a href="#01-分布式" class="headerlink" title="01 分布式"></a>01 分布式</h2><p>小明的公司有3个系统： 系统A、系统B和系统C ，这三个系统所做的业务不同，被部署在3个独立的机器上运行， 他们之间互相调用（当然是跨域网络的）， 通力合作完成公司的业务流程。</p>
-<p><img src="/blog/img/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_1.jpg" srcset="/blog/img/loading.gif"></p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_1.jpg" srcset="/blog/img/loading.gif"></p>
 <p>将不同的业务分布在不同的地方， 这就构成了一个<b>分布式</b>的系统，现在问题来了， 系统A是整个分布式系统的“脸面”， 用户直接访问，用户量访问大的时候要么是速度巨慢，要么直接挂掉， 怎么办？ </p>
 <p>由于系统A只有一份， 所以会引起<b>单点失败</b>。</p>
 <h2 id="02-集群（Cluster）"><a href="#02-集群（Cluster）" class="headerlink" title="02 集群（Cluster）"></a>02 集群（Cluster）</h2><p>小明的公司不差钱，就多买几台机器吧， 小明把系统A一下子部署了好几份（例如下图的3个服务器），<b>每一份都是系统A的一个实例， 对外提供同样的服务，</b>这样能睡个安稳觉了，即使其中一个坏掉了，我还有另外2个呢。  </p>
 <p>这3个服务器上的系统就组成了一个<b>集群</b>。</p>
-<p><img src="/blog/img/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_2.png" srcset="/blog/img/loading.gif"></p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_2.png" srcset="/blog/img/loading.gif"></p>
 <p>可是对用户来说，一下子出现这么系统A ，每个系统的IP地址都不一样，  到底访问哪一个？ </p>
 <p>如果所有人都访问服务器1.1 ，那服务器1.1 会被累死， 剩下的两个闲死，成了浪费钱的摆设。</p>
 <h2 id="03-负载均衡（Load-Balancer）"><a href="#03-负载均衡（Load-Balancer）" class="headerlink" title="03 负载均衡（Load Balancer）"></a>03 负载均衡（Load Balancer）</h2><p>小明要尽可能的让3个机器上的系统A 工作均衡一些， 比如有3万个请求，那就让3个服务器各处理1万个（当然，这是理想状况）， 这叫<b>负载均衡</b>。  </p>
 <p>很明显，这个<b>负载均衡</b>的工作最好独立出来， 放到独立的服务器上 （例如Ngnix）：</p>
-<p><img src="/blog/img/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_1.png" srcset="/blog/img/loading.gif"></p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_1.png" srcset="/blog/img/loading.gif"></p>
 <p>后来小明发现， 这个负载均衡的服务器虽然工作内容很简单，就是拿到请求，分发请求，但是它还是有可能挂掉啊， <b>单点失败</b>还是会出现。</p>
 <p>没办法，只好把负载均衡也搞成一个集群， 不过和系统A的集群有两点不同：</p>
 <ol>
 <li>这个新的集群中虽然有两个机器，但我们可以用某种办法，让这个集群对外只提供一个IP地址， 也就是说<b>用户看到的好像只有一个机器。</b></li>
 <li><b>同一时刻，我们只让一个负载均衡的机器工作， 另外一个原地待命。</b> 如果工作的那个挂掉了，待命的那个就顶上去。</li>
 </ol>
-<p><img src="/blog/img/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_2.jpg" srcset="/blog/img/loading.gif"></p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_2.jpg" srcset="/blog/img/loading.gif"></p>
 <h2 id="04-弹性"><a href="#04-弹性" class="headerlink" title="04 弹性"></a>04 弹性</h2><p>如果这3个系统A的实例还是满足不了大量的请求，那就再加服务器！ </p>
 <p>双11来了，用户量是平时的10倍， 小明向领导申请费用又买了几十台服务器，一下子把系统A部署了几十份。  可是双11过后， 流量一下子降下来了，那几十个服务器用不上了，也变成了摆设！</p>
 <p>被领导批评以后，小明决定尝试一下云计算，  在云端可以轻松的创建、删除虚拟的服务器， 那样就可以轻松地随着用户的请求动态的增减服务器了。  双11来了就创建虚拟服务器，等到双11过去了就把不用的关掉， 省得浪费钱。 </p>
@@ -356,7 +356,7 @@
 <p>怎么办？  </p>
 <p>一种办法是把状态信息在集群的各个服务器之间复制，让集群的各个服务器达成一致，  谁来干这个事情？ 只能是像 Websphere, Weblogic 这样的应用服务器了。 </p>
 <p>还有一种办法， 就是把状态信息集中存储在一个地方， 让集群的各个服务器都能访问到：</p>
-<p><img src="/blog/img/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_5.jpg" srcset="/blog/img/loading.gif"></p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_5.jpg" srcset="/blog/img/loading.gif"></p>
 <p>小明听说 Redis 不错， 那就用 Redis 来保存吧 ！</p>
 
             </div>
@@ -422,7 +422,7 @@
 
   <div class="col-lg-7 mx-auto nopadding-x-md">
     <div class="container custom post-custom mx-auto">
-      <img src="/blog/img/weixin_pay.jpg" srcset="/blog/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:200px;"><p align="center"><b>你可以打赏作者</b></p>
+      <img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/weixin_pay.jpg" srcset="/blog/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:200px;"><p align="center"><b>你可以打赏作者</b></p>
     </div>
   </div>
 
