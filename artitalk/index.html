@@ -68,7 +68,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -216,7 +216,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://static-images-1253741713.cos.ap-beijing.myqcloud.com/shouyan_toutu.webp') no-repeat center center;
+         style="background: url('https://static-images-1253741713.cos.ap-beijing.myqcloud.com/wallhaven-j8lkxw.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -229,10 +229,6 @@
           </div>
 
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
-          
         </div>
       </div>
     </div>
@@ -242,54 +238,44 @@
     
       <div class="container nopadding-x-md">
         <div class="py-5" id="board"
-          style=margin-top:0>
+          >
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
+
 <!-- 引用 artitalk -->
 <script type="text/javascript" src="https://unpkg.com/artitalk"></script>
 <!-- 存放说说的容器 -->
-<div id="artitalk_main">
-    <div id="lazy" style="display: none;">
-        <div class="preloader" style="opacity: 1; ">
-            <div class="rain">
-
-            </div>
-            <div class="artitalk_loading_text" id="loading_txt">加载中</div>
-        </div>
-    </div>
-    <div id="artitalk_part1">
-        <div id="shuoshuo_content">
-            <div id="ccontent">
-                <ul class="cbp_tmtimeline" id="maina">
-                    <li>
-
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
+<div id="artitalk_main"></div>
 <script>
 new Artitalk({
     appId: 'rcbAWes3jOnXFLCgl37Kb8Y6-MdYXbMMI', // Your LeanCloud appId
     appKey: 'CyyJy3Xf6dUGnBeuMzzPPYdx', // Your LeanCloud appKey
-    per: '5', //每页显示说说的数量
-    username: 'ios_user', //Leancloud中设置的用户名
-    placeholder1: '只有shenshilei才能发布哦~',  //在编辑说说的输入框中的占位符
-    placeholder2: '没有密码，不能发布！',  //在编辑密码的输入框中的占位符
-    lazy:  1, //是否开启懒加载动画
-    bgimg: 'https://gitee.com/shenshilei1022/hugo_image_resource/raw/master/imgs/214.jpg', //背景动画
-    color1: 'linear-gradient(60deg,rgba(255,165,150,.5),rgba(0,228,255,.35))',
-    color2: 'linear-gradient(60deg,rgba(255,165,150,.5),rgba(0,228,255,.35))',
-    color3: '#000',
+    per: '7', //每页显示说说的数量
+    username: 'cungudafa', //Leancloud中设置的用户名
+    placeholder1: '只有cungudafa才能评论哦',
+    placeholder2: '没有密码，不能评论！',
+    bgImg: "https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich16.gif" ,
+    atEmoji: {
+                    baiyan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/baiyan.png",
+                    bishi: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/bishi.png",
+                    bizui: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/bizui.png",
+                    chan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/chan.png",
+                    daku: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/daku.png",
+                    dalao: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dalao.png",
+                    dalian: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dalian.png",
+                    dianzan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dianzan.png",
+                    doge: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/doge.png",
+                    facai: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/facai.png",
+                    fadai: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/fadai.png",
+                    fanu: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/fanu.png",
+              }
+    
 })
 </script>
-
 
               </div>
             </div>
