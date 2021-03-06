@@ -22,7 +22,7 @@
   <meta name="author" content="John lee">
   <meta name="keywords" content="">
   
-  <title>Windows 系统与 iOS 系统文件传输方案 - Time - C</title>
+  <title>分布式与集群 - Time - C</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -223,7 +223,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Windows 系统与 iOS 系统文件传输方案">
+            <span class="h2" id="subtitle" title="分布式与集群">
               
             </span>
 
@@ -250,7 +250,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.3k 字
     </span>
   
 
@@ -260,7 +260,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      10
        分钟
     </span>
   
@@ -302,124 +302,49 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Windows 系统与 iOS 系统文件传输方案</h1>
+            <h1 style="display: none">分布式与集群</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 天前
+                  本文最后更新于：4 天前
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="01-告别微信QQ传文件"><a href="#01-告别微信QQ传文件" class="headerlink" title="01 告别微信QQ传文件"></a>01 告别微信QQ传文件</h2><p>  过去在手机电脑之间互传文件，通常的做法是用 qq 传输到我的电脑或我的手机，或者是微信的文件传输助手（发送的文件大小不能大于 100 M），这样不仅麻烦，而且需要打开 app 传输，速度受限于网速，最不能忍的是限制传送文件大小。<br>  为了避免上面的各种问题，这里推荐一种新的方案，就是 smb 协议，Windows 的网上邻居，其实就使用到了这个协议，通过这个传输协议，你可以把你的手机作为电脑的”网上邻居”，从而实现文件夹的共享。</p>
-<div class="note note-warning">
-            <p>注意：此方法要求你的 iOS 设备和电脑在同一局域网（同一Wi-Fi），且文件传输速度取决于路由器性能。（即使路由器未连接互联网也可以进行文件传输）</p>
-          </div>
-
-<h2 id="02-开始配置"><a href="#02-开始配置" class="headerlink" title="02 开始配置"></a>02 开始配置</h2><h3 id="第一步-启用-Windows-的-SMB-共享功能"><a href="#第一步-启用-Windows-的-SMB-共享功能" class="headerlink" title="第一步 启用 Windows 的 SMB 共享功能"></a>第一步 启用 Windows 的 SMB 共享功能</h3><blockquote>
-<p>打开控制面板→程序→程序与功能→启动或关闭 Windows 功能→勾选 SMB 文件共享支持→点击确定</p>
-</blockquote>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_1_1.png" srcset="/blog/img/loading.gif"></p>
-<div class="note note-warning">
-            <p>注意：重新启动电脑才会生效</p>
-          </div>
-
-<h3 id="第二步-在-Windows-系统下新建一个用户"><a href="#第二步-在-Windows-系统下新建一个用户" class="headerlink" title="第二步 在 Windows 系统下新建一个用户"></a>第二步 在 Windows 系统下新建一个用户</h3><blockquote>
-<p>打开设置→账户→家庭和其它用户→将其他人添加到这台电脑</p>
-</blockquote>
+              <h2 id="01-分布式"><a href="#01-分布式" class="headerlink" title="01 分布式"></a>01 分布式</h2><p>小明的公司有3个系统： 系统A、系统B和系统C ，这三个系统所做的业务不同，被部署在3个独立的机器上运行， 他们之间互相调用（当然是跨域网络的）， 通力合作完成公司的业务流程。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_1.jpg" srcset="/blog/img/loading.gif"></p>
+<p>将不同的业务分布在不同的地方， 这就构成了一个<b>分布式</b>的系统，现在问题来了， 系统A是整个分布式系统的“脸面”， 用户直接访问，用户量访问大的时候要么是速度巨慢，要么直接挂掉， 怎么办？ </p>
+<p>由于系统A只有一份， 所以会引起<b>单点失败</b>。</p>
+<h2 id="02-集群（Cluster）"><a href="#02-集群（Cluster）" class="headerlink" title="02 集群（Cluster）"></a>02 集群（Cluster）</h2><p>小明的公司不差钱，就多买几台机器吧， 小明把系统A一下子部署了好几份（例如下图的3个服务器），<b>每一份都是系统A的一个实例， 对外提供同样的服务，</b>这样能睡个安稳觉了，即使其中一个坏掉了，我还有另外2个呢。  </p>
+<p>这3个服务器上的系统就组成了一个<b>集群</b>。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_2.png" srcset="/blog/img/loading.gif"></p>
+<p>可是对用户来说，一下子出现这么系统A ，每个系统的IP地址都不一样，  到底访问哪一个？ </p>
+<p>如果所有人都访问服务器1.1 ，那服务器1.1 会被累死， 剩下的两个闲死，成了浪费钱的摆设。</p>
+<h2 id="03-负载均衡（Load-Balancer）"><a href="#03-负载均衡（Load-Balancer）" class="headerlink" title="03 负载均衡（Load Balancer）"></a>03 负载均衡（Load Balancer）</h2><p>小明要尽可能的让3个机器上的系统A 工作均衡一些， 比如有3万个请求，那就让3个服务器各处理1万个（当然，这是理想状况）， 这叫<b>负载均衡</b>。  </p>
+<p>很明显，这个<b>负载均衡</b>的工作最好独立出来， 放到独立的服务器上 （例如Ngnix）：</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_1.png" srcset="/blog/img/loading.gif"></p>
+<p>后来小明发现， 这个负载均衡的服务器虽然工作内容很简单，就是拿到请求，分发请求，但是它还是有可能挂掉啊， <b>单点失败</b>还是会出现。</p>
+<p>没办法，只好把负载均衡也搞成一个集群， 不过和系统A的集群有两点不同：</p>
 <ol>
-<li><p>点击我没有这个人的登录信息<br><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_2_1.png" srcset="/blog/img/loading.gif"></p>
-</li>
-<li><p>点击添加一个没有 Mircosoft 账户的用户<br><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_2_2.png" srcset="/blog/img/loading.gif"></p>
-</li>
-<li><p>设置用户名和密码以及密保问题→点击下一步即可<br><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_2_3.png" srcset="/blog/img/loading.gif"></p>
-</li>
+<li>这个新的集群中虽然有两个机器，但我们可以用某种办法，让这个集群对外只提供一个IP地址， 也就是说<b>用户看到的好像只有一个机器。</b></li>
+<li><b>同一时刻，我们只让一个负载均衡的机器工作， 另外一个原地待命。</b> 如果工作的那个挂掉了，待命的那个就顶上去。</li>
 </ol>
-<div class="note note-success">
-            <p>至此，在 Windows 系统下新建一个用户完成。</p>
-          </div>
-
-<h3 id="第三步-新建一个文件夹"><a href="#第三步-新建一个文件夹" class="headerlink" title="第三步 新建一个文件夹"></a>第三步 新建一个文件夹</h3><div class="note note-info">
-            <p>这个文件夹将作为 iOS 设备与 Windows 电脑之间的共享文件仓库</p>
-          </div>
-<div class="note note-warning">
-            <p>注意：这个新建文件夹路径及名称均可自定义，例如，你可以将它新建在 E 盘根目录下并命名为ios_repo。</p>
-          </div>
-
-<h3 id="第四步-对这个新建文件夹开启共享"><a href="#第四步-对这个新建文件夹开启共享" class="headerlink" title="第四步 对这个新建文件夹开启共享"></a>第四步 对这个新建文件夹开启共享</h3><blockquote>
-<p>① 右键文件夹→属性→共享→共享（网络文件和文件夹共享）</p>
-</blockquote>
-<ol>
-<li><p>添加共享账户（例如这里输入 ios_user 点击添加）<br><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_4_1.png" srcset="/blog/img/loading.gif"></p>
-</li>
-<li><p>将权限设置为写入/读取→点击共享→点击完成<br><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_4_2.png" srcset="/blog/img/loading.gif"></p>
-</li>
-</ol>
-<blockquote>
-<p>② 点击高级共享→勾选共享文件夹</p>
-</blockquote>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_4_3.png" srcset="/blog/img/loading.gif"></p>
-<ol>
-<li>点击权限→添加→输入用户名（ios_user）→检查名称→确定</li>
-</ol>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_4_4.png" srcset="/blog/img/loading.gif"></p>
-<ol start="2">
-<li>设置权限：勾选完全控制→点击应用→确定</li>
-</ol>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_2_4_5.png" srcset="/blog/img/loading.gif"></p>
-<div class="note note-warning">
-            <p>注意：记得点击→应用→确定→关闭。到此配置已经完成。</p>
-          </div>
-
-<h2 id="03-查看本机的-IPv4-地址"><a href="#03-查看本机的-IPv4-地址" class="headerlink" title="03 查看本机的 IPv4 地址"></a>03 查看本机的 IPv4 地址</h2><blockquote>
-<p>左击任务栏的网络图标→左击属性→滚动滑轮到底部→查看 IPv4 地址即可。</p>
-</blockquote>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_3_1_1.png" srcset="/blog/img/loading.gif"></p>
-<div class="note note-warning">
-            <p>请记住 IPv4 地址，接下来要用到。</p>
-          </div>
-
-<h2 id="04-通过-IPv4-地址来访问电脑"><a href="#04-通过-IPv4-地址来访问电脑" class="headerlink" title="04 通过 IPv4 地址来访问电脑"></a>04 通过 IPv4 地址来访问电脑</h2><p><a id="demo"></a></p>
-<div class="note note-info">
-            <p>接下来是 iOS 端的配置（在 iPhone 或 iPad 上配置）</p>
-          </div>
-
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_4_1_1.png" srcset="/blog/img/loading.gif"></p>
-<blockquote>
-<p>打开“文件”应用→点击右上角 ··· →点击连接服务器→在窗口中输入 smb://刚刚查看的 IPv4 地址→点击连接</p>
-</blockquote>
-<div class="note note-info">
-            <p>例如输入 smb://192.168.0.101 （这是我的 IPv4 地址，换成你的👀）</p>
-          </div>
-
-<blockquote>
-<p>点击注册用户→填写你刚刚在 windows 新建的用户名和密码→点击下一步</p>
-</blockquote>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_4_1_2.png" srcset="/blog/img/loading.gif"></p>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_4_1_3.png" srcset="/blog/img/loading.gif"></p>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_4_1_4.png" srcset="/blog/img/loading.gif"></p>
-<div class="note note-success">
-            <p>大功告成，这个用于共享的仓库就建立完成了，你已经可以在 iOS 端看到共享文件夹，随意传输文件吧😉</p>
-          </div>
-
-<h2 id="05-开始使用"><a href="#05-开始使用" class="headerlink" title="05 开始使用"></a>05 开始使用</h2><div class="note note-success">
-            <p>配置完成后，电脑向手机传输文件只需简单地将文件复制或移动到这个共享文件夹即可。</p>
-          </div>
-
-<div class="note note-success">
-            <p>手机端向电脑传输文件：打开照片应用→选择一个照片/视频→点击分享按钮→存储到“文件”→点击你创建的文件夹（ios_repo）→点击存储。</p>
-          </div>
-
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_5_2_1.jpg" srcset="/blog/img/loading.gif"></p>
-<div class="note note-warning">
-            <p>当存储位置列表为空或内容不可用时（出现某个未知错误），说明服务已经中断，需要在手机端点击已共享服务器右侧小三角断开服务器后重新连接。如果依然没能解决问题，将电脑和手机都重启一遍。</p>
-          </div>
-
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_5_2_2.png" srcset="/blog/img/loading.gif"></p>
-<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_ios_file_transmission/dots_windows_ios_file_transmission_5_2_3.png" srcset="/blog/img/loading.gif"></p>
-<div class="note note-danger">
-            <p>当电脑重新启动时，路由器的 DHCP 服务器会重新分配 IPv4 地址给电脑，当分配的 IPv4 地址与之前不一致时，需要重复 <a href="#demo">[04 通过 IPv4 地址来访问电脑]</a>这一步输入新的服务器地址（ smb://新的 IPv4 地址）。</p>
-          </div>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_2.jpg" srcset="/blog/img/loading.gif"></p>
+<h2 id="04-弹性"><a href="#04-弹性" class="headerlink" title="04 弹性"></a>04 弹性</h2><p>如果这3个系统A的实例还是满足不了大量的请求，那就再加服务器！ </p>
+<p>双11来了，用户量是平时的10倍， 小明向领导申请费用又买了几十台服务器，一下子把系统A部署了几十份。  可是双11过后， 流量一下子降下来了，那几十个服务器用不上了，也变成了摆设！</p>
+<p>被领导批评以后，小明决定尝试一下云计算，  在云端可以轻松的创建、删除虚拟的服务器， 那样就可以轻松地随着用户的请求动态的增减服务器了。  双11来了就创建虚拟服务器，等到双11过去了就把不用的关掉， 省得浪费钱。 </p>
+<p>于是小明的系统具备了一定的<b>弹性</b>。</p>
+<h2 id="05-失效转移"><a href="#05-失效转移" class="headerlink" title="05 失效转移"></a>05 失效转移</h2><p>上面的系统看起来很美好，但是做了一个不切实际的假设： 所有的服务都是无状态的。 换句话说，假设用户的两次请求直接是没有关联的。</p>
+<p>但是现实是，大部分服务都是有状态的， 例如购物车。</p>
+<p>用户访问系统，在服务器1.1上创建了一个购物车，并向其中加入了几个商品， 然后 服务器1.1 挂掉了， 用户的后续访问就找不到服务器1.1了，这时候就要做<b>失效转移</b>，让另外几个服务器去接管、去处理用户的请求。</p>
+<p>可是问题来了，在服务器1.2，1.3上有用户的购物车吗？  如果没有， 用户就会抱怨，我刚创建的购物车哪里去了？</p>
+<p>还有更严重的，假设用户是在服务器1.1上登录的， 用户登录过的信息保存到了该服务器的 session 中， 现在这个服务器挂掉了， 用户的 session 自然也不见了，当用户被失效转移到其他服务器上的时候，其他服务器发现用户没有登录， 就把用户踢到了登录界面， 让用户再次登录！</p>
+<p>状态， 状态，状态！ 用户的登录信息，购物车等都是状态信息，  处理不好状态的问题，集群的威力就大打折扣，无法完成真正的失效转移， 甚至无法使用。</p>
+<p>怎么办？  </p>
+<p>一种办法是把状态信息在集群的各个服务器之间复制，让集群的各个服务器达成一致，  谁来干这个事情？ 只能是像 Websphere, Weblogic 这样的应用服务器了。 </p>
+<p>还有一种办法， 就是把状态信息集中存储在一个地方， 让集群的各个服务器都能访问到：</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Distributed_and_clustered/dots_Distributed_and_clustered_5.jpg" srcset="/blog/img/loading.gif"></p>
+<p>小明听说 Redis 不错， 那就用 Redis 来保存吧 ！</p>
 
             </div>
             <hr>
@@ -439,11 +364,9 @@
                     
                       <a class="hover-with-bg" href="/blog/tags/Dots/">Dots</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/Windows/">Windows</a>
+                      <a class="hover-with-bg" href="/blog/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/iOS/">iOS</a>
-                    
-                      <a class="hover-with-bg" href="/blog/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/">文件传输</a>
+                      <a class="hover-with-bg" href="/blog/tags/%E9%9B%86%E7%BE%A4/">集群</a>
                     
                   </div>
                 
@@ -454,9 +377,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/dots_Distributed_and_clustered/">
+                      <a href="/blog/dots/dots_Computers_and_people/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">分布式与集群</span>
+                        <span class="hidden-mobile">Computers and people</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -464,8 +387,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/dots_stay_hungry_stay_foolish/">
-                        <span class="hidden-mobile">Stay Hungry，Stay Foolish.</span>
+                      <a href="/blog/dots/dots_windows_ios_file_transmission/">
+                        <span class="hidden-mobile">Windows 系统与 iOS 系统文件传输方案</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -538,7 +461,7 @@
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <span>© 2018 – 2021 </span> <i class="iconfont icon-plan"></i> <span>T-Cloud Data Studio</span> 
+     <span>© 2018 – 2021 </span> <i class="iconfont icon-plan"></i> <span>T - Cloud Data Studio</span> 
   </div>
   
 
