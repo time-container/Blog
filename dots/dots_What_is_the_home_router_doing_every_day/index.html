@@ -306,7 +306,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 分钟前
+                  本文最后更新于：4 小时前
                 
               </p>
             
@@ -328,7 +328,7 @@
 <p>但是只有这两个功能还远远不够，我还是个 <strong>DHCP 服务器</strong>，这个局域网内的 IP 都由我来发放。 </p>
 <p>你看这个新连上 WIFI 的 ThinkPad 电脑，只有 MAC 地址，没有 IP 地址，它需要按照我们网络世界的约定，用 <strong>DHCP 协议</strong>获得一个 IP 地址。 </p>
 <p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_4.png" srcset="/blog/img/loading.gif"></p>
-<p>同时这个 ThinkPad 电脑还可以从我这里获得默认网关的地址，默认网关也是我 192.168.1.1，当它真正上外网的时候，就可以用到了。 </p>
+<p>同时这个 ThinkPad 电脑还可以从我这里获得默认网关的地址，默认网关也是我 192.168.1.1，当 ThinkPad 电脑真正上外网的时候，就可以用到了。 </p>
 <p>电脑有了 IP 地址，就能上网吗？ </p>
 <p>不能，因为我给他们发的都是内网地址 192.168.1.xx ，在互联网上，这并不是唯一的。 </p>
 <p>例如隔壁老王家的 Mac 电脑的 IP 地址也是 192.168.1.2 ，和我家的 ThinkPad 的 IP 是一样的，怎么区分？如何上外网？</p>
@@ -337,14 +337,14 @@
 <p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_5.jpg" srcset="/blog/img/loading.gif"></p>
 <p>接下来是 Thinkpad 电脑访问外网服务器时数据包发送和接收的简要过程： </p>
 <p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_6.jpg" srcset="/blog/img/loading.gif"></p>
-<p>这种方式就是著名的 NAT了，网络地址转换。 </p>
+<p>这种方式就是著名的 NAT 了，即网络地址转换。 </p>
 <p>现在这个 Thinkpad 正式访问外网，它要把数据发到我的默认网关（192.168.1.1），但是网络世界必须得知道 MAC 地址，形成数据链路层的数据包才能发送。 </p>
 <p>ThinkPad 没办法，只好动用 <strong>ARP 协议</strong>，在局域网中大声呼喊：192.168.1.1，你的 MAC 地址是啥？ </p>
 <p>然后我就直接告诉它：192.168.1.1 的 MAC 地址是B4:2E:A4:59:83:A3，记住吧，以后别乱叫了。 </p>
-<p>ThinkPad 知道了我的 MAC 地址，把数据包发到我这里，我拆开一看，哦？目标 IP 地址是外网，于是，我就使用我简单的路由功能，转发到 WAN 口的外网去，当然在这个过程中，我得用得 NAT 。 </p>
+<p>ThinkPad 知道了我的 MAC 地址，把数据包发到我这里，我拆开一看，哦？目标 IP 地址是外网，于是，我就使用我简单的路由功能，转发到 WAN 口的外网去，当然在这个过程中，我得用到 NAT 。 </p>
 <p>如果你关掉我的路由功能（各个路由器具体做法不同），我就可以变成一个交换机，在数据链路层来转发同一子网内的数据包。我本身还有简易的防火墙，你可以登录到路由器的管理端去看看。</p>
 <div class="note note-info">
-            <p>当你在浏览器内输入网关地址时（192.168.1.1），便可以访问到路由管理登录页面。</p>
+            <p>当你的设备连接到 WIFI 时，在浏览器地址栏内输入网关地址（192.168.1.1），便可以访问到路由器管理登录页面。</p>
           </div>
 
 <div class="note note-success">
@@ -352,7 +352,7 @@
           </div>
 
 <p>一个家用路由器竟然有下面这么多的功能,但是它十八般武艺样样稀松，功能虽多，但都是基本够用。这是自然，对于一个家庭设备来说，能轻松上网就够了，要啥自行车？ </p>
-<span class="label label-info">无线AP</span>+<span class="label label-info">路由器</span>+<span class="label label-info">交换机</span>+<span class="label label-info">防火墙</span>+<span class="label label-info">PPPoE 客户端</span>+<span class="label label-info">DHCP 服务器</span>+<span class="label label-info">NAT 转换</span>
+<span class="label label-info">无线 AP</span>+<span class="label label-info">路由器</span>+<span class="label label-info">交换机</span>+<span class="label label-info">防火墙</span>+<span class="label label-info">PPPoE 客户端</span>+<span class="label label-info">DHCP 服务器</span>+<span class="label label-info">NAT 转换</span>
             </div>
             <hr>
             <div>

@@ -91,6 +91,60 @@
   
   
   <entry>
+    <title>Windows 10 开启上帝模式</title>
+    <link href="/blog/dots/dots_windows_open_god_model/"/>
+    <url>/blog/dots/dots_windows_open_god_model/</url>
+    
+    <content type="html"><![CDATA[<p>啥是上帝模式？</p><p>其实上帝模式还有另一个名字叫“完全控制面板”，包含了几乎所有 Windows 系统的设置，如控制面板的功能、界面个性化、辅助功能选项等方方面面的控制设置，用户只需通过这一个窗口就能实现所有的操控。</p><p>如下图就是上帝模式的界面，里面可以看到很多的设置项目。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_open_god_model/dots_windows_open_god_model_1.png"></p><div class="note note-success">            <p>这个模式默认是隐藏的，但开启的方法也很简单：</p>          </div><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>按组合键“Win + R”调出运行窗口输入：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">shell:::{ED7BA470-8E54-465E-825C-99712043E01C} <br></code></pre></div></td></tr></tbody></table></figure><p>按回车键即可进入。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_open_god_model/dots_windows_open_god_model_2.png"></p><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>在桌面右键新建一个快捷方式，对象位置输入这个地址：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">explorer.exe shell:::{ED7BA470-8E54-465E-825C-99712043E01C} <br></code></pre></div></td></tr></tbody></table></figure><p>之后双击新建的快捷方式就可以打开上帝模式。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_open_god_model/dots_windows_open_god_model_3.png"></p><h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>桌面右键新建一个文件夹，然后重命名文件夹的名字为：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">GodMode.{ED7BA470-8E54-465E-825C-99712043E01C} <br></code></pre></div></td></tr></tbody></table></figure><p>然后文件夹图标就会变成控制面板的图标，双击它即可开启上帝模式。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_windows_open_god_model/dots_windows_open_god_model_4.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Dots</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Dots</tag>
+      
+      <tag>Windows</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>人生，是一个不断成熟的过程。</title>
+    <link href="/blog/life/life_0001/"/>
+    <url>/blog/life/life_0001/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/life/life_0001/life_0001_1.jpg"></p><div class="note note-success">            <p>本文转载自微信公众号<strong>洞见</strong>，作者李思圆。</p>          </div><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/life/life_0001/life_0001_2.jpg"></p><p>人的一生，从哇哇坠地到将近暮年，不过短短几十年时间。</p><p>每一天的你，都需要在生活中，不断地进行打磨和历练，每一年的你，都要比过去的自己更有成长和进步。</p><p><strong>每一个阶段的你，也都会遇到更不一样的世界和自己。</strong></p><p>其实，所有的成熟，都必然伴随着巨大的痛苦和代价，所有的智慧，也必然伴随着诸多的经验和教训，甚至所有的平和，也必然伴随着诸多的坎坷和艰难。</p><p>有时，你会发现人生是一本，阅不尽的书，走不完的路；</p><p>有时，你也会发现，人生的诸多道理，其实在你一路寻找，一路跋涉中，已然有了最好的注解和答案。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/life/life_0001/life_0001_3.jpg"></p><p>比如，年轻时，你从不拿身体当回事。</p><p>该吃的饭不好好吃，该睡的觉不好好睡，该有的锻炼也不去练。</p><p>但当你上了一定年纪，开始感觉到身体某个部位的不舒服，不协调，不顺畅时，其实已经失去了健康。</p><p>于是慢慢地你就开始明白，钱当然要挣，班有时也不得不加，但千万不要为了工作透支了身体。</p><p><strong>没有人比你更了解你的身体，也没有人比你更知道，自己是不是累了，是该休息，还是该继续。</strong></p><p>自己都不爱自己的人，很难过好这一生，毕竟名利钱财都是身外之物，但失去了健康，一切都变得毫无价值和意义。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/life/life_0001/life_0001_4.jpg"></p><p>年轻时，我们都有冲动，易怒，乃至情绪不稳定的缺点。</p><p>那时，他人的一句话，一个动作，乃至一个眼神，能让你一整天都开心不起来。</p><p>你总把别人的看法也好，评价也罢，看得太重要。</p><p>可后来你也慢慢发现：</p><p>遇到误解，不必去解释，毕竟相信你的人始终相信你，不相信你的人，费再多唇舌也没有用。</p><p>遇到诽谤，不必去理会，毕竟讨厌你的人，无论你做得再好，也不会喜欢你，又何必去强求和辩解。</p><p>遇到看不惯你，故意招惹你，乃至与你作对的人，也不必去纠缠，毕竟你的时间和精力都很有限。</p><p><strong>人到一定年纪，要学会用一颗平常心，去对待所有的人和事。</strong></p><p>不要拿别人的错误来惩罚自己，也不要拿别人的偏见来折磨自己，生活是自己的，何必把太多无关紧要的人和事，请进生命里。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/life/life_0001/life_0001_5.jpg"></p><p>人的一生，无论是轰轰烈烈，还是平平凡凡地过，其实，所有的悲和喜，都只是你一个人去品尝。</p><p>所以，慢慢地你就会把更多的焦点，放在自己身上，而不是对他人抱有太大的期待，也不必去求太多的理解。</p><p>到了一定年纪，你就会知道，你过得苦不苦，累不累，旁人根本没办法感同身受，与其求得他助人，不如自渡。</p><p>到了一定年纪，你就会知道，真正关心和在意你的人没几个，与其去在乎那些心里根本没你的人，还不如去珍惜眼前人。</p><p>到了一定年纪，你就会知道，开不了的花，浇再多水也开不了，结不了的果，等再久也结不了。</p><p>在尽了最大的努力后，要学会坦然地去听天命，该放弃的放弃，该转身的转身，千万不要跟自己较劲。</p><p>终有一天，你会明白，这个世上，没有过不去的坎，也没有跨不过去的难，心态好了，万事也就顺了。</p><p>总有一天，你会明白，不必为了不值得的人和事伤心和生气，毕竟仅此一生，我们只够用来珍惜和善待。</p><p>终有一天，你会明白，开心过是一天，不开心过也是一天，不如从容坦然去面对和接纳一切的好与坏。</p><p>人不会一下子就觉悟人生当中所有的真谛和道理，但却需要在一个又一个的年龄阶梯中，不断地变得更通透，开阔和达观。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/life/life_0001/life_0001_index_img_1.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Life</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Life</tag>
+      
+      <tag>Thinking</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Stay Hungry，Stay Foolish.</title>
     <link href="/blog/dots/dots_stay_hungry_stay_foolish/"/>
     <url>/blog/dots/dots_stay_hungry_stay_foolish/</url>
@@ -122,7 +176,7 @@
     <link href="/blog/dots/dots_What_is_the_home_router_doing_every_day/"/>
     <url>/blog/dots/dots_What_is_the_home_router_doing_every_day/</url>
     
-    <content type="html"><![CDATA[<div class="note note-info">            <p>今天的主人公是<strong>家用路由器</strong></p>          </div><p>夜深人静，电视和电脑都已经关机休息，但是我还在默默工作，我安静地趴在你家中的某个地方，7*24小时不眠不休，任劳任怨，目的只有一个，能让你舒服地躺在床上，畅快地刷手机！ </p><p>我的主业是路由器，同时兼任 <strong>DHCP 服务器</strong>，<strong>交换机</strong>，<strong>无线 AP</strong>，<strong>PPPoE 客户端</strong>，<strong>防火墙</strong>等重要部门的职务。</p><p>为了把工作做好，我还必须得实现几个重要的协议如 <strong>DHCP</strong>，<strong>ARP</strong>，<strong>NAT</strong> 等，十八般武艺集于一身，是不是很厉害？ </p><p>对于普通人来说，只需要设置一下宽带账号和密码，WIFI 名称和密码，就可以联网了，岂不知在背后我干了很多的脏活和累活。 </p><p>比如，当你设置了无线名称（SSID），密码等信息，开启了无线广播以后，我的无线 AP 部门就得开始干活了。 </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_1.jpg"></p><p>它需要不停地向周围广播信标帧（Beacon Frame），其中包含 SSID 和 MAC 地址，还有其它基本信息。然后各种设备才可能发现我，输入用户名和密码，连接上我。 </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_2.jpg"></p><p>其次，我一般还有通过 PPPoE 拨号上网的功能，要不然你怎么连接外网？ </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_3.jpg"></p><p>但是只有这两个功能还远远不够，我还是个 <strong>DHCP 服务器</strong>，这个局域网内的 IP 都由我来发放。 </p><p>你看这个新连上 WIFI 的 ThinkPad 电脑，只有 MAC 地址，没有 IP 地址，它需要按照我们网络世界的约定，用 <strong>DHCP 协议</strong>获得一个 IP 地址。 </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_4.png"></p><p>同时这个 ThinkPad 电脑还可以从我这里获得默认网关的地址，默认网关也是我 192.168.1.1，当它真正上外网的时候，就可以用到了。 </p><p>电脑有了 IP 地址，就能上网吗？ </p><p>不能，因为我给他们发的都是内网地址 192.168.1.xx ，在互联网上，这并不是唯一的。 </p><p>例如隔壁老王家的 Mac 电脑的 IP 地址也是 192.168.1.2 ，和我家的 ThinkPad 的 IP 是一样的，怎么区分？如何上外网？</p><p>还好，我这个路由器，通过拨号连入运营商网络的时候，获得了一个唯一的外网地址： 61.52.247.112 。 </p><p>那我就把这个外网 IP 地址给大家共享，共享的办法非常简单，就是通过不同的端口号，把我和各个电脑之间形成对应关系，把大家区分开。 </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_5.jpg"></p><p>接下来是 Thinkpad 电脑访问外网服务器时数据包发送和接收的简要过程： </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_6.jpg"></p><p>这种方式就是著名的 NAT了，网络地址转换。 </p><p>现在这个 Thinkpad 正式访问外网，它要把数据发到我的默认网关（192.168.1.1），但是网络世界必须得知道 MAC 地址，形成数据链路层的数据包才能发送。 </p><p>ThinkPad 没办法，只好动用 <strong>ARP 协议</strong>，在局域网中大声呼喊：192.168.1.1，你的 MAC 地址是啥？ </p><p>然后我就直接告诉它：192.168.1.1 的 MAC 地址是B4:2E:A4:59:83:A3，记住吧，以后别乱叫了。 </p><p>ThinkPad 知道了我的 MAC 地址，把数据包发到我这里，我拆开一看，哦？目标 IP 地址是外网，于是，我就使用我简单的路由功能，转发到 WAN 口的外网去，当然在这个过程中，我得用得 NAT 。 </p><p>如果你关掉我的路由功能（各个路由器具体做法不同），我就可以变成一个交换机，在数据链路层来转发同一子网内的数据包。我本身还有简易的防火墙，你可以登录到路由器的管理端去看看。</p><div class="note note-info">            <p>当你在浏览器内输入网关地址时（192.168.1.1），便可以访问到路由管理登录页面。</p>          </div><div class="note note-success">            <p>如何查看路由器网关地址呢？例如，当一个设备连接到路由器时，它本身的 IPv4 地址是 192.168.1.101 时，路由器的网关地址为 192.168.1.1 ，当它本身的 IPv4 地址是 192.168.0.101 时，路由器的网关地址为 192.168.0.1 ，以此类推。</p>          </div><p>一个家用路由器竟然有下面这么多的功能,但是它十八般武艺样样稀松，功能虽多，但都是基本够用。这是自然，对于一个家庭设备来说，能轻松上网就够了，要啥自行车？ </p><span class="label label-info">无线AP</span>+<span class="label label-info">路由器</span>+<span class="label label-info">交换机</span>+<span class="label label-info">防火墙</span>+<span class="label label-info">PPPoE 客户端</span>+<span class="label label-info">DHCP 服务器</span>+<span class="label label-info">NAT 转换</span>]]></content>
+    <content type="html"><![CDATA[<div class="note note-info">            <p>今天的主人公是<strong>家用路由器</strong></p>          </div><p>夜深人静，电视和电脑都已经关机休息，但是我还在默默工作，我安静地趴在你家中的某个地方，7*24小时不眠不休，任劳任怨，目的只有一个，能让你舒服地躺在床上，畅快地刷手机！ </p><p>我的主业是路由器，同时兼任 <strong>DHCP 服务器</strong>，<strong>交换机</strong>，<strong>无线 AP</strong>，<strong>PPPoE 客户端</strong>，<strong>防火墙</strong>等重要部门的职务。</p><p>为了把工作做好，我还必须得实现几个重要的协议如 <strong>DHCP</strong>，<strong>ARP</strong>，<strong>NAT</strong> 等，十八般武艺集于一身，是不是很厉害？ </p><p>对于普通人来说，只需要设置一下宽带账号和密码，WIFI 名称和密码，就可以联网了，岂不知在背后我干了很多的脏活和累活。 </p><p>比如，当你设置了无线名称（SSID），密码等信息，开启了无线广播以后，我的无线 AP 部门就得开始干活了。 </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_1.jpg"></p><p>它需要不停地向周围广播信标帧（Beacon Frame），其中包含 SSID 和 MAC 地址，还有其它基本信息。然后各种设备才可能发现我，输入用户名和密码，连接上我。 </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_2.jpg"></p><p>其次，我一般还有通过 PPPoE 拨号上网的功能，要不然你怎么连接外网？ </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_3.jpg"></p><p>但是只有这两个功能还远远不够，我还是个 <strong>DHCP 服务器</strong>，这个局域网内的 IP 都由我来发放。 </p><p>你看这个新连上 WIFI 的 ThinkPad 电脑，只有 MAC 地址，没有 IP 地址，它需要按照我们网络世界的约定，用 <strong>DHCP 协议</strong>获得一个 IP 地址。 </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_4.png"></p><p>同时这个 ThinkPad 电脑还可以从我这里获得默认网关的地址，默认网关也是我 192.168.1.1，当 ThinkPad 电脑真正上外网的时候，就可以用到了。 </p><p>电脑有了 IP 地址，就能上网吗？ </p><p>不能，因为我给他们发的都是内网地址 192.168.1.xx ，在互联网上，这并不是唯一的。 </p><p>例如隔壁老王家的 Mac 电脑的 IP 地址也是 192.168.1.2 ，和我家的 ThinkPad 的 IP 是一样的，怎么区分？如何上外网？</p><p>还好，我这个路由器，通过拨号连入运营商网络的时候，获得了一个唯一的外网地址： 61.52.247.112 。 </p><p>那我就把这个外网 IP 地址给大家共享，共享的办法非常简单，就是通过不同的端口号，把我和各个电脑之间形成对应关系，把大家区分开。 </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_5.jpg"></p><p>接下来是 Thinkpad 电脑访问外网服务器时数据包发送和接收的简要过程： </p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_What_is_the_home_router_doing_every_day/dots_What_is_the_home_router_doing_every_day_6.jpg"></p><p>这种方式就是著名的 NAT 了，即网络地址转换。 </p><p>现在这个 Thinkpad 正式访问外网，它要把数据发到我的默认网关（192.168.1.1），但是网络世界必须得知道 MAC 地址，形成数据链路层的数据包才能发送。 </p><p>ThinkPad 没办法，只好动用 <strong>ARP 协议</strong>，在局域网中大声呼喊：192.168.1.1，你的 MAC 地址是啥？ </p><p>然后我就直接告诉它：192.168.1.1 的 MAC 地址是B4:2E:A4:59:83:A3，记住吧，以后别乱叫了。 </p><p>ThinkPad 知道了我的 MAC 地址，把数据包发到我这里，我拆开一看，哦？目标 IP 地址是外网，于是，我就使用我简单的路由功能，转发到 WAN 口的外网去，当然在这个过程中，我得用到 NAT 。 </p><p>如果你关掉我的路由功能（各个路由器具体做法不同），我就可以变成一个交换机，在数据链路层来转发同一子网内的数据包。我本身还有简易的防火墙，你可以登录到路由器的管理端去看看。</p><div class="note note-info">            <p>当你的设备连接到 WIFI 时，在浏览器地址栏内输入网关地址（192.168.1.1），便可以访问到路由器管理登录页面。</p>          </div><div class="note note-success">            <p>如何查看路由器网关地址呢？例如，当一个设备连接到路由器时，它本身的 IPv4 地址是 192.168.1.101 时，路由器的网关地址为 192.168.1.1 ，当它本身的 IPv4 地址是 192.168.0.101 时，路由器的网关地址为 192.168.0.1 ，以此类推。</p>          </div><p>一个家用路由器竟然有下面这么多的功能,但是它十八般武艺样样稀松，功能虽多，但都是基本够用。这是自然，对于一个家庭设备来说，能轻松上网就够了，要啥自行车？ </p><span class="label label-info">无线 AP</span>+<span class="label label-info">路由器</span>+<span class="label label-info">交换机</span>+<span class="label label-info">防火墙</span>+<span class="label label-info">PPPoE 客户端</span>+<span class="label label-info">DHCP 服务器</span>+<span class="label label-info">NAT 转换</span>]]></content>
     
     
     <categories>
