@@ -288,17 +288,6 @@
   
   
   <entry>
-    <title>404 Not Found：该页无法显示</title>
-    <link href="/blog/"/>
-    <url>/blog/</url>
-    
-    <content type="html"><![CDATA[         <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" homepagename="返回首页" homepageurl="https://www.nickyam.com"></script>true]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>关于</title>
     <link href="/blog/"/>
     <url>/blog/</url>
@@ -310,11 +299,11 @@
   
   
   <entry>
-    <title>微语</title>
+    <title>404 Not Found：该页无法显示</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[         <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" homepagename="返回首页" homepageurl="https://www.nickyam.com"></script>true]]></content>
     
   </entry>
   
@@ -343,11 +332,22 @@
   
   
   <entry>
-    <title></title>
+    <title>标签</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[const fs = require('fs-extra');const path = require('path');const imageSize = require('image-size');const rootPath="photos/"class PhotoExtension {    constructor() {        this.size = 64;        this.offset = [0, 0];    }}class Photo {    constructor() {        this.dirName = '';        this.fileName = '';        this.iconID = '';        this.extension = new PhotoExtension();    }}class PhotoGroup {    constructor() {        this.name = '';        this.children = [];    }}function createPlotIconsData() {    let allPlots = [];    let allPlotGroups = [];    const plotJsonFile = path.join(__dirname, './photosInfo.json');    const plotGroupJsonFile = path.join(__dirname, './photos.json');    if (fs.existsSync(plotJsonFile)) {        allPlots = JSON.parse(fs.readFileSync(plotJsonFile));    }    if (fs.existsSync(plotGroupJsonFile)) {        allPlotGroups = JSON.parse(fs.readFileSync(plotGroupJsonFile));    }    fs.readdirSync(__dirname).forEach(function(dirName) {        const stats = fs.statSync(path.join(__dirname, dirName));        const isDir = stats.isDirectory();        if (isDir) {            const subfiles = fs.readdirSync(path.join(__dirname, dirName));            subfiles.forEach(function(subfileName) {                // 如果已经存在 则不再处理                // if (allPlots.find(o =&gt; o.fileName === subfileName &amp;&amp; o.dirName === dirName)) {                //     return;                // }                // 新增标                const plot = new Photo();                plot.dirName = dirName;                plot.fileName = subfileName;                const imageInfo = imageSize(rootPath+dirName + "/" + subfileName);                plot.iconID = imageInfo.width + '.' + imageInfo.height + ' ' + subfileName;                allPlots.push(plot);                console.log(`RD: createPlotIconsData -&gt; new plot`, plot);                // 为新增标添加分组 暂时以它所处的文件夹为分组                let group = allPlotGroups.find(o =&gt; o.name === dirName);                if (!group) {                    group = new PhotoGroup();                    group.name = dirName;                    allPlotGroups.push(group);                    console.log(`RD: createPlotIconsData -&gt; new group`, group);                }                group.children.push(plot.iconID);            });        }    });    fs.writeJSONSync(plotJsonFile, allPlots);    fs.writeJSONSync(plotGroupJsonFile, allPlotGroups);}createPlotIconsData();]]></content>
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>视频</title>
+    <link href="/blog/"/>
+    <url>/blog/</url>
+    
+    <content type="html"><![CDATA[<div align="center"><video poster="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/shouyan_toutu.webp" src="https://static-video-1253741713.cos.ap-beijing.myqcloud.com/%E5%BC%A0%E9%9D%93%E9%A2%96%20-%20%E6%88%91%E7%9A%84%E6%A2%A6.mp4" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" controls="controls" preload="meta">Your browser does not support the video tag.</video></div><!-- <iframe src="//player.bilibili.com/player.html?aid=60016166&cid=104514776&page=1&danmaku=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe> -->]]></content>
     
   </entry>
   
@@ -369,6 +369,17 @@
     <link href="/blog/"/>
     <url>/blog/</url>
     
+    <content type="html"><![CDATA[const fs = require('fs-extra');const path = require('path');const imageSize = require('image-size');const rootPath="photos/"class PhotoExtension {    constructor() {        this.size = 64;        this.offset = [0, 0];    }}class Photo {    constructor() {        this.dirName = '';        this.fileName = '';        this.iconID = '';        this.extension = new PhotoExtension();    }}class PhotoGroup {    constructor() {        this.name = '';        this.children = [];    }}function createPlotIconsData() {    let allPlots = [];    let allPlotGroups = [];    const plotJsonFile = path.join(__dirname, './photosInfo.json');    const plotGroupJsonFile = path.join(__dirname, './photos.json');    if (fs.existsSync(plotJsonFile)) {        allPlots = JSON.parse(fs.readFileSync(plotJsonFile));    }    if (fs.existsSync(plotGroupJsonFile)) {        allPlotGroups = JSON.parse(fs.readFileSync(plotGroupJsonFile));    }    fs.readdirSync(__dirname).forEach(function(dirName) {        const stats = fs.statSync(path.join(__dirname, dirName));        const isDir = stats.isDirectory();        if (isDir) {            const subfiles = fs.readdirSync(path.join(__dirname, dirName));            subfiles.forEach(function(subfileName) {                // 如果已经存在 则不再处理                // if (allPlots.find(o =&gt; o.fileName === subfileName &amp;&amp; o.dirName === dirName)) {                //     return;                // }                // 新增标                const plot = new Photo();                plot.dirName = dirName;                plot.fileName = subfileName;                const imageInfo = imageSize(rootPath+dirName + "/" + subfileName);                plot.iconID = imageInfo.width + '.' + imageInfo.height + ' ' + subfileName;                allPlots.push(plot);                console.log(`RD: createPlotIconsData -&gt; new plot`, plot);                // 为新增标添加分组 暂时以它所处的文件夹为分组                let group = allPlotGroups.find(o =&gt; o.name === dirName);                if (!group) {                    group = new PhotoGroup();                    group.name = dirName;                    allPlotGroups.push(group);                    console.log(`RD: createPlotIconsData -&gt; new group`, group);                }                group.children.push(plot.iconID);            });        }    });    fs.writeJSONSync(plotJsonFile, allPlots);    fs.writeJSONSync(plotGroupJsonFile, allPlotGroups);}createPlotIconsData();]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/blog/"/>
+    <url>/blog/</url>
+    
     <content type="html"><![CDATA[[{"name":"A组","children":["959.959 IMG_0018.JPG","957.957 IMG_0071.JPG","750.750 IMG_0073.JPG","440.440 IMG_0096.JPG","240.240 IMG_0097.PNG","960.960 IMG_0169.JPG","526.688 IMG_0201.JPG","500.375 IMG_0203.JPG","720.719 IMG_0268.JPG","640.640 IMG_0302.JPG","1080.1640 IMG_0318.JPG","290.290 IMG_0319.JPG","959.959 IMG_0405.JPG","1080.1406 IMG_0437.JPG","600.600 IMG_0484.JPG","300.300 IMG_0485.GIF","959.959 IMG_0508.JPG","640.552 IMG_0511.JPG","304.212 IMG_0527.JPG","200.200 IMG_0529.GIF","277.581 IMG_0628.PNG","744.744 IMG_0631.JPG","400.400 IMG_0884.JPG","440.460 IMG_0959.JPG","1080.1440 IMG_1060.JPG","700.656 IMG_1061.JPG","240.240 IMG_1196.JPG","750.495 IMG_1255.JPG","440.782 IMG_1257.JPG","828.1103 IMG_1258.JPG","828.1103 IMG_1259.JPG","640.562 IMG_1260.JPG","600.600 IMG_1413.JPG","342.400 IMG_1414.JPG","398.312 IMG_1415.JPG","257.253 IMG_1511.JPG","958.958 IMG_1638.JPG","800.800 IMG_1686.JPG","640.640 IMG_1729.JPG","640.640 IMG_1793.JPG","400.400 IMG_2009.JPG","542.542 IMG_2014.JPG","636.742 IMG_2148.JPG","1080.1037 IMG_2175.JPG","500.500 IMG_2231.JPG","651.651 IMG_2232.JPG","640.640 IMG_2234.JPG","824.824 IMG_2241.JPG","1080.1594 IMG_2312.JPG","516.516 IMG_2313.JPG","494.500 IMG_2323.JPG","2048.1359 IMG_2364.JPG","2048.1136 IMG_2365.JPG","240.240 IMG_2432.JPG","750.735 IMG_2463.JPG","400.382 IMG_2464.GIF","800.800 IMG_2501.JPG","240.240 IMG_2505.JPG","496.798 IMG_2520.JPG","378.212 IMG_2527.JPG","318.179 IMG_2529.JPG","800.606 IMG_2537.JPG","1061.1004 IMG_2590.JPG","360.456 IMG_2660.JPG","1080.1046 IMG_2715.JPG","500.500 IMG_2729.JPG","959.959 IMG_2749.JPG","1000.1000 IMG_2753.JPG","106.106 IMG_2756.PNG"]},{"name":"B组","children":["1080.1920 IMG_0162.JPG","1024.540 IMG_0345.JPG","640.950 IMG_0379.JPG","1748.944 IMG_0441.JPG","1422.3072 IMG_0503.JPG","690.660 IMG_0506.JPG","800.800 IMG_0526.JPG","1022.864 IMG_0745.JPG","694.544 IMG_0751.JPG","1080.1084 IMG_0794.JPG","690.690 IMG_0992.JPG","600.505 IMG_1171.JPG","1080.1178 IMG_1172.JPG","690.728 IMG_1173.JPG","1080.1218 IMG_1249.JPG","1088.938 IMG_1460.JPG","960.960 IMG_1532.JPG","440.440 IMG_1584.JPG","1080.1080 IMG_1735.JPG","1080.1920 IMG_1748.JPG","739.309 IMG_1801.JPG","640.640 IMG_1810.JPG","1080.992 IMG_1878.JPG","670.796 IMG_1968.JPG","1080.1620 IMG_2028.JPG","1080.1080 IMG_2079.JPG","690.690 IMG_2197.JPG","700.1517 IMG_2245.JPG","860.292 IMG_2249.JPG","942.987 IMG_2267.JPG","1000.1000 IMG_2289.JPG","1080.1764 IMG_2317.JPG","440.420 IMG_2321.JPG","690.690 IMG_2340.JPG","1080.1080 IMG_2414.JPG","1079.1336 IMG_2428.JPG","1000.1000 IMG_2479.JPG","915.1024 IMG_2493.JPG","453.734 IMG_2579.JPG","1000.563 IMG_2591.JPG","1000.1000 IMG_2601.JPG","828.998 IMG_2614.JPG","711.343 IMG_2640.JPG","1080.1920 IMG_2643.JPG","600.387 IMG_2662.JPG","526.526 IMG_2718.JPG"]},{"name":"C组","children":["1920.1080 IMG_0023.JPG","908.1920 IMG_0061.JPG","1080.1440 IMG_0253.JPG","1080.1080 IMG_0303.JPG","959.959 IMG_0431.JPG","312.208 IMG_0942.JPG","1080.1314 IMG_0952.JPG","2000.1124 IMG_1193.JPG","1080.1030 IMG_1425.JPG","1440.1080 IMG_1794.JPG","1080.1349 IMG_2133.JPG","1080.746 IMG_2476.JPG","1024.1280 IMG_2656.JPG"]},{"name":"D组","children":["1920.1080 1.jpg","1600.900 10.jpg","600.800 1495c26c69338909b295e37cfe8e0eb7-big.jpg","1920.1280 2.jpg","1920.1080 20210219231949.png","760.570 24b0ba6ab10cda17b8683b710a5ed79a-big.jpg","1920.1080 3.jpg","760.570 378cbeaf584ed856121ccad985191175-big.jpg","1920.1280 4.jpg","600.800 4120ad64de02113de805a8b3925ce770-big.jpg","760.570 4fa7cb254e477f6a538bf2f82492047c-big.jpg","1280.869 5.jpg","1920.1247 6.jpg","1920.1280 7.jpg","760.570 744168a88f4068943c16cfb07df76007-big.jpg","1920.1080 8.jpg","760.570 8b393d6a702bb933c9efd0111081b515-big.jpg","1920.1080 9.jpg","760.570 9c789eef37184d5d5de78c0d6e5c83e5-big.jpg","760.570 a481f93bebf453bf5c97bb55c6dcbcb8-big.jpg","600.800 ba43ea9aabf4bc71039dbca88c575059-big.jpg","760.570 bffcb9a01fc49a60b1057d88d0b123d2-big.jpg","760.570 d472f01f0657401028719d7f9c3efa41-big.jpg","760.570 d656fb77c5ca6cee8d87ce37b643952d-big.jpg","760.570 ddda28f33a6626647146c1fa1372fd23-big.jpg","440.542 IMG_0057.PNG","960.585 IMG_0361.JPG","959.959 IMG_0411.JPG","450.800 IMG_0418.JPG","1440.3120 IMG_0464.JPG","1242.2208 IMG_0791.PNG","960.960 IMG_0910.JPG","480.640 IMG_1662.JPG","640.1138 IMG_1690.JPG","500.500 IMG_1845.JPG","1080.1080 IMG_2274.JPG","251.251 IMG_2342.JPG","600.1066 IMG_2389.JPG","959.959 IMG_2434.JPG","500.887 IMG_2458.JPG","941.941 IMG_2478.JPG","1080.1026 IMG_2484.JPG","941.936 IMG_2517.JPG","500.666 IMG_2521.JPG","100.100 IMG_2768.GIF"]}]]]></content>
     
   </entry>
@@ -376,22 +387,11 @@
   
   
   <entry>
-    <title>标签</title>
+    <title>微语</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
     <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>视频</title>
-    <link href="/blog/"/>
-    <url>/blog/</url>
-    
-    <content type="html"><![CDATA[<div align="center"><video poster="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/shouyan_toutu.webp" src="https://static-video-1253741713.cos.ap-beijing.myqcloud.com/%E5%BC%A0%E9%9D%93%E9%A2%96%20-%20%E6%88%91%E7%9A%84%E6%A2%A6.mp4" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" controls="controls" preload="meta">Your browser does not support the video tag.</video></div><!-- <iframe src="//player.bilibili.com/player.html?aid=60016166&cid=104514776&page=1&danmaku=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe> -->]]></content>
     
   </entry>
   
