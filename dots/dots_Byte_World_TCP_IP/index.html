@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/rabbit900.webp">
+  <link rel="icon" href="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/rabbit900.webp">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#1D1D1F">
+  
+    <meta name="description" content="">
+  
+  <meta name="author" content="John lee">
+  <meta name="keywords" content="">
+  
+  <title>比特宇宙之 TCP/IP 的诞生 - Time - C</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/idea.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.8.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":4,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"rcbAWes3jOnXFLCgl37Kb8Y6-MdYXbMMI","app_key":"CyyJy3Xf6dUGnBeuMzzPPYdx","server_url":null}}};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 80vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>Time - C</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://time-container.github.io/">
+                <i class="iconfont icon-books"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-brush"></i>
+                博客
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/">
+                    
+                    列表
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/links/">
+                    
+                    友链
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/about/">
+                    
+                    关于
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/archives/">
+                    
+                    存档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/categories/">
+                    
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/tags/">
+                    
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-th-large"></i>
+                媒体
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/photos/">
+                    
+                    相册
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/music/">
+                    
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/video/">
+                    
+                    视频
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/artitalk/">
+                    
+                    微语
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://static-images-1253741713.cos.ap-beijing.myqcloud.com/post_pic_default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="比特宇宙之 TCP/IP 的诞生">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      John lee
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-03 19:42" pubdate>
+        2021年4月3日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">比特宇宙之 TCP/IP 的诞生</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：3 小时前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <div class="note note-success">
+            <p>本文转载自微信公众号：<strong>编程技术宇宙</strong></p>
+          </div>
+
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_1.jpg" srcset="/blog/img/loading.gif"></p>
+<div class="note note-info">
+            <p>比特宇宙创世不久，宇宙中开始出现文明。</p>
+          </div>
+<div class="note note-info">
+            <p>文明不断碰撞、融合、进化，逐渐分化为几大派系：</p>
+          </div>
+<div class="note note-success">
+            <p>施行 Unix 体制的帝国，出现时间最早，在宇宙中最有威望。</p>
+          </div>
+<div class="note note-success">
+            <p>施行 Windows 体制的帝国，数以十亿计，成为宇宙中最庞大的军团。</p>
+          </div>
+<div class="note note-success">
+            <p>施行 Linux 体制的帝国，后起之秀，曾和 Windows 帝国军团爆发多次战争，后握手言和，割据一方。</p>
+          </div>
+<div class="note note-info">
+            <p>随着文明的发展，宇宙之间的各帝国逐渐意识到需要发展经贸合作，互通有无。</p>
+          </div>
+<div class="note note-info">
+            <p>终于有一天，几大派系的帝国派了代表聚在一起，商讨比特宇宙的经贸合作框架协议。</p>
+          </div>
+
+<h2 id="☆-第一天-☆"><a href="#☆-第一天-☆" class="headerlink" title="☆ 第一天 ☆"></a>☆ 第一天 ☆</h2><p>会议第一天的议题，商讨经贸合作的最重要的基础：<strong>制定比特宇宙通信标准</strong>。</p>
+<p>Unix 代表首先发言：我们需要制定一套普世的宇宙标准，让全宇宙的帝国都能互相通信，大家有什么想法，请畅所欲言。</p>
+<p>Linux：最简单有效的办法，帝国之间都建一条专有线路，就像这样，构成一张巨大的网络，我们就能和任何帝国通信了。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_2.jpg" srcset="/blog/img/loading.gif"></p>
+<p>Windows：你想的也太简单了，你知道咱们 Windows 星系有多少帝国吗？建专有线路，这得花多少钱？就算你有钱，帝国要建这么多线路，那也不堪重负。</p>
+<p>Linux：别着急，我还有办法。咱们找一个帝国作为网络中心节点，专门负责数据转发，其他帝国只需和中心建一条专线就可以，这一下能省很多线路的钱。诺，就像这样：</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_3.jpg" srcset="/blog/img/loading.gif"></p>
+<p>Windows：确实省了不少，但你有没有想过，这个中心节点得多么重要，工作负担巨大倒是其次，一旦中心帝国覆灭，全宇宙的通信全部中断，这是多么严重的后果？</p>
+<p>Linux 皱了眉头，不再说话。</p>
+<p>Unix：其实这个方法挺不错的，不过需要一点改进会更好。就像你说的，一个中心节点不够，咱们可以弄多个啊，然后这多个中心节点之间再互相连接，把一个中心变成多个中心。嗯，其实这里就不再存在中心了，就是一个去中心的分布式网络了，你们觉得怎么样？</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_4.png" srcset="/blog/img/loading.gif"></p>
+<p>Linux：唉，这个好！我还想到了一招，既然咱们宇宙中帝国众多，就把你说的中间这些节点再进一步划分层级，也就是划分为一个个子网络，然后子网之间连接组成大的网络，然后大的网络之间再连接构成更大的网络！我是不是个天才！</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_5.png" srcset="/blog/img/loading.gif"></p>
+<p>Windows：嗯，听起来挺不错的，不过有一个问题还没解决，就是非常遥远的两个帝国之间要通信，网络通道该怎么建立呢？中间节点要如何给这两个帝国搭建出一条专线，让他们通信呢？</p>
+<p>·······<br>一阵沉默<br>·······</p>
+<p>Unix：为什么非得建立专线呢？这样效率太低了，如果一条线路给你们占用了，别人要经过这条线的是不是得一直等着？</p>
+<p>Linux：说的有道理，那你有什么好主意？</p>
+<p>Unix：<strong>我们可以把数据拆分为一个个的单元，分组传输，每个单元写好发件人、收件人，中间的节点负责存储转发就可以了嘛，这样大家都可以用这个网络，效率大大提升。</strong></p>
+<p>Windows 代表拍案而起，“这简直是划时代的想法！大佬果然是大佬！”</p>
+<p>Linux：非常棒的想法，我们给这种技术取个名字吧，既然是分组，然后存储转发，要不然叫<strong>分组交换技术</strong>怎么样？</p>
+<p>Unix：嗯，这名字很贴切，就叫它！</p>
+<p>Linux：我们给这个巨大的网络也取一个名字吧，叫 Internet 怎么样？</p>
+<p>Unix：Internet，因特网，听起来还不错</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_6.jpg" srcset="/blog/img/loading.gif"></p>
+<p>Windows：大佬，既然要通信，接下来咱们需要要讨论下通信协议了吧。</p>
+<p>Unix：通信协议？</p>
+<p>Windows：对啊，咱们得制定一套规范标准，所有帝国按照这套规范来收发信息，才能互相理解对方在说什么。</p>
+<p>Unix：嗯，确实需要这么一套标准协议。既然网络叫 Internet，那咱这套标准协议就叫 Internet Protocol，那具体协议内容怎么制定呢？</p>
+<p>Linux：等下，给我个表现机会，让我先说说。</p>
+<p>Windows：洗耳恭听。</p>
+<p>Linux：咱们给所有帝国编一个号，用4个字节的整数来表示，嗯，我想想，从0x00000000到0xFFFFFFFF，差不多能表示42亿多个帝国了，绰绰有余了。这个编号，就叫 Internet Protocol Address，也就是 IP 地址。</p>
+<p>Windows：嗯，用是够用了，不过我建议不要用16进制表示，不太好书写，人类那智商肯定记不住。既然是4个字节整数，要不就用人类熟悉的4个十进制整数来写，用点来隔开，像这样：0.0.0.0～255.255.255.255，把这种写法叫做IP地址的点分十进制表示法，怎么样？</p>
+<p><strong>IP: 192.168.1.1</strong></p>
+<p>Linux：嗯，这个建议好，可以采纳。我刚才还没讲完，通信的时候，数据前面加一个头部，头部里面写上发件人的IP地址、收件人的IP地址，这样发送出去，然后交给网络中的中间节点，让他们转发出去…</p>
+<p>Windows：等一下，有一个问题，中间节点该如何知道转发给谁呢？</p>
+<p>·······<br>又是一阵沉默<br>·······</p>
+<p>Linux：有了，人类收发快递的时候，他们的地址是分了省，市，县到街道，一层层分级了，逐级进入就能找到收件人的地方。咱们的网络也可以这样效仿，把网络分不同大区，大区里面分子网。然后负责转发的这些中间节点，记录一张表，表里面记录不同地区的地址该交给谁，如此，不同层级负责不同的地区，整个网络就能运转起来，收发信息了。</p>
+<p>Unix：这个办法好，咱就把这种技术叫路由技术，这个表叫做路由表。</p>
+<p>Windows：确实很有头脑嘛，不过我想到有一种情况可能比较难办。</p>
+<p>Linux：什么情况，别卖关子了。</p>
+<p>Windows：如果写了一个不存在的收件人，或者是中间节点的路由表里面都没有记录这个帝国，甚至有些中间节点之间踢皮球，谁都不知道交给谁，互相推诿，那发出去的数据包裹岂不是要在网络里面转圈圈，没完没了浪费资源了？</p>
+<p>Linux：额，好像确实是有这么个麻烦问题，你解决问题没啥能力，挑刺倒是一把好手嘛！</p>
+<p>Unix：<strong>有了！咱们在在这个头部里面除了写上收发地址外，再加一个计数器，表示这个包裹的生命周期，发件人初始设置一个数字，表示允许最多在网络中传递几次。中间节点收到后，就把数字减1，如果某个节点拿到后发现减1后变成0，那就丢掉它不再传输了。</strong></p>
+<p>Linux：嗯，这个办法好，这个计数器也取一个名字，叫 Time to Live 吧，就是生存时间的意思，简写成 <strong>TTL</strong>。</p>
+<p>Windows：大佬，果然有经验，佩服佩服。不过原谅我还要继续提问题哦。</p>
+<p>Linux：你的问题怎么这么多，快说！</p>
+<p>Windows：帝国之内有许多的公司都需要经贸合作，如何能进一步区分是哪家公司的信息呢？</p>
+<p>Linux：这样看来，4个字节整数不够用啊，再加一点怎么样，给每个公司都弄一个编号。</p>
+<p>Windows：这恐怕不太现实，帝国的公司经常在变化，每天诞生消亡不计其数，还有些公司根本不做国际化贸易，不需要网络通信，这种办法不好操作。</p>
+<p>Linux：这。。。</p>
+<p>Unix：今天时间也不早了，要不明天继续讨论这个议题如何，今天的收获已经不少了。</p>
+<p>Linux：好的，我回去再琢磨琢磨。</p>
+<h2 id="☆-第二天-☆"><a href="#☆-第二天-☆" class="headerlink" title="☆ 第二天 ☆"></a>☆ 第二天 ☆</h2><p>Unix：两位昨晚休息的如何？</p>
+<p>Windows：还不错。</p>
+<p>Linux：还行吧，对了，昨天最后那个问题我有新的解决方案了。</p>
+<p>Windows：哦，是吗，我也想到了一个办法，要不你先说。</p>
+<p>Linux：昨天的 IP 地址技术方案还是不变，IP 地址只用来在网络中标识一个帝国，至于帝国内部的公司，由帝国内部自己管理。帝国内部再给自己的公司编个码，既然你说到公司会不断消亡和诞生，那这个号码就动态生成。</p>
+<p>Windows：跟我想的差不多，帝国负责网络通信的部门给需要通信的公司分配一个号码，我取名叫端口号，用2个字节来表示，总共65535个端口号，公司要通信的时候，向帝国网络通信部门申请，用完就回收。通信过程中，把这个端口号也带上，帝国网络通信部门收到来自网络的信息包裹后，根据上面收件人的端口号，就能交给具体业务的公司了！</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_7.png" srcset="/blog/img/loading.gif"></p>
+<p>Linux：对对对，跟我想的简直一摸一样！</p>
+<p>Unix：嗯，不错不错，其实我也想到了这个办法。好了现在怎么通信的问题解决了，大家觉得我们的标准还差什么不？</p>
+<p>Linux：我觉得整体框架已经很完善了，有一个可以再优化一点的地方。</p>
+<p>Unix：额哦，是什么呢？</p>
+<p>Linux：目前的方案通信是没有问题了，但因为咱们的包裹都是拆开了一个个发，由于中间网络的路况变化，可能后发的先到，有些还可能丢掉了，需要补发，还有可能发重复了，还有可能后面发的优先级更高，需要加快处理等等各种复杂的情况其实还挺多的，咱们可能还得想一套办法来解决这个问题。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_8.png" srcset="/blog/img/loading.gif"></p>
+<p>Unix：呀，听你这么一说，我瞬间觉得问题还挺大的啊</p>
+<p>Windows：看来简单的分组转发还不行，得有一套传输控制协议，来专门来解决上面的问题。</p>
+<p>Linux：是的，你继续说下去。</p>
+<p>Windows：我们来改造下原来的 IP 协议，除了把刚才说到的端口号也加进去，同时再设置一些标记，对包裹编号，这样收到后才好排序，去重。</p>
+<p>Linux：嗯，想法不错，不过我不建议改造原来的 IP 协议，IP 协议只负责帝国之间的传送，负责网络路由送达，至于数据的问题，不应该他来负责。我建议在 IP 协议后面再扩展一层出来，单独来做传输控制。</p>
+<p>Unix：嗯， 我同意，不要把所有事情都搅合在一起，分层处理，每层只负责自己的职责。</p>
+<p>Windows：也好，我也同意。</p>
+<p>Linux：不过如何知道包裹丢失呢？</p>
+<p>Windows：要不然这样，收到包裹后，得给一个答复，告诉发件人我收到了。</p>
+<p>Linux：那其他问题呢？</p>
+<p>Windows：额，暂时还没想好。</p>
+<p>Unix：让我也出出注意，我们给这些数据包裹再加一些标志字段，用来对数据包裹进行编号，发送速度调节，优先级标识等等。</p>
+<p>Windows：看起来可行，不过这双方可能在传输数据之前得先做些初始化工作。</p>
+<p>Linux：嗯，要不在通信之前，双方先建立一个连接。</p>
+<p>Unix：连接，怎么又要建立连接，不是分组转发吗？</p>
+<p>Windows：是啊，你要开倒车吗？</p>
+<p>Linux：两位先别急，此连接非彼连接，这是一个逻辑上的虚拟连接。正式通信之前先确认网络通达性，彼此做好初始化操作，可以理解为通过网络远程握手。通信完成后，再断开连接。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_9.jpg" srcset="/blog/img/loading.gif"></p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_10.jpg" srcset="/blog/img/loading.gif"></p>
+<p>Windows：这样啊，倒是一个好办法。不过感觉这一套工作下来挺复杂的，有些公司业务比较简单，数据量小，信息包裹丢失大不了一会儿重发，弄这些感觉成本高，不一定所有公司会买账。</p>
+<p>Unix：你说的这种情况也确实存在，要不这些比较简单的业务就不要走这套流程了，不用这套控制传输协议，单独弄一个简单版本的。</p>
+<p>Linux：老大说的在理，刚才这套复杂的协议咱们取名叫 TCP 协议，就是传输控制协议的意思，老大说的简单版本的要不叫 UDP，用户数据报协议，只记录收发公司的端口号就行，非常简单。</p>
+<p>Unix：非常好，就这么愉快的决定了！</p>
+<p>Linux：老大，咱们这套标准改个名吧，叫 TCP/IP 协议如何？</p>
+<p>Windows：这是两个协议，加上其他协议，这是一个家族了，应该叫 TCP/IP 协议族。</p>
+<p>Unix：同意！应该叫协议族才对！</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_11.jpg" srcset="/blog/img/loading.gif"></p>
+<h2 id="☆-第三天-☆"><a href="#☆-第三天-☆" class="headerlink" title="☆ 第三天 ☆"></a>☆ 第三天 ☆</h2><p>Unix、Linux、Windows 三大帝国集团代表发布《关于比特宇宙推进经贸合作的联合声明》，比特宇宙迎来全新的历史时期！</p>
+<p>会议达成的网络通信标准 TCP/IP 协议族很快在比特宇宙中流行开来，无数的帝国纷纷拥抱因特网，没过多久，各种各样的网络业务便发展起来，因特网一片欣欣向荣。这其中发展最为迅速的要数 Web 业务，无数的帝国通过因特网相连，传输网页供人类浏览，后来人类又给他们取了一个新名字：<strong>互联网</strong>。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>后续：随着 Web 业务的不断发展，虽然我们提供了点分十进制的书写方法，不过记忆力低下的人类仍然觉得过 IP 地址来标记一个提供网页服务的帝国还是太难了。比特宇宙中一些精明的帝国公司发现了新的商机……</p>
+<p>于是，为了便于人类记忆，有了域名这样的概念。例如，当用户想要访问百度公司的服务器时，用户并不想记住百度公司的服务器 IP 地址。而是在地址栏里输入百度公司的域名 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 后回车进行访问。</p>
+<p>但在实际访问服务器时，在这个访问过程中最终是通过 IP 地址访问服务器的，那么在访问过程中是谁将域名转换成 IP 地址呢？是 <strong>DNS</strong>。</p>
+<blockquote>
+<p>DNS：域名系统（英文：Domain Name System，缩写：DNS）是互联网的一项服务。它作为将域名和 IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS 使用 UDP 端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。</p>
+</blockquote>
+<p>当我们想知道域名对应的 IP 地址怎么办呢？</p>
+<p>按下键盘上 Win + R 打开运行窗口并输入 cmd 后回车</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_12.png" srcset="/blog/img/loading.gif"></p>
+<p>接下来在命令行输入 <code>ping www.baidu.com</code>，即 ping + 域名。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/dots_Byte_World_TCP_IP/dots_Byte_World_TCP_IP_13.png" srcset="/blog/img/loading.gif"></p>
+<p>我们看到来自 110.242.68.3 的回复。 </p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Dots/">Dots</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/TCP-IP/">TCP/IP</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/study/HTTPS_study_0001/">
+                        <span class="hidden-mobile">HTTP S</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/weixin_pay.jpg" srcset="/blog/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:200px;"><p align="center"><b>你可以打赏作者</b></p>
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span>© 2018 – 2021 </span> <i class="iconfont icon-plan"></i> <span>T - Cloud Data Studio</span> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/blog/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+
+</body>
+</html>
