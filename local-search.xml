@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Time_Box</title>
+    <link href="/blog/dots/Time_Box/"/>
+    <url>/blog/dots/Time_Box/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/dots/Time_Box/logo%20%284%29.png"></p><h2 id="Time-Box-结构-总览"><a href="#Time-Box-结构-总览" class="headerlink" title="Time_Box 结构 总览"></a>Time_Box 结构 总览</h2><div class="hljs code-wrapper"><pre><code>.   / 根节点 Time_Box├── static   (1/2)    ├── _drafts        ├── drafts        └── ...    ├── _posts        ├── dots        ├── life        ├── study        ├── books        └── ...    └── _pages        ├── index        ├── archives        ├── categories        ├── tags        ├── links        ├── about        ├── 404        ├── photos        ├── music        ├── video        ├── book        ├── artitalk        └── ...└── dynamic    (2/2)    ├── _drafts        ├── drafts        └── ...    ├── _posts        ├── dots        ├── life        ├── study        ├── books        └── ...    └── _pages        ├── index        ├── archives        ├── categories        ├── tags        ├── links        ├── about        ├── 404        ├── photos        ├── music        ├── video        ├── book        ├── artitalk        └── ...</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Dots</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>信息学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Information Collect System Project</title>
     <link href="/blog/dots/dots_ICSP/"/>
     <url>/blog/dots/dots_ICSP/</url>
@@ -472,7 +497,7 @@
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[<div align="center">    <h2>Music List</h2></div><span align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=1494462209&amp;auto=0&amp;height=66"></iframe></span><span align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=1811652294&amp;auto=0&amp;height=66"></iframe></span><span align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=1826179038&amp;auto=0&amp;height=66"></iframe></span><span align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=480680&amp;auto=0&amp;height=66"></iframe></span><span align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=27876900&amp;auto=0&amp;height=66"></iframe></span><span align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=191248&amp;auto=0&amp;height=66"></iframe></span><div align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=101906&amp;auto=0&amp;height=66"></iframe></div><div align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=431853688&amp;auto=0&amp;height=66"></iframe></div><!-- <button id="btn">            press</button><script>    top.addEventListener( "message",            function(e){                alert(e.data);            },false);</script><script>    document.getElementById("btn").onclick = function() {            //localhost:8020就是发送的url的源            //记住要写top.postMessage或者是parent.message，对于top和parent区别，google一大堆            //千万不要写window.postMessage        top.postMessage("hello", "http://localhost:4000");    }</script> -->]]></content>
+    <content type="html"><![CDATA[<div align="center">    <h2>Music List</h2></div><span align="center" style="max-height :100%; max-width: 100%; display: block;">    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=27876900&amp;auto=0&amp;height=66"></iframe></span><!-- <button id="btn">            press</button><script>    top.addEventListener( "message",            function(e){                alert(e.data);            },false);</script><script>    document.getElementById("btn").onclick = function() {            //localhost:8020就是发送的url的源            //记住要写top.postMessage或者是parent.message，对于top和parent区别，google一大堆            //千万不要写window.postMessage        top.postMessage("hello", "http://localhost:4000");    }</script> -->]]></content>
     
   </entry>
   
