@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/rabbit900.webp">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/rabbit900.webp">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1D1D1F">
+  <meta name="description" content="">
+  <meta name="author" content="John lee">
+  <meta name="keywords" content="">
+  <meta name="description" content="01 分布式小明的公司有3个系统： 系统A、系统B和系统C ，这三个系统所做的业务不同，被部署在3个独立的机器上运行， 他们之间互相调用（当然是跨域网络的）， 通力合作完成公司的业务流程。  将不同的业务分布在不同的地方， 这就构成了一个分布式的系统，现在问题来了， 系统A是整个分布式系统的“脸面”， 用户直接访问，用户量访问大的时候要么是速度巨慢，要么直接挂掉， 怎么办？  由于系统A只有一份，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式与集群">
+<meta property="og:url" content="https://github.com/time-container/blog/dots_Distributed_and_clustered/index.html">
+<meta property="og:site_name" content="Time - C">
+<meta property="og:description" content="01 分布式小明的公司有3个系统： 系统A、系统B和系统C ，这三个系统所做的业务不同，被部署在3个独立的机器上运行， 他们之间互相调用（当然是跨域网络的）， 通力合作完成公司的业务流程。  将不同的业务分布在不同的地方， 这就构成了一个分布式的系统，现在问题来了， 系统A是整个分布式系统的“脸面”， 用户直接访问，用户量访问大的时候要么是速度巨慢，要么直接挂掉， 怎么办？  由于系统A只有一份，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_1.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_2.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_5.jpg">
+<meta property="article:published_time" content="2021-01-15T14:42:51.000Z">
+<meta property="article:modified_time" content="2021-06-26T14:47:56.962Z">
+<meta property="article:author" content="John lee">
+<meta property="article:tag" content="分布式">
+<meta property="article:tag" content="集群">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_1.jpg">
+  
+  <title>分布式与集群 - Time - C</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":4,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"rcbAWes3jOnXFLCgl37Kb8Y6-MdYXbMMI","app_key":"CyyJy3Xf6dUGnBeuMzzPPYdx","server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 80vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Time - C</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://time-container.github.io/">
+                <i class="iconfont icon-books"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-brush"></i>
+                博客
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/">
+                    
+                    列表
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/links/">
+                    
+                    友链
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/about/">
+                    
+                    关于
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/archives/">
+                    
+                    存档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/categories/">
+                    
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/tags/">
+                    
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-th-large"></i>
+                媒体
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/photos/">
+                    
+                    相册
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/music/">
+                    
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/video/">
+                    
+                    视频
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/book/">
+                    
+                    书单
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/artitalk/">
+                    
+                    微语
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/post_pic_default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="分布式与集群">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      John lee
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-15 22:42" pubdate>
+        2021年1月15日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">分布式与集群</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：3 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="01-分布式"><a href="#01-分布式" class="headerlink" title="01 分布式"></a>01 分布式</h2><p>小明的公司有3个系统： 系统A、系统B和系统C ，这三个系统所做的业务不同，被部署在3个独立的机器上运行， 他们之间互相调用（当然是跨域网络的）， 通力合作完成公司的业务流程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_1.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>将不同的业务分布在不同的地方， 这就构成了一个<b>分布式</b>的系统，现在问题来了， 系统A是整个分布式系统的“脸面”， 用户直接访问，用户量访问大的时候要么是速度巨慢，要么直接挂掉， 怎么办？ </p>
+<p>由于系统A只有一份， 所以会引起<b>单点失败</b>。</p>
+<h2 id="02-集群（Cluster）"><a href="#02-集群（Cluster）" class="headerlink" title="02 集群（Cluster）"></a>02 集群（Cluster）</h2><p>小明的公司不差钱，就多买几台机器吧， 小明把系统A一下子部署了好几份（例如下图的3个服务器），<b>每一份都是系统A的一个实例， 对外提供同样的服务，</b>这样能睡个安稳觉了，即使其中一个坏掉了，我还有另外2个呢。  </p>
+<p>这3个服务器上的系统就组成了一个<b>集群</b>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_2.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>可是对用户来说，一下子出现这么系统A ，每个系统的IP地址都不一样，  到底访问哪一个？ </p>
+<p>如果所有人都访问服务器1.1 ，那服务器1.1 会被累死， 剩下的两个闲死，成了浪费钱的摆设。</p>
+<h2 id="03-负载均衡（Load-Balancer）"><a href="#03-负载均衡（Load-Balancer）" class="headerlink" title="03 负载均衡（Load Balancer）"></a>03 负载均衡（Load Balancer）</h2><p>小明要尽可能的让3个机器上的系统A 工作均衡一些， 比如有3万个请求，那就让3个服务器各处理1万个（当然，这是理想状况）， 这叫<b>负载均衡</b>。  </p>
+<p>很明显，这个<b>负载均衡</b>的工作最好独立出来， 放到独立的服务器上 （例如Ngnix）：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_1.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>后来小明发现， 这个负载均衡的服务器虽然工作内容很简单，就是拿到请求，分发请求，但是它还是有可能挂掉啊， <b>单点失败</b>还是会出现。</p>
+<p>没办法，只好把负载均衡也搞成一个集群， 不过和系统A的集群有两点不同：</p>
+<ol>
+<li>这个新的集群中虽然有两个机器，但我们可以用某种办法，让这个集群对外只提供一个IP地址， 也就是说<b>用户看到的好像只有一个机器。</b></li>
+<li><b>同一时刻，我们只让一个负载均衡的机器工作， 另外一个原地待命。</b> 如果工作的那个挂掉了，待命的那个就顶上去。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_3_2.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<h2 id="04-弹性"><a href="#04-弹性" class="headerlink" title="04 弹性"></a>04 弹性</h2><p>如果这3个系统A的实例还是满足不了大量的请求，那就再加服务器！ </p>
+<p>双11来了，用户量是平时的10倍， 小明向领导申请费用又买了几十台服务器，一下子把系统A部署了几十份。  可是双11过后， 流量一下子降下来了，那几十个服务器用不上了，也变成了摆设！</p>
+<p>被领导批评以后，小明决定尝试一下云计算，  在云端可以轻松的创建、删除虚拟的服务器， 那样就可以轻松地随着用户的请求动态的增减服务器了。  双11来了就创建虚拟服务器，等到双11过去了就把不用的关掉， 省得浪费钱。 </p>
+<p>于是小明的系统具备了一定的<b>弹性</b>。</p>
+<h2 id="05-失效转移"><a href="#05-失效转移" class="headerlink" title="05 失效转移"></a>05 失效转移</h2><p>上面的系统看起来很美好，但是做了一个不切实际的假设： 所有的服务都是无状态的。 换句话说，假设用户的两次请求直接是没有关联的。</p>
+<p>但是现实是，大部分服务都是有状态的， 例如购物车。</p>
+<p>用户访问系统，在服务器1.1上创建了一个购物车，并向其中加入了几个商品， 然后 服务器1.1 挂掉了， 用户的后续访问就找不到服务器1.1了，这时候就要做<b>失效转移</b>，让另外几个服务器去接管、去处理用户的请求。</p>
+<p>可是问题来了，在服务器1.2，1.3上有用户的购物车吗？  如果没有， 用户就会抱怨，我刚创建的购物车哪里去了？</p>
+<p>还有更严重的，假设用户是在服务器1.1上登录的， 用户登录过的信息保存到了该服务器的 session 中， 现在这个服务器挂掉了， 用户的 session 自然也不见了，当用户被失效转移到其他服务器上的时候，其他服务器发现用户没有登录， 就把用户踢到了登录界面， 让用户再次登录！</p>
+<p>状态， 状态，状态！ 用户的登录信息，购物车等都是状态信息，  处理不好状态的问题，集群的威力就大打折扣，无法完成真正的失效转移， 甚至无法使用。</p>
+<p>怎么办？  </p>
+<p>一种办法是把状态信息在集群的各个服务器之间复制，让集群的各个服务器达成一致，  谁来干这个事情？ 只能是像 Websphere, Weblogic 这样的应用服务器了。 </p>
+<p>还有一种办法， 就是把状态信息集中存储在一个地方， 让集群的各个服务器都能访问到：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_Distributed_and_clustered/dots_Distributed_and_clustered_5.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>小明听说 Redis 不错， 那就用 Redis 来保存吧 ！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Dots/">Dots</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E9%9B%86%E7%BE%A4/">集群</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/dots_windows_ios_file_transmission/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows 系统与 iOS 系统文件传输方案</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/dots_windows_open_god_model/">
+                        <span class="hidden-mobile">Windows 10 开启上帝模式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span>© 2018 – 2021 </span> <i class="iconfont icon-plan"></i> <span>T - Cloud Data Studio</span> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>

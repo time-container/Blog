@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/rabbit900.webp">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/rabbit900.webp">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1D1D1F">
+  <meta name="description" content="">
+  <meta name="author" content="John lee">
+  <meta name="keywords" content="">
+  <meta name="description" content="React 到底是什么？为什么它那么受欢迎？它到底解决了什么问题？              答案：React 是一个用于构建用户界面的、声明式、组件化的 JavaScript 库。             JavaScript 库？声明式？组件化？不是说好了是小白秘籍吗？ 好吧，上面那行字是从官方网站拷过来拼凑的。接下来，让我用另一种方式为你讲解 React。很负责任地说，只要你对 HTML 有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What is React ?">
+<meta property="og:url" content="https://github.com/time-container/blog/React_study_0001/index.html">
+<meta property="og:site_name" content="Time - C">
+<meta property="og:description" content="React 到底是什么？为什么它那么受欢迎？它到底解决了什么问题？              答案：React 是一个用于构建用户界面的、声明式、组件化的 JavaScript 库。             JavaScript 库？声明式？组件化？不是说好了是小白秘籍吗？ 好吧，上面那行字是从官方网站拷过来拼凑的。接下来，让我用另一种方式为你讲解 React。很负责任地说，只要你对 HTML 有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_1.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_2.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_3.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_4.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_5.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_6.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_7.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_8.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_9.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_10.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_11.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_12.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_13.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_14.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_15.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_16.jpg">
+<meta property="article:published_time" content="2021-03-16T13:42:51.000Z">
+<meta property="article:modified_time" content="2021-06-26T14:30:11.496Z">
+<meta property="article:author" content="John lee">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_1.jpg">
+  
+  <title>What is React ? - Time - C</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":4,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"rcbAWes3jOnXFLCgl37Kb8Y6-MdYXbMMI","app_key":"CyyJy3Xf6dUGnBeuMzzPPYdx","server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 80vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Time - C</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://time-container.github.io/">
+                <i class="iconfont icon-books"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-brush"></i>
+                博客
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/">
+                    
+                    列表
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/links/">
+                    
+                    友链
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/about/">
+                    
+                    关于
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/archives/">
+                    
+                    存档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/categories/">
+                    
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/tags/">
+                    
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-th-large"></i>
+                媒体
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/photos/">
+                    
+                    相册
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/music/">
+                    
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/video/">
+                    
+                    视频
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/book/">
+                    
+                    书单
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/artitalk/">
+                    
+                    微语
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/post_pic_default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="What is React ?">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      John lee
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-16 21:42" pubdate>
+        2021年3月16日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      36 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">What is React ?</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：3 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>React 到底是什么？为什么它那么受欢迎？它到底解决了什么问题？</p>
+<div class="note note-success">
+            <p>答案：React 是一个用于构建用户界面的、声明式、组件化的 JavaScript 库。</p>
+          </div>
+
+<p>JavaScript 库？声明式？组件化？不是说好了是小白秘籍吗？</p>
+<p>好吧，上面那行字是从官方网站拷过来拼凑的。接下来，让我用另一种方式为你讲解 React。很负责任地说，只要你对 HTML 有大致的了解（例如，HTML 标签的格式），应该就能看懂这篇文章、理解 React 的核心概念。</p>
+<p>具体什么方式呢？先卖个关子放几个表情符：</p>
+<p>🌴</p>
+<p>✈️</p>
+<section style="line-height: 1.75em;margin-top: 5px;margin-bottom: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 -48 512 512" style="color: rgb(0, 0, 0);font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, Ubuntu, Cantarell, &quot;Noto Sans&quot;, sans-serif, system-ui, &quot;Helvetica Neue&quot;, Arial, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-size: medium;text-align: start;white-space: normal;"><g fill="#40404c"><path d="M211.023 137.027h89.95v145.938h-89.95zm0 0M298.3 72.402V52.211c0-24.637 19.973-44.61 44.614-44.61a44.665 44.665 0 0124.809 7.528 44.657 44.657 0 0116.425 20.066l7.207 17.473"></path><path d="M279.29 123.621v171.84l128.757-23.563 89.082-16.308L430.344 93.69a78.505 78.505 0 00-28.906-35.308 78.457 78.457 0 00-47.641-13.153c-41.5 2.067-74.508 36.383-74.508 78.391zm0 0"></path></g><path fill="#5b5b68" d="M353.797 45.23l54.25 226.668 89.082-16.308L430.344 93.69a78.505 78.505 0 00-28.906-35.308 78.457 78.457 0 00-47.641-13.153zm0 0"></path><path fill="#e4e4ef" d="M504.398 295.457c0 62.164-50.394 112.559-112.558 112.559-62.164 0-112.555-50.395-112.555-112.559 0-62.164 50.39-112.559 112.555-112.559 62.164 0 112.558 50.395 112.558 112.559zm0 0"></path><path fill="#40404c" d="M471.434 295.457c0 43.957-35.637 79.59-79.594 79.59-43.953 0-79.59-35.633-79.59-79.59s35.637-79.59 79.59-79.59c43.957 0 79.594 35.633 79.594 79.59zm0 0"></path><path fill="#589ce0" d="M314.191 277.918c7.985 35.52 39.715 62.062 77.641 62.062 37.922 0 69.664-26.542 77.648-62.062-7.984-35.52-39.714-62.055-77.64-62.055-37.934 0-69.664 26.535-77.649 62.055zm0 0"></path><path fill="#40404c" d="M120.645 52.668l7.203-17.473a44.69 44.69 0 0116.43-20.066 44.665 44.665 0 0124.808-7.527c24.637 0 44.613 19.972 44.613 44.609v20.191"></path><path fill="#5b5b68" d="M232.71 123.621v171.84l-128.757-23.563-89.082-16.308L81.656 93.69a78.522 78.522 0 0128.903-35.308 78.479 78.479 0 0147.644-13.153c41.5 2.067 74.508 36.383 74.508 78.391zm0 0"></path><path fill="#40404c" d="M158.203 45.23l-54.25 226.668-89.082-16.308L81.656 93.69a78.522 78.522 0 0128.903-35.308 78.479 78.479 0 0147.644-13.153zm0 0"></path><path fill="#e4e4ef" d="M232.715 295.457c0 62.164-50.39 112.559-112.555 112.559-62.164 0-112.558-50.395-112.558-112.559 0-62.164 50.394-112.559 112.558-112.559 62.164 0 112.555 50.395 112.555 112.559zm0 0"></path><path fill="#40404c" d="M199.75 295.457c0 43.957-35.637 79.59-79.59 79.59-43.957 0-79.594-35.633-79.594-79.59s35.637-79.59 79.594-79.59c43.953 0 79.59 35.633 79.59 79.59zm0 0"></path><path fill="#589ce0" d="M197.809 277.918c-7.985 35.52-39.715 62.062-77.641 62.062-37.922 0-69.664-26.542-77.648-62.062 7.984-35.52 39.714-62.055 77.64-62.055 37.934 0 69.664 26.535 77.649 62.055zm0 0"></path><path fill="#357fbc" d="M89.21 295.46c0 15.548 4.45 30.04 12.165 42.29-29.281-7.094-52.234-30.371-58.863-59.832 7.988-35.52 39.718-62.055 77.64-62.055a79.306 79.306 0 0124.325 3.793C112.422 229.93 89.21 259.98 89.21 295.461zm0 0M360.89 295.46c0 15.548 4.45 30.04 12.165 42.29-29.282-7.094-52.235-30.371-58.864-59.832 7.989-35.52 39.72-62.055 77.641-62.055 8.484 0 16.66 1.328 24.324 3.793-32.054 10.274-55.265 40.324-55.265 75.805zm0 0"></path><path d="M120.16 208.266c-48.078 0-87.191 39.113-87.191 87.191s39.113 87.191 87.191 87.191c48.074 0 87.188-39.113 87.188-87.191s-39.114-87.191-87.188-87.191zm0 15.203c33.645 0 61.961 23.203 69.817 54.445-3.766 15.024-12.426 28.625-24.551 38.45-12.75 10.327-28.824 16.015-45.262 16.015-16.441 0-32.516-5.688-45.27-16.016-12.124-9.824-20.789-23.425-24.554-38.449 7.855-31.242 36.172-54.445 69.82-54.445zm0 143.976c-33.863 0-62.32-23.504-69.96-55.05a87.387 87.387 0 0015.128 15.78c15.45 12.516 34.922 19.407 54.836 19.407 19.91 0 39.383-6.89 54.832-19.406a87.712 87.712 0 0015.121-15.778c-7.644 31.543-36.097 55.047-69.957 55.047zm0 0"></path><path d="M504.188 252.852a225.242 225.242 0 00-2.055-5.059l-64.762-157c-7.98-19.344-22.355-34.59-40.105-43.727l-6.09-14.77A52.095 52.095 0 00371.94 8.81 52.135 52.135 0 00342.911 0c-28.79 0-52.212 23.422-52.212 52.21v17.528c-11.883 14.766-19.02 33.504-19.02 53.887v5.8h-31.363v-5.8c0-20.383-7.136-39.121-19.02-53.887V52.211C221.297 23.42 197.876 0 169.087 0c-10.36 0-20.399 3.047-29.04 8.816a52.092 52.092 0 00-19.226 23.48l-6.09 14.77C96.984 56.203 82.605 71.45 74.63 90.793l-16.625 40.3a7.6 7.6 0 004.129 9.927 7.593 7.593 0 009.922-4.13l16.625-40.3c10.992-26.645 36.718-43.86 65.539-43.86 39.09 0 70.894 31.801 70.894 70.895V237.02c-20.566-36.79-59.902-61.723-104.957-61.723-28.219 0-54.191 9.785-74.719 26.129l16.407-39.774c1.601-3.879-.25-8.324-4.13-9.925-3.878-1.602-8.323.25-9.925 4.128L9.867 247.79c-.594 1.367-2.215 5.414-2.289 5.672C2.684 266.539 0 280.69 0 295.457c0 66.254 53.902 120.156 120.16 120.156 66.254 0 120.156-53.902 120.156-120.156v-4.89h31.368v4.89c0 66.254 53.902 120.156 120.156 120.156 66.258 0 120.16-53.902 120.16-120.156 0-14.996-2.77-29.355-7.813-42.605zM154.217 37.527c-6.874 0-13.6.82-20.081 2.36l.738-1.793a36.915 36.915 0 0113.621-16.64 36.969 36.969 0 0120.59-6.255c20.406 0 37.012 16.606 37.012 37.012v2.754c-14.438-10.934-32.41-17.438-51.88-17.438zM342.915 15.2c7.344 0 14.461 2.164 20.578 6.246a36.926 36.926 0 0113.633 16.649l.738 1.793a86.64 86.64 0 00-20.086-2.36c-19.465 0-37.437 6.504-51.875 17.438V52.21c0-20.406 16.602-37.012 37.012-37.012zm-56.027 108.426c0-39.094 31.8-70.895 70.894-70.895 28.82 0 54.547 17.215 65.535 43.86l43.247 104.836c-20.528-16.344-46.504-26.13-74.723-26.13-45.055 0-84.39 24.934-104.953 61.72zm-15.203 21.004v72.969h-31.368v-72.97zM120.16 400.414c-57.875 0-104.957-47.082-104.957-104.957S62.285 190.5 120.16 190.5c57.871 0 104.953 47.082 104.953 104.957S178.031 400.414 120.16 400.414zm120.156-125.05v-42.567h31.368v42.566zm151.524 125.05c-57.871 0-104.953-47.082-104.953-104.957S333.969 190.5 391.84 190.5c57.875 0 104.957 47.082 104.957 104.957S449.715 400.414 391.84 400.414zm0 0"></path><path d="M450.883 241.547c-3.356 2.523-4.024 7.289-1.5 10.644 5.844 7.758 9.976 16.438 12.289 25.66-3.758 15.047-12.426 28.676-24.57 38.512-12.747 10.328-28.82 16.016-45.262 16.016-16.438 0-32.516-5.688-45.266-16.016-12.125-9.82-20.789-23.422-24.554-38.441 7.851-31.246 36.171-54.453 69.82-54.453 14.426 0 28.344 4.25 40.242 12.289a7.599 7.599 0 0010.555-2.043 7.6 7.6 0 00-2.043-10.555c-14.422-9.742-31.282-14.894-48.754-14.894-48.078 0-87.192 39.113-87.192 87.191s39.114 87.191 87.192 87.191 87.191-39.113 87.191-87.191c0-19.082-6.054-37.207-17.508-52.41-2.52-3.356-7.285-4.027-10.64-1.5zM391.84 367.445c-33.856 0-62.313-23.5-69.953-55.043a87.422 87.422 0 0015.12 15.774c15.45 12.515 34.923 19.406 54.837 19.406 19.91 0 39.383-6.89 54.832-19.406A87.382 87.382 0 00461.8 312.39c-7.64 31.55-36.098 55.054-69.961 55.054zm0 0"></path></svg></section>
+
+<p>来，跟我一起到高处俯瞰 React 的全貌，然后拿起望远镜，拉近、放大、观察细节，挽起袖子写一个真正的 React 组件。没错，不懂 JavaScript 也照样写！</p>
+<details>
+<summary>准备好启程了吗？</summary>
+
+<h2 id="Web-二三事"><a href="#Web-二三事" class="headerlink" title="Web 二三事"></a>Web 二三事</h2><p>第一站，我们先从一个你或许听说过很多次的概念说起：<strong>DOM</strong>。</p>
+<h2 id="DOM-是什么？"><a href="#DOM-是什么？" class="headerlink" title="DOM 是什么？"></a>DOM 是什么？</h2><p>当你将一个网址输入浏览器的时候，你的电脑和远方的另一台电脑就开始对话。这台远方的电脑一般被称之为服务器。你的电脑发出请求，向服务器索取某种信息，服务器随即做出应答：</p>
+<blockquote>
+<p>你的电脑：伙计，这个网站靠不靠谱啊？网址是：learnreact.design</p>
+</blockquote>
+<blockquote>
+<p>服务器：少安毋躁，让我查查。嘀。嘟。</p>
+</blockquote>
+<p>服务器的应答数据主要包括了三个部分：HTML、CSS 和 JavaScript。</p>
+<p>HTML 列举出一个网页的内容并描述其结构。例如，页面上有多少个标题和段落？给用户显示什么图片？这个按钮和那个文本输入框是不是应该放到同一个容器里？</p>
+<p>利用 HTML 里的信息，浏览器将会创建一个叫做 DOM 的家伙。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_1.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>嗯？等等，DOM 是一棵树？回答正确，就是一棵树！我们电脑里有很多东西都看起来像一棵树，我知道这听起来有点奇怪。我们给这位大树朋友起个名字吧，叫“朵模（Domo）”如何？</p>
+<p>朵模在一间名为“Web 浏览器”的艺术工作室里做人体模特（哦，不对，是树体模特）。跟其他的模特一样，朵模的工作是摆出各种姿势，让画家给他画一副“树”体写生。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_2.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>DOM 是 Document Object Model 的缩写。从某种意义上说，它确实是一个模特，更确切地说是模型、网页文档的模型。当 DOM 摆出一个姿势时，浏览器就开始写生。这些所谓的写生画就是我们在网页上所看到的内容：文本框、段落、图片等等。程序员的职责就是告诉朵模如何穿戴和如何摆姿势。这就决定了网页上最终显示什么内容。</p>
+<p>如果你使用桌面电脑的浏览器（如 Chrome）看这篇文章，在页面上右击鼠标、选择“Inspect”，就可以在 Element 标签页里看到 DOM 的真实模样。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_3.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<h2 id="DOM-的-API"><a href="#DOM-的-API" class="headerlink" title="DOM 的 API"></a>DOM 的 API</h2><p>我们经常希望一个网页是动态和交互式的，也就是说，网页的内容会时不时发生变化。一会儿在这里加点文字，一会儿又显示一个对话框，一会儿又根据从服务器下载的数据更新图表。</p>
+<p>记住，任何时候如果希望网页内容发生变化，我们都需要更改 DOM。朵模如果不改变姿势，浏览器里的画家就不可能画出新的作品。</p>
+<p>那么，怎样才能让朵模改变姿势呢？</p>
+<p>我们直接告诉他就行了，他会听的。有意思的是，朵模的耳朵还有一个专属的名字：<strong>API</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_4.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>程序员们使用 JavaScript 书写代码来向 DOM API 下达命令，于是，网页内容便随着 DOM 的更改而发生变化。</p>
+<h2 id="越来越复杂的-web-开发"><a href="#越来越复杂的-web-开发" class="headerlink" title="越来越复杂的 web 开发"></a>越来越复杂的 web 开发</h2><p>多年来，直接与 DOM 对话一直是 web 开发的标准方法，特别是当大多数 web 内容是静态页面的时候。程序员们典型的做法是，在静态页面的基础上加一点点 JavaScript 代码来点缀一些交互效果。</p>
+<p>然而，当众多的 SPA （Single Page Application）出现后，例如，Gmail 和 Google 地图，用户们开始对 web 有了更高的期望。他们不再只满足于大多数情况下都是静态的 web 页面，他们更希望看到的是交互性强、响应迅速的 web 应用。</p>
+<p>为了开发满足这些条件的 web 应用，代码变得越来越复杂，与 DOM 直接对话这种方式越来越显得低效而繁琐，Web 开发的传统方法越来越显得捉襟见肘。人们开始寻找更高效、更便捷的开发方法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_5.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<h2 id="React-的核心思想"><a href="#React-的核心思想" class="headerlink" title="React 的核心思想"></a>React 的核心思想</h2><p>女士们、先生们，让我们隆重欢迎 React 出场！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_6.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>在 React 的帮助下，程序员们不再直接与朵模对话。React 充当起了程序员的代言人。他让程序员与朵模之间的沟通变得无比顺畅，将写生的过程管理得井井有条。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_7.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>React 由 JavaScript 开发而成，它的设计目标之一是让我们在大多数情况下不再需要直接操作 DOM API。取而代之的是，我们只需要编写相对简单的代码，而 React 将其翻译为 DOM 理解的语言。</p>
+<p>React 的超能力归纳起来有三条，完美地处理了与日俱增的 web 开发复杂度：</p>
+<ul>
+<li>组件（Component）</li>
+<li>声明式界面编程（Declarative UI）</li>
+<li>响应式 DOM 更新机制（Reactive DOM updates）</li>
+</ul>
+<p>如果这几个名词听起来像天书，别担心！我会用简单的语言和插画来帮你理解。其实没有想象的那么难，相信我没错的。</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>组件是 React 的旗舰功能。其核心思想基于一个简单的策略：<strong>分而治之</strong>。如果一个问题作为一个整体很难理解透彻和解决，我们就把它拆分为多个小问题，各个击破，最后再将结果综合起来。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_8.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>使用 React 写程序的时候，几乎所有的时间都是在跟组件打交道：将整个应用分割为组件、寻找最合适的组件、将不同组件拼装起来、在原有组件基础上制作新组件，如此等等。</p>
+<p>现今的设计工具也支持组件功能，例如 Framer 和 Figma，再如 Sketch 中的 symbol。这些组件与 React 中的组件属于同一个概念，只不过后者更加灵活和功能强大。事实上，这些工具中组件的设计灵感直接来自于软件工程中的组件概念。</p>
+<p>一旦一个组件创建完成，我们可以多次使用它（创建组件实例），可以用这个组件创建另外的组件。当一个组件发生变动时，包含这个组件的所有其他组件也会自动发生相应变化。</p>
+<p>React 组件有两条重要的属性：</p>
+<ol>
+<li>组件是可组合的（composable）。组件的目的在于重用，我们可以使用现有组件创建新组件。</li>
+<li>一个组件独立于其它组件（independent）。当修改一个组件时，不相干的组件不会受到干扰。</li>
+</ol>
+<p>太抽象？别担心，等会看了例子你就明白了。</p>
+<h3 id="声明式用户界面（Declarative-UI）"><a href="#声明式用户界面（Declarative-UI）" class="headerlink" title="声明式用户界面（Declarative UI）"></a>声明式用户界面（Declarative UI）</h3><h3 id="命令式与声明式"><a href="#命令式与声明式" class="headerlink" title="命令式与声明式"></a>命令式与声明式</h3><p>当直接操作 DOM API 时，我们需要明确写出在具体什么时刻、以何种顺序来修改哪个元素。这种操作就像手把手、一步一步地指导朵模该怎么摆姿势：头该怎么偏、手摆哪儿、脚怎么站。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_9.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>这听起来是不是繁琐又容易出错？为什么我们不能直接告诉朵模我们想要什么，而不是怎么做？使用 React 写程序就是这个思路！程序员画一个简图描述所期待的结果，React 代劳向朵模解释怎么摆姿势。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_10.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>因为我们编写的应用是动态的，我们经常希望朵模很快速地变换姿势。于是我们就一次性画很多简图拿给 React。React 将这些简图摞成一叠，像用手翻书一样手指一翻，一个动态的用户界面就跃然眼前了！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_11.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>用技术术语来讲，如果一段代码定义的是如何做一件事的步骤，我们称之为<strong>命令式</strong>；相反，如果定义的是我们所预期的最终结果，它就是<strong>声明式</strong>。直接操作 DOM API 的传统 web 开发方式是命令式，而 React 是声明式。</p>
+<h3 id="虚拟-DOM（Virtual-DOM）"><a href="#虚拟-DOM（Virtual-DOM）" class="headerlink" title="虚拟 DOM（Virtual DOM）"></a>虚拟 DOM（Virtual DOM）</h3><p>除了让程序员们更轻松，声明式的 React 还提供了性能优化的机会。</p>
+<p>当 React 事先拿到了所有的简图，他可以将其整理归类、删除重复部分，以此保证朵模和艺术家只做最少的事，节省了大量的时间。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_12.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>这些所谓的简图被称为<strong>虚拟 DOM</strong>。操作虚拟 DOM 比操作正常的 DOM 要快捷很多，程序员们大部分时候都是在跟虚拟 DOM 打交道，由 React 来代理管理那缓慢的 DOM。</p>
+<h3 id="响应式-DOM-更新（Reactive-DOM-updates）"><a href="#响应式-DOM-更新（Reactive-DOM-updates）" class="headerlink" title="响应式 DOM 更新（Reactive DOM updates）"></a>响应式 DOM 更新（Reactive DOM updates）</h3><p>更炫的是，想像一下如果我们能在简图里留下一些占位空白来代表同一个姿势的变体。这样的话，当有人索要朵模戴不同帽子的写生画时，我们就不需要再次跟 React 沟通，只需要坐下来看着 React 为我们更换就行了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_13.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>这里的帽子是决定用户界面动态内容的原始数据，我们写程序时只需要将该数据与相应界面元素关联好，就不需要再做任何后续干涉。当数据发生变化时，React 将自动对相关 DOM 元素做相应的调整。这样看起来就像是 DOM 响应了数据变化（的号召）而自发地做出更改，我们并不需要手动跟踪数据的变化，也不需要担心何时去更改 DOM（实质上是 React 代劳）。这就是响应式（reactive）界面开发方法。这个点子极大地简化了用户界面的开发工作。</p>
+<h2 id="也许是你人生中第一个-React-组件"><a href="#也许是你人生中第一个-React-组件" class="headerlink" title="也许是你人生中第一个 React 组件"></a>也许是你人生中第一个 React 组件</h2><p>现在，让我们来复习一下刚刚学到的知识，并且写一个真实的 React 组件来练练手。为了让你能够轻松理解，我在代码里省略了一些细节，例如 JavaScript。这样做的目标是为了突出核心概念，而不至于让其淹没在 JavaScript 的语法细节中。如果你熟悉 JavaScript，不妨看看真实的源代码：</p>
+<p><a target="_blank" rel="noopener" href="https://codesandbox.io/s/domos-hat-shop-4x7n0?file=/src/App.js">https://codesandbox.io/s/domos-hat-shop-4x7n0?file=/src/App.js</a></p>
+<details>
+<summary>App.js</summary>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// Dependencies</span><br><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><br><span class="hljs-comment">// Styles</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./tailwind.output.css&quot;</span>;<br><br><span class="hljs-keyword">import</span> imgThinker <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./thinker.png&quot;</span>;<br><br><span class="hljs-keyword">import</span> imgXmas <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_xmas.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgWool <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_wool.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgPolice <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_police.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgPirate <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_pirate.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgFlower <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_ladyFlower.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgHarry <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_Harry.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgElegant <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_elegant.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgChef <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_chef.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgCap <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_cap.png&quot;</span>;<br><span class="hljs-keyword">import</span> imgBall <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hat_ball.png&quot;</span>;<br><br><span class="hljs-keyword">import</span> &#123; FiShoppingCart &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-icons/fi&quot;</span>;<br><span class="hljs-keyword">import</span> &#123;<br>  useState,<br>  useContext,<br>  useEffect,<br>  useLayoutEffect,<br>  useRef<br>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; AnimatePresence, AnimateSharedLayout, motion &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;framer-motion&quot;</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SearchBar</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span></span></span><br><span class="hljs-tag"><span class="xml">      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;SearchBar&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">      <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;space-x-0.5 flex&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">      <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">&#123;(e)</span> =&gt;</span> &#123;</span><br><span class="xml">        e.preventDefault();</span><br><span class="xml">        alert(&quot;Hang on, I&#x27;ll search it for you!&quot;);</span><br><span class="xml">      &#125;&#125;</span><br><span class="xml">    &gt;</span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;string&quot;</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;text-black px-1&quot;</span> /&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;border-white border p-0.5 px-2 rounded-sm&quot;</span>&gt;</span></span><br><span class="xml">        Search</span><br><span class="xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ShoppingCart</span>(<span class="hljs-params">&#123; count &#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;relative m-1&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ShoppingCart&quot;</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">FiShoppingCart</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&#123;20&#125;</span> /&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;absolute -right-2 -top-2 rounded-full w-4 h-4 flex justify-center items-center bg-pink-600&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">fontSize:</span> &quot;<span class="hljs-attr">0.5rem</span>&quot;, <span class="hljs-attr">right:</span> <span class="hljs-attr">-8</span>, <span class="hljs-attr">top:</span> <span class="hljs-attr">-8</span> &#125;&#125;</span></span><br><span class="hljs-tag"><span class="xml">      &gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">AnimatePresence</span>&gt;</span></span><br><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">motion.div</span></span></span><br><span class="hljs-tag"><span class="xml">            <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;absolute&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">            <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;count&#125;</span></span></span><br><span class="hljs-tag"><span class="xml">            <span class="hljs-attr">initial</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">y:</span> <span class="hljs-attr">-10</span>, <span class="hljs-attr">opacity:</span> <span class="hljs-attr">1</span> &#125;&#125;</span></span><br><span class="hljs-tag"><span class="xml">            <span class="hljs-attr">animate</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">y:</span> <span class="hljs-attr">0</span>, <span class="hljs-attr">opacity:</span> <span class="hljs-attr">1</span> &#125;&#125;</span></span><br><span class="hljs-tag"><span class="xml">            <span class="hljs-attr">exit</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">y:</span> <span class="hljs-attr">10</span>, <span class="hljs-attr">opacity:</span> <span class="hljs-attr">0</span> &#125;&#125;</span></span><br><span class="hljs-tag"><span class="xml">          &gt;</span></span><br><span class="xml">            &#123;count&#125;</span><br><span class="xml">          <span class="hljs-tag">&lt;/<span class="hljs-name">motion.div</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">AnimatePresence</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Header</span>(<span class="hljs-params">&#123; countInCart &#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Header&quot;</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;flex space-x-6 items-center p-3 text-sm bg-gray-900 text-white&quot;</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">SearchBar</span> /&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Account<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">        &#123;/* <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Return <span class="hljs-symbol">&amp;amp;</span> Orders<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span> */&#125;</span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;flex-1 flex justify-end&quot;</span>&gt;</span></span><br><span class="xml">          <span class="hljs-tag">&lt;<span class="hljs-name">ShoppingCart</span> <span class="hljs-attr">count</span>=<span class="hljs-string">&#123;countInCart&#125;</span> /&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Domo</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Domo&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#123;imgThinker&#125;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&#123;220&#125;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&#123;220&#125;</span> /&gt;</span></span>;<br>&#125;<br><br><span class="hljs-keyword">const</span> hats = &#123;<br>  <span class="hljs-comment">// Cap: imgHatCap,</span><br>  <span class="hljs-comment">// &#x27;Harry Potter&#x27;: imgHatHarryPotter,</span><br>  <span class="hljs-comment">// Leprechaun: imgHatLeprechaun,</span><br>  <span class="hljs-comment">// Pirate: imgHatPirate,</span><br>  <span class="hljs-comment">// Propeller: imgHatPropeller,</span><br>  <span class="hljs-attr">Cap</span>: imgCap,<br>  <span class="hljs-attr">Christmas</span>: imgXmas,<br>  <span class="hljs-attr">Wool</span>: imgWool,<br>  <span class="hljs-attr">Police</span>: imgPolice,<br>  <span class="hljs-attr">Pirate</span>: imgPirate,<br>  <span class="hljs-attr">Flower</span>: imgFlower,<br>  <span class="hljs-string">&quot;Harry Potter&quot;</span>: imgHarry,<br>  <span class="hljs-attr">Elegant</span>: imgElegant,<br>  <span class="hljs-attr">Chef</span>: imgChef,<br>  <span class="hljs-attr">Ball</span>: imgBall<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Hat</span>(<span class="hljs-params">&#123; type, className, small, style &#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> ratio = <span class="hljs-number">396</span> / <span class="hljs-number">865</span>;<br>  <span class="hljs-keyword">const</span> smallWidth = <span class="hljs-number">80</span>;<br>  <span class="hljs-keyword">const</span> largeWidth = <span class="hljs-number">200</span>;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#123;className&#125;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;style&#125;</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">motion.img</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">alt</span>=<span class="hljs-string">&#123;type&#125;</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;rotate-12 transform&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">rotate:</span> <span class="hljs-attr">12</span> &#125;&#125;</span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">src</span>=<span class="hljs-string">&#123;hats[type]&#125;</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">width</span>=<span class="hljs-string">&#123;small</span> ? <span class="hljs-attr">smallWidth</span> <span class="hljs-attr">:</span> <span class="hljs-attr">largeWidth</span>&#125;</span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">height</span>=<span class="hljs-string">&#123;small</span> ? <span class="hljs-attr">smallWidth</span> * <span class="hljs-attr">ratio</span> <span class="hljs-attr">:</span> <span class="hljs-attr">largeWidth</span> * <span class="hljs-attr">ratio</span>&#125;</span></span><br><span class="hljs-tag"><span class="xml">      /&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DomoWithHat</span>(<span class="hljs-params">&#123; hat &#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;relative flex-shrink-0&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;DomoWithHat&quot;</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Domo</span> /&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Hat</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">type</span>=<span class="hljs-string">&#123;hat&#125;</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;absolute left-12 -top-1&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">        <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">left:</span> <span class="hljs-attr">8</span>, <span class="hljs-attr">top:</span> <span class="hljs-attr">-10</span>, <span class="hljs-attr">transform:</span> &quot;<span class="hljs-attr">translateX</span>(<span class="hljs-attr">40px</span>)&quot; &#125;&#125;</span></span><br><span class="hljs-tag"><span class="xml">      /&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Main</span>(<span class="hljs-params">&#123; onAddToCart &#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> hatNames = <span class="hljs-built_in">Object</span>.keys(hats);<br>  <span class="hljs-keyword">const</span> [activeHat, setActiveHat] = useState(hatNames[<span class="hljs-number">0</span>]);<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;p-3 flex justify-around min-h-full&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Main&quot;</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">DomoWithHat</span> <span class="hljs-attr">hat</span>=<span class="hljs-string">&#123;activeHat&#125;</span> /&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;flex flex-col justify-center space-y-3 items-start&quot;</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;text-2xl&quot;</span>&gt;</span>&#123;activeHat&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>$50<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;grid gap-1 grid-cols-5&quot;</span>&gt;</span></span><br><span class="xml">          &#123;hatNames.map((hat) =&gt; (</span><br><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span></span></span><br><span class="hljs-tag"><span class="xml">              <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;hat&#125;</span></span></span><br><span class="hljs-tag"><span class="xml">              <span class="hljs-attr">className</span>=<span class="hljs-string">&#123;</span>`<span class="hljs-attr">border</span> <span class="hljs-attr">border-indigo-200</span> <span class="hljs-attr">rounded-sm</span> <span class="hljs-attr">flex</span> <span class="hljs-attr">justify-center</span> <span class="hljs-attr">items-center</span> <span class="hljs-attr">cursor-pointer</span>  <span class="hljs-attr">hover:border-purple-500</span> $&#123;</span></span><br><span class="hljs-tag"><span class="xml">                <span class="hljs-attr">hat</span> === <span class="hljs-string">activeHat</span> &amp;&amp; &quot;<span class="hljs-attr">border-2</span> <span class="hljs-attr">border-purple-700</span>&quot;</span></span><br><span class="hljs-tag"><span class="xml">              &#125;`&#125;</span></span><br><span class="hljs-tag"><span class="xml">              <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;()</span> =&gt;</span> setActiveHat(hat)&#125;</span><br><span class="xml">            &gt;</span><br><span class="xml">              <span class="hljs-tag">&lt;<span class="hljs-name">Hat</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#123;hat&#125;</span> <span class="hljs-attr">small</span> /&gt;</span></span><br><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">          ))&#125;</span><br><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;text-sm&quot;</span>&gt;</span></span><br><span class="xml">          A covering for the head usually having a shaped crown and brim.</span><br><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">button</span></span></span><br><span class="hljs-tag"><span class="xml">          <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;rounded-sm bg-pink-600 text-white text-sm py-1 px-2&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">          <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;onAddToCart&#125;</span></span></span><br><span class="hljs-tag"><span class="xml">        &gt;</span></span><br><span class="xml">          Add To Cart</span><br><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Footer</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span></span></span><br><span class="hljs-tag"><span class="xml">      <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;p-2 text-xs flex justify-around items-center bg-gray-900 text-white&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Footer&quot;</span></span></span><br><span class="hljs-tag"><span class="xml">    &gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>© 2021 Domo&#x27;s Hat Shop<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DomoHatShop</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> [countInCart, setCountInCart] = useState(<span class="hljs-number">2</span>);<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;bg-white top-0 sticky min-h-screen&quot;</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Header</span> <span class="hljs-attr">countInCart</span>=<span class="hljs-string">&#123;countInCart&#125;</span> /&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Main</span> <span class="hljs-attr">onAddToCart</span>=<span class="hljs-string">&#123;()</span> =&gt;</span> setCountInCart((c) =&gt; c + 1)&#125; /&gt;</span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Footer</span> /&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-keyword">const</span> App = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">DomoHatShop</span> /&gt;</span></span>;<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;<br></code></pre></td></tr></table></figure>
+</details>
+
+<p>好了，让我们帮朵模写一个在线帽子店 🧢 。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_14.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<h3 id="组件的可组合特性"><a href="#组件的可组合特性" class="headerlink" title="组件的可组合特性"></a>组件的可组合特性</h3><p>我们可以将整个界面拆分为如下三个部分：</p>
+<ul>
+<li>Header: 页面顶部</li>
+<li>Main: 页面的主要内容</li>
+<li>Footer: 页面底部注脚</li>
+</ul>
+<p>这个拆分方案可以用如下代码表达:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">// DomoHatShopHome<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Header</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Main</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Footer</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>以上代码看起来像 HTML，对吧？有几个例外是那几个首字母大写的标签：<code>&lt;Header&gt;</code>、<code>&lt;Content&gt;</code> 和 <code>&lt;Footer&gt;</code>。它们并不是标准的 HTML 标签，而是自定义标签。</p>
+<p>那这些自定义标签到底是什么？我们如何告知 React，Header 是由一个标准的 header 标签、一些列表标签和一个搜索条组成的？</p>
+<p>方法就是写一个 Header 组件！</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html">// Header<br><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">SearchBar</span> /&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Account<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ShoppingCart</span> /&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>Header 组件包括另外两个自定义标签：<code>&lt;SearchBar&gt;</code>和 <code>&lt;ShoppingCart&gt;</code>。它们又包含些什么呢？看代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html">// SearchBar<br><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;string&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><br>// ShoppingCart<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">FiShoppingCart</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&#123;20&#125;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    2<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>还记得吗？React 组件的第一个重要性质：它们是可组合的。这代表了组件可以用来创建新的组件，这恰恰就是我们刚刚做的事。</p>
+<p>现在，如果你想亲手做一个练习的话，请在桌面浏览器上访问如下网址：</p>
+<p><a target="_blank" rel="noopener" href="https://learnreact.design/posts/what-is-react/zh">https://learnreact.design/posts/what-is-react/zh</a></p>
+<p>轻松加一行代码就可以在 Footer 上也加一个搜索框。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_15.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<h3 id="组件为重用而生"><a href="#组件为重用而生" class="headerlink" title="组件为重用而生"></a>组件为重用而生</h3><p>所谓的组件可组合是指可以用已有组件拼装出新组件，这跟我们所处的自然界的工作方式很相似。不过在 React 世界有一个很重要的细节：当我们在一个组件里使用另外一个组件的时候，那个组件跟原先的组件仍然相互联系。当原来的组件发生变化时，它的所有实例将随之改变。</p>
+<p>如果修改如下 SearchBar 的代码里的文字，你会看到在 Header 和 Footer 上的两个搜索框都发生了变化，这跟设计工具 Framer 和 Figma 中的组件工作方式十分相似。（还是在桌面浏览器里就可以改代码并看到效果）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;string&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>React 组件是可重用的。一个组件定义好以后，我们可以用它作为自定标签放到其他组件里，想放多少次都行。如果我们修改了这个组件，包含这个自定义标签的所有其它组件都会做出相应变化。</p>
+<h3 id="组件是相互独立的"><a href="#组件是相互独立的" class="headerlink" title="组件是相互独立的"></a>组件是相互独立的</h3><p>还记得吗？React 组件还是彼此独立的。也就是说，当我们修改一个组件时，其它不包含它的组件不会有任何变化。</p>
+<p>当我们修改 SearchBar 组件时，只有 Header 和 Footer 发生了变化。这点或许看起来太明显不过了，但这是软件工程中的一个基础概念，在提高软件可维护性上起到了重要的作用。</p>
+<h3 id="声明式和响应式"><a href="#声明式和响应式" class="headerlink" title="声明式和响应式"></a>声明式和响应式</h3><p>最后再来看看 React 的另外两个绝招：<strong>声明式用户界面</strong>和<strong>响应式 DOM 更改</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/React_study_0001/React_study_0001_16.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>在这个界面里，点击右边表格将更改“选定的帽子”这项数据，因为我们事先已经将 DomoWithHat 与该数据关联，朵模头上戴的帽子就会自动更改。还记得吧？这就是 React 的响应式 DOM 更改。</p>
+<p>如下是 DomoWithHat 组件的代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml">// DomoWithHat<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Hat</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#123;hat&#125;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Domo</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>在代码里，我们只需要定义想要的最终结果（一个 div，包含了朵模和一顶帽子），然后把数据关联好（type = {hat}）。当数据 hat 发生变化时（用户在表格里选择了一顶帽子），界面就会随之自动更改。我们不需要担心如何去修改 DOM 以及修改的时机，也不需要去跟踪数据何时发生变化。我们只需要“画”一个简图就够了，也就是上面的代码。这就是 React 的声明式用户界面外加响应式 DOM 更改，两者相辅相成。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如下是本文涉及到的术语列表：</p>
+<ul>
+<li>DOM (Document Object Model)</li>
+<li>DOM API</li>
+<li>React 组件</li>
+<li>组件是可重用并且彼此独立的</li>
+<li>命令式编程与声明式编程</li>
+<li>虚拟 DOM</li>
+<li>响应式 DOM 更改</li>
+</ul>
+</details>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://learnreact.design/posts/what-is-react/zh">React 是什么东东</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Study/">Study</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/React/">React</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/life_0002/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">善待自己，珍视他人。</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/WeChat_10_years/">
+                        <span class="hidden-mobile">张小龙：微信十年的产品思考</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span>© 2018 – 2021 </span> <i class="iconfont icon-plan"></i> <span>T - Cloud Data Studio</span> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>

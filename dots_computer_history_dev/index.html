@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/rabbit900.webp">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/rabbit900.webp">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1D1D1F">
+  <meta name="description" content="">
+  <meta name="author" content="John lee">
+  <meta name="keywords" content="">
+  <meta name="description" content="01 机器语言计算机刚发明那会儿，人们就是拨弄各种开关、操作各种电缆把程序“输入”到计算机中去。 这所谓的程序，可真的是 0110000111 这样的二进制，我真是佩服这些程序的设计者和操作员们，太不可思议了。 这种原始的方式也决定了难于诞生超大型程序，因为太复杂了，远远超过人脑能思考的极限。  后来人们做了点改进，把程序打到穿孔纸带上，让机器直接读穿孔纸带，这下子就好多了，终于不用拨弄开关了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机“翻译”历程">
+<meta property="og:url" content="https://github.com/time-container/blog/dots_computer_history_dev/index.html">
+<meta property="og:site_name" content="Time - C">
+<meta property="og:description" content="01 机器语言计算机刚发明那会儿，人们就是拨弄各种开关、操作各种电缆把程序“输入”到计算机中去。 这所谓的程序，可真的是 0110000111 这样的二进制，我真是佩服这些程序的设计者和操作员们，太不可思议了。 这种原始的方式也决定了难于诞生超大型程序，因为太复杂了，远远超过人脑能思考的极限。  后来人们做了点改进，把程序打到穿孔纸带上，让机器直接读穿孔纸带，这下子就好多了，终于不用拨弄开关了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_1.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_3.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_4.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_5.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_6.png">
+<meta property="article:published_time" content="2021-03-05T10:50:35.000Z">
+<meta property="article:modified_time" content="2021-06-26T14:51:31.795Z">
+<meta property="article:author" content="John lee">
+<meta property="article:tag" content="Computer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_1.jpg">
+  
+  <title>计算机“翻译”历程 - Time - C</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":4,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"rcbAWes3jOnXFLCgl37Kb8Y6-MdYXbMMI","app_key":"CyyJy3Xf6dUGnBeuMzzPPYdx","server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 80vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Time - C</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://time-container.github.io/">
+                <i class="iconfont icon-books"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-brush"></i>
+                博客
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/">
+                    
+                    列表
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/links/">
+                    
+                    友链
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/about/">
+                    
+                    关于
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/archives/">
+                    
+                    存档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/categories/">
+                    
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/tags/">
+                    
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-th-large"></i>
+                媒体
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/photos/">
+                    
+                    相册
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/music/">
+                    
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/video/">
+                    
+                    视频
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/book/">
+                    
+                    书单
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/blog/pages/artitalk/">
+                    
+                    微语
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/basic/post_pic_default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机“翻译”历程">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      John lee
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-05 18:50" pubdate>
+        2021年3月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机“翻译”历程</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：3 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="01-机器语言"><a href="#01-机器语言" class="headerlink" title="01 机器语言"></a>01 机器语言</h2><p>计算机刚发明那会儿，人们就是拨弄各种开关、操作各种电缆把程序“输入”到计算机中去。</p>
+<p>这所谓的程序，可真的是 0110000111 这样的二进制，我真是佩服这些程序的设计者和操作员们，太不可思议了。</p>
+<p>这种原始的方式也决定了难于诞生超大型程序，因为太复杂了，远远超过人脑能思考的极限。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_1.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>后来人们做了点改进，把程序打到穿孔纸带上，让机器直接读穿孔纸带，这下子就好多了，终于不用拨弄开关了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_3.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>但程序的本质还是没有变化，依然是在使用二进制来编程。</p>
+<p>如果这个样子一直持续下去，估计这个世界上的程序员会少的可怜：编程的门槛太高了。</p>
+<p>比如说你的脑子里得记住这样的指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">0000 表示从内存中往 CPU 寄存器装载数据<br>0001 表示把 CPU 寄存器的值写入内存<br>0010 表示把两个寄存器的值相加<br></code></pre></td></tr></table></figure>
+<p>你还得记住每个寄存器的二进制表示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">1000 表示寄存器A<br>1001 表示寄存器B<br></code></pre></td></tr></table></figure>
+<p>综合起来就像这样：</p>
+<p>0000 1000  000000000001 它的意思是说，把编号为1的内存中的值装载到寄存器A当中</p>
+<p>0010 1000  1001 的意思是把寄存器A和寄存器B的值加起来，放到寄存器A中。</p>
+<p>整天生活在这样的世界里，满脑子都是0和1，人估计就抑郁了。</p>
+<p>当时的程序员像熊猫一样稀少，不，肯定比熊猫更少，他们都要用二进制写程序。</p>
+<h2 id="02-汇编语言"><a href="#02-汇编语言" class="headerlink" title="02 汇编语言"></a>02 汇编语言</h2><p>既然二进制这么难记，人们很快就想到：能不能给这些指令起个好听的名称呢？</p>
+<pre><code>0000 : LOAD
+0001 : STORE
+0010 : ADD
+</code></pre>
+<p>寄存器也是一样的：</p>
+<pre><code>1000 : AX
+1001 : BX
+</code></pre>
+<p>这下读来容易多了：</p>
+<pre><code>ADD AX BX
+</code></pre>
+<p>人们给这些帮助记忆的助记符起了个名字：<strong>汇编语言</strong>。</p>
+<p>但是计算机是无法执行汇编语言的，因为计算机这个笨家伙只认二进制，所以还得翻译一下才行。</p>
+<p>于是<strong>汇编器</strong>隆重登场了，他专门负责汇编语言写的程序翻译为机器语言，这个翻译的过程比较简单，几乎就是一一对应的关系。</p>
+<p>汇编语言解放了人们的部分脑力，可以把更多的精力集中在程序逻辑上了。越来越多的人学会了使用汇编来编程，写出了很多伟大的软件。</p>
+<p>汇编的优点是贴近机器，运行效率极高，但是缺点也是太贴近机器，直接操作内存和 CPU 寄存器，不能结构化编程，每次函数调用还得手动把栈帧给管理好，这对于一般的程序员来讲太难了！</p>
+<p>在过去人们把穿孔纸带和汇编语言都称为<strong>低级语言</strong>，把这个时代称为<strong>机器语言编程时代</strong>。</p>
+<p>生活在这个时代的人们是很幸福的，因为翻译工作十分简单。但是用汇编写程序的人还是太少。</p>
+<h2 id="03-高级语言"><a href="#03-高级语言" class="headerlink" title="03 高级语言"></a>03 高级语言</h2><p>人类的欲望是无止境的，人们一直在探索用一种更高级的语言来写程序的可能性，这种高级语言应该面向人类编写和阅读，而不是面向机器去执行。</p>
+<p>人类想要的高级语言是这样的：</p>
+<p>声明各种类型的变量来表示数据，而不是用寄存器。例如：</p>
+<pre><code>int value = 100
+</code></pre>
+<p>能使用复杂的表达式来告诉电脑自己的意图：</p>
+<pre><code>salary = 1000 + salary * 12
+</code></pre>
+<p>可以用各种控制语句来控制流程：</p>
+<pre><code> if .. else ,  while(....) ....
+</code></pre>
+<p>还可以定义函数来封装、复用一段业务逻辑：</p>
+<pre><code>int get_primes(int max) &#123;.....&#125;
+</code></pre>
+<p>但是高级语言和低级语言之间存在着巨大的鸿沟，怎么把高级语言翻译成可以执行的机器语言是个非常难的问题！</p>
+<p>人类在黑暗中摸索了很久才迎来一丝光明，1957年，第一个高级语言的编译器才在 IBM704 的机器上运行成功。更重要的是乔姆斯基对自然语言结构的研究，把语言文法做了分类，有了 0 型文法，1 型文法，2 型文法，3 型文法，这一下子给人们的翻译工作奠定了理论基础。</p>
+<p>由于翻译的复杂性，除了汇编器之外，很多新成员加入进来，大家分工合作，把高级语言翻译成低级语言。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_4.jpg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>第一步 词法分析</p>
+<p>比如高级语言的源程序是这样：</p>
+<pre><code>total =  1000 + salary * 12
+</code></pre>
+<p>我们把它看成一个个的片段，每个片段叫做 Token。</p>
+<ol>
+<li>标识符 total</li>
+<li>赋值符号 =</li>
+<li>数字 1000</li>
+<li>加号 +</li>
+<li>标识符 salary</li>
+<li>乘号 *</li>
+<li>数字12</li>
+</ol>
+<blockquote>
+<p>程序中的空格被无情的删除了，但是底层编译的人们还会建立一个符号表让后面的人去使用：</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_5.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>第二步 二叉树就会接管，它非常厉害，会做语法分析，用一个上下文无关的语法理论，把之前生成的 Token 按照语法规则组建成一棵树</p>
+<p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/posts/dots_computer_history_dev/dots_computer_history_dev_6.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>第三步 做语法分析，要看看这些标志符的类型，作用域是不是正确，运算是否合法，取值范围有没有问题等等。</p>
+<p>第四步 最重要，把中间代码生成，代码优化，以及最后的代码生成。</p>
+<p>比如第四步根据语法树生成的中间代码如下：</p>
+<pre><code>temp1 = id2 * 12    //把id2乘12的值赋值给temp1
+temp2 = 1000 + temp1    //把1000+temp1的值赋值给temp2
+id1 =  temp2    //把temp2的值赋值给id1
+</code></pre>
+<blockquote>
+<p>注意：id2 就是 salary, id1 就是 total</p>
+</blockquote>
+<p>然后再优化一下：</p>
+<pre><code>temp1 = id2 * 12    //把id2乘12的值赋值给temp1
+id1 = 1000 + temp1    //把1000+temp1的值赋值给id1
+</code></pre>
+<p>然后翻译成汇编：</p>
+<pre><code>MOV  id2     AX
+MUL  12      AX
+ADD  1000    AX
+MOV  AX      id1
+</code></pre>
+<p>这已经非常接近运行了！</p>
+<p>但是，这id1（total）,id2 (salary) 只是两个符号，计算机根本不知道是什么东西，计算机只关心内存和寄存器，所以还得给这两个家伙分配空间，得到他们的地址。</p>
+<p>如果这两个变量是在别的文件中定义的，还需要做一件特别的事情：<strong>链接</strong>！</p>
+<p>通过链接的方式，把变量的真正地址获取到，然后修改上面的id1, id2, 这样才能形成一个可以执行的程序。</p>
+<p>在翻译的过程中，如果有任何步骤出了错误，控制台就会通知程序员，告诉他哪个地方写错了，改正后重新再来。</p>
+<p>这非常重要，没有这项翻译工作，人类就无法使用高级语言来编程，像C, C++, Pascal, C#, Java 这样影响力巨大的语言就不会出现。 </p>
+<p>底层汇编器、链接器、编译器、解释器和操作系统、数据库、网络协议栈等软件一起，成为了计算机世界底层的基础软件。 </p>
+<p>现在所谓的高级语言一点也不高级，只有经过训练的专业人士才能使用，希望在未来会出现完全用自然语言来写程序。这样世界会变得无比的和谐。 👀</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Dots/">Dots</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Computer/">Computer</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/WeChat_10_years/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">张小龙：微信十年的产品思考</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/life_0001/">
+                        <span class="hidden-mobile">人生，是一个不断成熟的过程。</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span>© 2018 – 2021 </span> <i class="iconfont icon-plan"></i> <span>T - Cloud Data Studio</span> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>
