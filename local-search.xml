@@ -460,11 +460,11 @@
   
   
   <entry>
-    <title>微语</title>
+    <title>分类</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[<div align="center">  <h2>留给自己</h2></div><br><!-- 引用 artitalk --><script type="text/javascript" src="https://unpkg.com/artitalk"></script><!-- 自定义样式 --><style>        .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {          background: linear-gradient(45deg, rgb(109, 208, 242) 15%, rgb(245, 154, 190) 85%);          color: white;        }        .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {          border-right-color:  rgb(109, 208, 242)        }        .cbp_tmtimeline>li .cbp_tmlabel {          background: linear-gradient(45deg, rgb(109, 208, 242) 15%, rgb(245, 154, 190) 85%);          color: white;        }        .cbp_tmtimeline>li .cbp_tmlabel:after {          border-right-color:  rgb(109, 208, 242)        }        .button {          background: linear-gradient(45deg, rgb(109, 208, 242) 15%, rgb(245, 154, 190) 85%);          color: white;        }</style><!-- 自定义样式.end --><!-- 存放说说的容器 --><div id="artitalk_main"></div>        <script>                new Artitalk({                        appId: 'rcbAWes3jOnXFLCgl37Kb8Y6-MdYXbMMI', // Your LeanCloud appId                        appKey: 'CyyJy3Xf6dUGnBeuMzzPPYdx', // Your LeanCloud appKey                        per: '10', //每页显示说说的数量                        pageSize: '10',                        atComment: 0,                        color2: '#FF7D49BF',                        username: 'ios_user', //Leancloud中设置的用户名                        avatarPla: "https://static-images-1253741713.cos.ap-beijing.myqcloud.com/rabbit900.webp",                        placeholder1: '只有博主才能评论哦',                        placeholder2: '没有密码，不能评论！',                        bgImg: "https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich16.gif" ,                        atEmoji: {                                        baiyan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/baiyan.png",                                        bishi: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/bishi.png",                                        bizui: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/bizui.png",                                        chan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/chan.png",                                        daku: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/daku.png",                                        dalao: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dalao.png",                                        dalian: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dalian.png",                                        dianzan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dianzan.png",                                        doge: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/doge.png",                                        facai: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/facai.png",                                        fadai: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/fadai.png",                                        fanu: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/fanu.png",                                }                                })        </script></div>]]></content>
+    <content type="html"><![CDATA[]]></content>
     
   </entry>
   
@@ -515,6 +515,17 @@
   
   
   <entry>
+    <title>微语</title>
+    <link href="/blog/"/>
+    <url>/blog/</url>
+    
+    <content type="html"><![CDATA[<div align="center">  <h2>留给自己</h2></div><br><!-- 引用 artitalk --><script type="text/javascript" src="https://unpkg.com/artitalk"></script><!-- 自定义样式 --><style>        .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {          background: linear-gradient(45deg, rgb(109, 208, 242) 15%, rgb(245, 154, 190) 85%);          color: white;        }        .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {          border-right-color:  rgb(109, 208, 242)        }        .cbp_tmtimeline>li .cbp_tmlabel {          background: linear-gradient(45deg, rgb(109, 208, 242) 15%, rgb(245, 154, 190) 85%);          color: white;        }        .cbp_tmtimeline>li .cbp_tmlabel:after {          border-right-color:  rgb(109, 208, 242)        }        .button {          background: linear-gradient(45deg, rgb(109, 208, 242) 15%, rgb(245, 154, 190) 85%);          color: white;        }</style><!-- 自定义样式.end --><!-- 存放说说的容器 --><div id="artitalk_main"></div>        <script>                new Artitalk({                        appId: 'rcbAWes3jOnXFLCgl37Kb8Y6-MdYXbMMI', // Your LeanCloud appId                        appKey: 'CyyJy3Xf6dUGnBeuMzzPPYdx', // Your LeanCloud appKey                        per: '10', //每页显示说说的数量                        pageSize: '10',                        atComment: 0,                        color2: '#FF7D49BF',                        username: 'ios_user', //Leancloud中设置的用户名                        avatarPla: "https://static-images-1253741713.cos.ap-beijing.myqcloud.com/rabbit900.webp",                        placeholder1: '只有博主才能评论哦',                        placeholder2: '没有密码，不能评论！',                        bgImg: "https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich16.gif" ,                        atEmoji: {                                        baiyan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/baiyan.png",                                        bishi: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/bishi.png",                                        bizui: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/bizui.png",                                        chan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/chan.png",                                        daku: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/daku.png",                                        dalao: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dalao.png",                                        dalian: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dalian.png",                                        dianzan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dianzan.png",                                        doge: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/doge.png",                                        facai: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/facai.png",                                        fadai: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/fadai.png",                                        fanu: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/fanu.png",                                }                                })        </script></div>]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>书单</title>
     <link href="/blog/"/>
     <url>/blog/</url>
@@ -526,11 +537,11 @@
   
   
   <entry>
-    <title>分类</title>
+    <title>视频</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<div align="center">    <h2>Video List</h2></div><div class="note note-success">            <p>这里的信息采集于网络，作者有选择性的进行了过滤。</p>          </div><h5 id="01-《平凡的世界》电视剧片尾曲"><a href="#01-《平凡的世界》电视剧片尾曲" class="headerlink" title="01 《平凡的世界》电视剧片尾曲"></a>01 《平凡的世界》电视剧片尾曲</h5><p>&emsp;&emsp;生活啊！什么是生活？生活就是有那么多的未知。我们无法去推测他们后来的人生是怎么样，十年，二十年 …… 起起落落又将是怎样一种景象？只是，让我们祝福他们吧，这群善良的人，和这片温暖的土地。长的是苦难，短的是人生。只要春天不死，生命就不会死，活着，就是那么的充满希望！</p><p>去围观 —&gt; <a href="https://music.163.com/video?id=EBEFB353EAC91003D76271B21E2E727D&userid=1432097035">Go</a></p><h5 id="02-《相依为命》"><a href="#02-《相依为命》" class="headerlink" title="02 《相依为命》"></a>02 《相依为命》</h5><p>&emsp;&emsp;年华像细水冲走几个爱人与知己。</p><p>去围观 —&gt; <a href="https://music.163.com/mv/?id=5643810&userid=1432097035">Go</a></p><h5 id="03-《平凡之路》"><a href="#03-《平凡之路》" class="headerlink" title="03 《平凡之路》"></a>03 《平凡之路》</h5><p>&emsp;&emsp;年年岁岁里的岁岁年年。</p><p>去围观 —&gt; <a href="https://music.163.com/mv/?id=290244&userid=1432097035">Go</a></p>]]></content>
     
   </entry>
   
@@ -542,17 +553,6 @@
     <url>/blog/</url>
     
     <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>视频</title>
-    <link href="/blog/"/>
-    <url>/blog/</url>
-    
-    <content type="html"><![CDATA[<div align="center">    <h2>Video List</h2></div><div class="note note-success">            <p>这里的信息采集于网络，作者有选择性的进行了过滤。</p>          </div><h5 id="01-《平凡的世界》电视剧片尾曲"><a href="#01-《平凡的世界》电视剧片尾曲" class="headerlink" title="01 《平凡的世界》电视剧片尾曲"></a>01 《平凡的世界》电视剧片尾曲</h5><p>&emsp;&emsp;生活啊！什么是生活？生活就是有那么多的未知。我们无法去推测他们后来的人生是怎么样，十年，二十年 …… 起起落落又将是怎样一种景象？只是，让我们祝福他们吧，这群善良的人，和这片温暖的土地。长的是苦难，短的是人生。只要春天不死，生命就不会死，活着，就是那么的充满希望！</p><p>去围观 —&gt; <a href="https://music.163.com/video?id=EBEFB353EAC91003D76271B21E2E727D&userid=1432097035">Go</a></p><h5 id="02-《相依为命》"><a href="#02-《相依为命》" class="headerlink" title="02 《相依为命》"></a>02 《相依为命》</h5><p>&emsp;&emsp;年华像细水冲走几个爱人与知己。</p><p>去围观 —&gt; <a href="https://music.163.com/mv/?id=5643810&userid=1432097035">Go</a></p><h5 id="03-《平凡之路》"><a href="#03-《平凡之路》" class="headerlink" title="03 《平凡之路》"></a>03 《平凡之路》</h5><p>&emsp;&emsp;年年岁岁里的岁岁年年。</p><p>去围观 —&gt; <a href="https://music.163.com/mv/?id=290244&userid=1432097035">Go</a></p>]]></content>
     
   </entry>
   
