@@ -16,20 +16,28 @@
   <meta name="description" content="">
   <meta name="author" content="John lee">
   <meta name="keywords" content="">
-  <meta name="description" content="《中华人民共和国民法典》被称为“社会生活的百科全书”，是新中国第一部以法典命名的法律，在法律体系中居于基础性地位，也是市场经济的基本法。 《中华人民共和国民法典》共7编、1260条，各编依次为总则、物权、合同、人格权、婚姻家庭、继承、侵权责任，以及附则。通篇贯穿以人民为中心的发展思想，着眼满足人民对美好生活的需要，对公民的人身权、财产权、人格权等作出明确翔实的规定，并规定侵权责任，明确权利受到削弱">
+  <meta name="description" content="一个新技术的出现不会无中生有，从石头中凭空蹦出来，而是在原有基础上的继承和发展。  Serverless 也不例外，我们回顾下 IT 基础设施的发展，就会发现，Serverless 自然就会浮现出来，你自己就可以发明它（但是却实现不了它）。 局域网时代上世纪90年代，你是一家IT部门的负责人，公司需要建立一个信息管理系统， 这时候的系统都是局域网的，是C&#x2F;S模式的，业务逻辑主要在客户端软件中，需要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《中华人民共和国民法典》">
-<meta property="og:url" content="https://github.com/time-container/blog/dots_Civil_code_2021/index.html">
+<meta property="og:title" content="Serverless 之 API Boy">
+<meta property="og:url" content="https://github.com/time-container/blog/Serverless_API_Boy/index.html">
 <meta property="og:site_name" content="Time - C">
-<meta property="og:description" content="《中华人民共和国民法典》被称为“社会生活的百科全书”，是新中国第一部以法典命名的法律，在法律体系中居于基础性地位，也是市场经济的基本法。 《中华人民共和国民法典》共7编、1260条，各编依次为总则、物权、合同、人格权、婚姻家庭、继承、侵权责任，以及附则。通篇贯穿以人民为中心的发展思想，着眼满足人民对美好生活的需要，对公民的人身权、财产权、人格权等作出明确翔实的规定，并规定侵权责任，明确权利受到削弱">
+<meta property="og:description" content="一个新技术的出现不会无中生有，从石头中凭空蹦出来，而是在原有基础上的继承和发展。  Serverless 也不例外，我们回顾下 IT 基础设施的发展，就会发现，Serverless 自然就会浮现出来，你自己就可以发明它（但是却实现不了它）。 局域网时代上世纪90年代，你是一家IT部门的负责人，公司需要建立一个信息管理系统， 这时候的系统都是局域网的，是C&#x2F;S模式的，业务逻辑主要在客户端软件中，需要">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-04-10T11:42:54.000Z">
-<meta property="article:modified_time" content="2021-04-10T11:42:54.000Z">
+<meta property="og:image" content="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_00.jpeg">
+<meta property="og:image" content="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_01.webp">
+<meta property="og:image" content="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_02.webp">
+<meta property="og:image" content="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_03.webp">
+<meta property="og:image" content="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_04.webp">
+<meta property="og:image" content="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_05.webp">
+<meta property="og:image" content="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_06.webp">
+<meta property="article:published_time" content="2021-05-07T11:42:54.000Z">
+<meta property="article:modified_time" content="2021-05-07T11:42:54.000Z">
 <meta property="article:author" content="John lee">
-<meta property="article:tag" content="法律">
+<meta property="article:tag" content="信息学">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_00.jpeg">
   
-  <title>《中华人民共和国民法典》 - Time - C</title>
+  <title>Serverless 之 API Boy - Time - C</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -255,7 +263,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="《中华人民共和国民法典》">
+            <span class="h2" id="subtitle" title="Serverless 之 API Boy">
               
             </span>
 
@@ -270,8 +278,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-10 19:42" pubdate>
-        2021年4月10日 晚上
+      <time datetime="2021-05-07 19:42" pubdate>
+        2021年5月7日 晚上
       </time>
     </span>
   
@@ -285,7 +293,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      7 分钟
     </span>
   
 
@@ -318,21 +326,87 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">《中华人民共和国民法典》</h1>
+            <h1 style="display: none">Serverless 之 API Boy</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：6 个月前
+                  本文最后更新于：5 个月前
                 
               </p>
             
             <div class="markdown-body">
-              <p>《中华人民共和国民法典》被称为“社会生活的百科全书”，是新中国第一部以法典命名的法律，在法律体系中居于基础性地位，也是市场经济的基本法。</p>
-<p>《中华人民共和国民法典》共7编、1260条，各编依次为总则、物权、合同、人格权、婚姻家庭、继承、侵权责任，以及附则。通篇贯穿以人民为中心的发展思想，着眼满足人民对美好生活的需要，对公民的人身权、财产权、人格权等作出明确翔实的规定，并规定侵权责任，明确权利受到削弱、减损、侵害时的请求权和救济权等，体现了对人民权利的充分保障，被誉为“新时代人民权利的宣言书”。 </p>
-<p>2020年5月28日，十三届全国人大三次会议表决通过了《中华人民共和国民法典》，自2021年1月1日起施行。婚姻法、继承法、民法通则、收养法、担保法、合同法、物权法、侵权责任法、民法总则同时废止。</p>
-<h2 id="中华人民共和国民法典（全文）"><a href="#中华人民共和国民法典（全文）" class="headerlink" title="中华人民共和国民法典（全文）"></a>中华人民共和国民法典（全文）</h2><p>✔️ 在线阅读： <a target="_blank" rel="noopener" href="http://www.moj.gov.cn/Department/content/2020-06/01/592_3249871.html">Go</a></p>
-<p>✔️ PDF版本： <a target="_blank" rel="noopener" href="https://static-docs-1253741713.cos.ap-beijing.myqcloud.com/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E6%B0%91%E6%B3%95%E5%85%B8.pdf">Down</a></p>
-<p>✔️ Doc版本： <a target="_blank" rel="noopener" href="https://static-docs-1253741713.cos.ap-beijing.myqcloud.com/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E6%B0%91%E6%B3%95%E5%85%B8.doc">Down</a></p>
+              <p>一个新技术的出现不会无中生有，从石头中凭空蹦出来，而是在原有基础上的继承和发展。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_00.jpeg" srcset="/blog/img/loading.gif" lazyload></p>
+<p>Serverless 也不例外，我们回顾下 IT 基础设施的发展，就会发现，Serverless 自然就会浮现出来，你自己就可以发明它（但是却实现不了它）。</p>
+<h2 id="局域网时代"><a href="#局域网时代" class="headerlink" title="局域网时代"></a>局域网时代</h2><p>上世纪90年代，你是一家IT部门的负责人，公司需要建立一个信息管理系统，</p>
+<p>这时候的系统都是局域网的，是C/S模式的，业务逻辑主要在客户端软件中，需要被安装到各个电脑上去，然后访问同一个数据库。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_01.webp" srcset="/blog/img/loading.gif" lazyload></p>
+<p>在部署这个系统之前，你需要做很多的工作：</p>
+<p>搭建局域网，购买交换机，路由器。</p>
+<p>买服务器，安装操作系统，比如 Window NT</p>
+<p>安装数据库软件，例如 Oracle。 </p>
+<p>然后再把那些 Delphi/VB/PowerBuilder 写的客户端安装到电脑上, 整个系统跑起来了。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_02.webp" srcset="/blog/img/loading.gif" lazyload></p>
+<h2 id="数据中心"><a href="#数据中心" class="headerlink" title="数据中心"></a>数据中心</h2><p>C/S模式的很大弊端就是客户端更新特别麻烦，不能在用户无感知的情况下完成升级，还有臭名卓著的DLL地狱问题，让程序员抓狂。另外服务器能支撑的用户也不大。 </p>
+<p>Web兴起后，你们公司的应用也与时俱进，从C/S模式变成了B/S模式，用户主要使用浏览器来访问应用，业务逻辑在服务器端运行。</p>
+<p>这时候，你还需要买服务器，然后放到数据中心去托管，毕竟那里的条件更好，更稳定。</p>
+<p>网络不需要自己来搭建了，掏钱买数据中心的网络带宽就好。还需要自己安装软件，比如Linux操作系统、Tomcat、Ngnix、MySQL等等。</p>
+<p>随着功能的增加，你还需要新的服务器来处理缓存，搜索等功能。 为了应对高并发、还需要分布式、负载均衡、数据复制。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_03.webp" srcset="/blog/img/loading.gif" lazyload></p>
+<p>你需要仔细地规划，看看这些缓存、搜索、数据库、负载均衡等都需要什么样的服务器，有些要求CPU很强，有些要求内存很大，有些要求硬盘很快。</p>
+<p>总之，自己运维这样一套系统，非常麻烦。</p>
+<h2 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h2><p>但是，如果你的网站没人访问了，这一套复杂的系统，这些昂贵的服务器就会变成摆设，你想卖都很难卖掉，这是巨大的浪费。 </p>
+<p>一个想法就会浮现出来：<br>为什么要用物理服务器？<br>谁要是能提供虚拟机给我就好了！<br>用完了就可以“扔掉”！</p>
+<p>于是那些有实力的大厂就这么做了，由亚马逊开始，把平时空闲的物理服务器的计算能力，存储能力统一管理，统一调配，对外提供的就是虚拟机。</p>
+<p>他们把这种方式叫做云计算，你使用了云计算以后，有很多好处：</p>
+<p>物理服务器不用买了，申请虚拟机就可以了。什么样的CPU，多少内存，多大的硬盘，对应的价格也不同。 </p>
+<p>操作系统会按照你的要求自动给你安装好。网络自然不用操心，要多大带宽直接买就行。</p>
+<p>这些虚拟机可以包月、包年计费。但是，如果没有人访问你的应用，没有流量，你也得掏钱。</p>
+<h2 id="理想模式"><a href="#理想模式" class="headerlink" title="理想模式"></a>理想模式</h2><p>想必你的脑海中已经浮现出了解决方案：</p>
+<ol>
+<li><p>不要再考虑什么物理服务器/虚拟机了，把代码上传到云端，直接运行。</p>
+</li>
+<li><p>按使用情况（如CPU时间、内存大小）来收费</p>
+</li>
+</ol>
+<p>（IBM： 我的大机一直按使用情况收费，你们玩了几十年，终于回到我这里了 ^-^）</p>
+<p>如果没有人访问你的应用，就不要部署它，这样只会占用一点点存储空间，不用使用CPU和内存；如果有人访问，把应用迅速部署到某个服务器上，执行这次请求，返回给用户，然后卸载这个应用。</p>
+<p>和之前的方式相比，最大的特色是<strong>即用即走，不会在服务器/虚拟机中常驻。</strong></p>
+<p>但是这么做可能吗？ 不行，应用的粒度太大，一个应用几十、上百模块，每个请求来了就部署整个应用，只执行那么一点儿代码， 然后就卸载掉。 </p>
+<p>如果每个请求这么来回地部署和卸载，你是疯了吗，兄弟？</p>
+<p>那微服务呢？粒度还是太大 ！如果是微服务中的一个API，或者说就是一个“函数”呢？  这个粒度应该差不多了。  </p>
+<p>这里说的函数到底是什么？ 需要看具体的业务来划分，比如搜索产品，图像转换，它需要足够小，足够单一，能快速启动，运行，卸载。</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_04.webp" srcset="/blog/img/loading.gif" lazyload></p>
+<p>一个“函数”真的只做一件事情，并且不保持状态。这样一来它可以<strong>轻松地被扩展到任意多的服务器/虚拟机/docker容器中去。请求多了就扩容，请求少了，就收缩，请求没了，就卸载，实在是太爽了。</strong></p>
+<p>这种方式现在称为 Serverless，并不是说没有服务器，而是说服务器对用户来说是透明的。应用的装载、启动、卸载，路由是需要平台来搞定。</p>
+<h2 id="Serverless-的特点"><a href="#Serverless-的特点" class="headerlink" title="Serverless 的特点"></a>Serverless 的特点</h2><p>Serverless的开发模式和运行模式类似这样：</p>
+<ol>
+<li><p>程序员编写完成业务的函数代码。</p>
+</li>
+<li><p>上传到支持 Serverless 的平台，设定触发的规则。</p>
+</li>
+<li><p>请求到来，Serverless 平台根据触发规则加载函数，创建函数实例，运行。</p>
+</li>
+<li><p>如果请求比较多，会进行实例的扩展，如果请求较少，就进行实例的收缩。</p>
+</li>
+<li><p>如果无人访问，卸载函数实例。</p>
+</li>
+</ol>
+<p>如果有多个函数，怎么确定调用哪一个？ 肯定需要一个东西来转发一下。</p>
+<p>（微服务： 我就是这么玩儿的啊！）</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_05.webp" srcset="/blog/img/loading.gif" lazyload></p>
+<p>如果业务比较复杂，一个函数搞不定怎么办？ 可以把多个函数给编排起来！</p>
+<p>（SOA： 我早就这么做了！）</p>
+<p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_06.webp" srcset="/blog/img/loading.gif" lazyload></p>
+<p>按需装载，自动伸缩，不用你苦逼地去规划硬件，安装软件，还可以按照使用情况付费，这么好的东西，我们是不是马上投入 Serverless 的怀抱？</p>
+<p>慢着！</p>
+<p>为了达到上面的目标，你必须得牺牲一个很重要的东西：状态。</p>
+<p>函数没有状态的，每次启动都可能会被部署到一个全新的“服务器”中，这就有两个问题：</p>
+<p>用户的会话状态肯定是无法保持的，像 session sticky 这样的功能就别想了。<br>函数无法做本地的持久化，没法访问本地硬盘的任何东西（服务器看不见了，怎么能看见硬盘呢？）。</p>
+<p>所有想持久化的东西必须得保存到外部的系统或者存储中，例如Redis，MySQL等。 很明显，这些东西也应该以“服务”的方式来呈现，即Backend as a Service (BaaS)。</p>
+<p>如果应用无法拆分成无状态的函数，是无法享受 Serverless 带来的种种好处的。</p>
+<p>Serverless 更适合那些无状态的应用，例如图像和视频的加工，转换，物联网设备状态的信息处理等等。</p>
+<p align="center">（未完）</p>
 
             </div>
             <hr>
@@ -350,7 +424,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog/tags/%E6%B3%95%E5%BE%8B/">法律</a>
+                      <a class="hover-with-bg" href="/blog/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a>
                     
                   </div>
                 
@@ -361,9 +435,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/dots_dream_of_china/">
+                      <a href="/blog/Time_Box/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">中华人民共和国国民经济和社会发展第十四个五年规划和2035年远景目标建议及纲要</span>
+                        <span class="hidden-mobile">Time_Box</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -371,8 +445,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/dots_Byte_World_TCP_IP/">
-                        <span class="hidden-mobile">比特宇宙之 TCP/IP 的诞生</span>
+                      <a href="/blog/dots_ICSP/">
+                        <span class="hidden-mobile">Information Collect System Project</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

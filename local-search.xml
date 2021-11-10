@@ -54,6 +54,31 @@
   
   
   <entry>
+    <title>Serverless 之 API Boy</title>
+    <link href="/blog/Serverless_API_Boy/"/>
+    <url>/blog/Serverless_API_Boy/</url>
+    
+    <content type="html"><![CDATA[<p>一个新技术的出现不会无中生有，从石头中凭空蹦出来，而是在原有基础上的继承和发展。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_00.jpeg"></p><p>Serverless 也不例外，我们回顾下 IT 基础设施的发展，就会发现，Serverless 自然就会浮现出来，你自己就可以发明它（但是却实现不了它）。</p><h2 id="局域网时代"><a href="#局域网时代" class="headerlink" title="局域网时代"></a>局域网时代</h2><p>上世纪90年代，你是一家IT部门的负责人，公司需要建立一个信息管理系统，</p><p>这时候的系统都是局域网的，是C/S模式的，业务逻辑主要在客户端软件中，需要被安装到各个电脑上去，然后访问同一个数据库。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_01.webp"></p><p>在部署这个系统之前，你需要做很多的工作：</p><p>搭建局域网，购买交换机，路由器。</p><p>买服务器，安装操作系统，比如 Window NT</p><p>安装数据库软件，例如 Oracle。 </p><p>然后再把那些 Delphi/VB/PowerBuilder 写的客户端安装到电脑上, 整个系统跑起来了。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_02.webp"></p><h2 id="数据中心"><a href="#数据中心" class="headerlink" title="数据中心"></a>数据中心</h2><p>C/S模式的很大弊端就是客户端更新特别麻烦，不能在用户无感知的情况下完成升级，还有臭名卓著的DLL地狱问题，让程序员抓狂。另外服务器能支撑的用户也不大。 </p><p>Web兴起后，你们公司的应用也与时俱进，从C/S模式变成了B/S模式，用户主要使用浏览器来访问应用，业务逻辑在服务器端运行。</p><p>这时候，你还需要买服务器，然后放到数据中心去托管，毕竟那里的条件更好，更稳定。</p><p>网络不需要自己来搭建了，掏钱买数据中心的网络带宽就好。还需要自己安装软件，比如Linux操作系统、Tomcat、Ngnix、MySQL等等。</p><p>随着功能的增加，你还需要新的服务器来处理缓存，搜索等功能。 为了应对高并发、还需要分布式、负载均衡、数据复制。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_03.webp"></p><p>你需要仔细地规划，看看这些缓存、搜索、数据库、负载均衡等都需要什么样的服务器，有些要求CPU很强，有些要求内存很大，有些要求硬盘很快。</p><p>总之，自己运维这样一套系统，非常麻烦。</p><h2 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h2><p>但是，如果你的网站没人访问了，这一套复杂的系统，这些昂贵的服务器就会变成摆设，你想卖都很难卖掉，这是巨大的浪费。 </p><p>一个想法就会浮现出来：<br>为什么要用物理服务器？<br>谁要是能提供虚拟机给我就好了！<br>用完了就可以“扔掉”！</p><p>于是那些有实力的大厂就这么做了，由亚马逊开始，把平时空闲的物理服务器的计算能力，存储能力统一管理，统一调配，对外提供的就是虚拟机。</p><p>他们把这种方式叫做云计算，你使用了云计算以后，有很多好处：</p><p>物理服务器不用买了，申请虚拟机就可以了。什么样的CPU，多少内存，多大的硬盘，对应的价格也不同。 </p><p>操作系统会按照你的要求自动给你安装好。网络自然不用操心，要多大带宽直接买就行。</p><p>这些虚拟机可以包月、包年计费。但是，如果没有人访问你的应用，没有流量，你也得掏钱。</p><h2 id="理想模式"><a href="#理想模式" class="headerlink" title="理想模式"></a>理想模式</h2><p>想必你的脑海中已经浮现出了解决方案：</p><ol><li><p>不要再考虑什么物理服务器/虚拟机了，把代码上传到云端，直接运行。</p></li><li><p>按使用情况（如CPU时间、内存大小）来收费</p></li></ol><p>（IBM： 我的大机一直按使用情况收费，你们玩了几十年，终于回到我这里了 ^-^）</p><p>如果没有人访问你的应用，就不要部署它，这样只会占用一点点存储空间，不用使用CPU和内存；如果有人访问，把应用迅速部署到某个服务器上，执行这次请求，返回给用户，然后卸载这个应用。</p><p>和之前的方式相比，最大的特色是<strong>即用即走，不会在服务器/虚拟机中常驻。</strong></p><p>但是这么做可能吗？ 不行，应用的粒度太大，一个应用几十、上百模块，每个请求来了就部署整个应用，只执行那么一点儿代码， 然后就卸载掉。 </p><p>如果每个请求这么来回地部署和卸载，你是疯了吗，兄弟？</p><p>那微服务呢？粒度还是太大 ！如果是微服务中的一个API，或者说就是一个“函数”呢？  这个粒度应该差不多了。  </p><p>这里说的函数到底是什么？ 需要看具体的业务来划分，比如搜索产品，图像转换，它需要足够小，足够单一，能快速启动，运行，卸载。</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_04.webp"></p><p>一个“函数”真的只做一件事情，并且不保持状态。这样一来它可以<strong>轻松地被扩展到任意多的服务器/虚拟机/docker容器中去。请求多了就扩容，请求少了，就收缩，请求没了，就卸载，实在是太爽了。</strong></p><p>这种方式现在称为 Serverless，并不是说没有服务器，而是说服务器对用户来说是透明的。应用的装载、启动、卸载，路由是需要平台来搞定。</p><h2 id="Serverless-的特点"><a href="#Serverless-的特点" class="headerlink" title="Serverless 的特点"></a>Serverless 的特点</h2><p>Serverless的开发模式和运行模式类似这样：</p><ol><li><p>程序员编写完成业务的函数代码。</p></li><li><p>上传到支持 Serverless 的平台，设定触发的规则。</p></li><li><p>请求到来，Serverless 平台根据触发规则加载函数，创建函数实例，运行。</p></li><li><p>如果请求比较多，会进行实例的扩展，如果请求较少，就进行实例的收缩。</p></li><li><p>如果无人访问，卸载函数实例。</p></li></ol><p>如果有多个函数，怎么确定调用哪一个？ 肯定需要一个东西来转发一下。</p><p>（微服务： 我就是这么玩儿的啊！）</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_05.webp"></p><p>如果业务比较复杂，一个函数搞不定怎么办？ 可以把多个函数给编排起来！</p><p>（SOA： 我早就这么做了！）</p><p><img src="https://static-images-1253741713.cos.ap-beijing.myqcloud.com/images/posts/Serverless_API_Boy/Serverless_API_Boy_06.webp"></p><p>按需装载，自动伸缩，不用你苦逼地去规划硬件，安装软件，还可以按照使用情况付费，这么好的东西，我们是不是马上投入 Serverless 的怀抱？</p><p>慢着！</p><p>为了达到上面的目标，你必须得牺牲一个很重要的东西：状态。</p><p>函数没有状态的，每次启动都可能会被部署到一个全新的“服务器”中，这就有两个问题：</p><p>用户的会话状态肯定是无法保持的，像 session sticky 这样的功能就别想了。<br>函数无法做本地的持久化，没法访问本地硬盘的任何东西（服务器看不见了，怎么能看见硬盘呢？）。</p><p>所有想持久化的东西必须得保存到外部的系统或者存储中，例如Redis，MySQL等。 很明显，这些东西也应该以“服务”的方式来呈现，即Backend as a Service (BaaS)。</p><p>如果应用无法拆分成无状态的函数，是无法享受 Serverless 带来的种种好处的。</p><p>Serverless 更适合那些无状态的应用，例如图像和视频的加工，转换，物联网设备状态的信息处理等等。</p><p align="center">（未完）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Dots</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>信息学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Information Collect System Project</title>
     <link href="/blog/dots_ICSP/"/>
     <url>/blog/dots_ICSP/</url>
@@ -463,11 +488,11 @@
   
   
   <entry>
-    <title>404 Not Found：该页无法显示</title>
+    <title>关于</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[<html>    <head>         <meta charset="UTF-8" />         <title>404</title>                                                                                                                                            </head>    <body>         <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" homePageName="返回首页" homePageUrl="https://www.nickyam.com"></script>true</body></html>]]></content>
+    <content type="html"><![CDATA[<hr><p>&emsp;&emsp;学习不是一种鞭策，不是只热衷于专业，而是一种人生态度，是一种对生活的认真，对未来的负责。</p><h2 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome"></a>Welcome</h2><div class="note note-danger">            <p>这里归档的信息基于网络整理</p>          </div><div class="note note-danger">            <p>因不可抗拒因素，评论区不开放。</p>          </div><div class="note note-success">            <p>这里存档的信息会不断地更新、校对。</p>          </div><div class="note note-success">            <p>初衷是让读者能从中受益</p>          </div><div class="note note-success">            <p>风格：简洁 优雅 高效 连续</p>          </div><p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/about/about.png"></p><h2 class="Time-Container">Time - Container</h2><div class="note note-success">            <p>Question：Time - Container ？</p>          </div><div class="note note-success">            <p>Answer：Time 和 Container 拼接，意为时间容器。</p>          </div><div class="note note-success">            <p>Question：Time - Container 的用途 ？ </p>          </div><div class="note note-success">            <p>Answer：码字人选择性的在这里存放了一些内容。</p>          </div><div class="note note-success">            <p>Question：Time - Container 的风格 ？ </p>          </div><div class="note note-success">            <p>Answer： 保持简单，保持优雅，保持连续。</p>          </div><h2 id="版权问题"><a href="#版权问题" class="headerlink" title="版权问题"></a>版权问题</h2><div class="note note-danger">            <p>部分存档内容来源于网络，如有侵权，请联系作者删除。</p>          </div><h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>&emsp;&emsp;计算机呈现了一个基于真实世界的虚拟世界。计算机的发明让人们用 0 和 1 映射了自身存在的真实世界，它是人类有力的工具之一，它像是真实世界的一面镜子，把真实世界有选择的映射在计算机构建的虚拟世界里，之后，人们便可以透过虚拟的世界去控制真实的世界（当然，前提是拥有足够的权限）。<br>&emsp;&emsp;计算机存档的万物的信息可以为万物生成“数字生命”。如果人们愿意，计算机可以完整的映射并存档这个星球的真实数据，这些数据是超体量的。万物不仅仅可以相互通信，他们存在的“痕迹”也可以被记录并存档，万物仿佛有了“长生不老”的本领，他们拥有了“数字生命”。这里举个例子，你祖父的父亲的一生被以数字的形式存档下来，也许你与他未曾谋面，但通过他的“数字生命”，你了解到他了，你可以知道他想让你知道的一切。你从他的生命历程中有了你的借鉴，而这可以为你的人生路提供参考。如果用在科学探索里，他可以为人们探索未知提供参考。<br>&emsp;&emsp;信息具有力量，是一把双刃剑，需要被妥善使用。Google 的一个宣传视频里，曾经有这样一个片段，一个当地的农民发现自己的农作物经常由于害虫侵害而产量低下，通过 Google 他搜索到了一些解决的办法并更好的解决了这一问题。这让人意识到，信息能赋予人力量，只要有一份说明书式的操作文档，人们就可以自主的思考并更好的解决问题。而搭建一个博客，人们就可以把经验、专业知识这些信息归档并存储以便在需要时使用、分享给遇到同样问题的人使用。如果每一个人都参与进来，分享有质量的信息，这将使每一个使用的人从中受益。</p><h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/about/about_next.webp"></p><p>&emsp;&emsp;工作后人际关系更加复杂，喧嚣的社交网络已经不再适合谈及生活与思想，只有自己开辟一片净土，在此延续另一种形态的社交。<br>&emsp;&emsp;如果你在浏览的过程中发现了任何问题（如错别字、链接无效、图片无法显示等），欢迎电邮码字人。</p><p>&emsp;&emsp;<b>脚踏实地，稳步成长</b>。</p><hr>]]></content>
     
   </entry>
   
@@ -485,33 +510,11 @@
   
   
   <entry>
-    <title>书单</title>
-    <link href="/blog/"/>
-    <url>/blog/</url>
-    
-    <content type="html"><![CDATA[<div align="center">    <h2>Book List</h2></div><div class="note note-success">            <p>这里推荐了一些书籍。</p>          </div><h5 id="01-《平凡的世界》"><a href="#01-《平凡的世界》" class="headerlink" title="01 《平凡的世界》"></a>01 《平凡的世界》</h5><details><summary>查看</summary><br><p><strong>内容简介</strong><br>&emsp;&emsp;《平凡的世界(套装共3册)》是一部现实主义小说，也是小说化的家族史。作家高度浓缩了中国西北农村的历史变迁过程，作品达到了思想性与艺术性的高度统一，特别是主人公面对困境艰苦奋斗的精神，对今天的大学生朋友仍有启迪。这是一部全景式地表现中国当代城乡社会生活的长篇小说。《平凡的世界(套装共3册)》共三部。作者在近十年间广阔背景上，通过复杂的矛盾纠葛，刻画了社会各阶层众多普通人的形象。劳动与爱情，挫折与追求，痛苦与欢乐，日常生活与巨大社会冲突，纷繁地交织在一起，深刻地展示了普通人在大时代历史进程中所走过的艰难曲折的道路。</p><p><strong>作者简介</strong><br>&emsp;&emsp;路遥（1949-1992），原名王卫国，1949年12月3日生于陕西榆林市清涧县一个贫困的农民家庭，因家贫7岁即过继给延川县农村的伯父。曾在延川县立中学学习，1969年回乡务农。其间做过许多临时性工作，并在农村一小学教书一年。1973年进入延安大学中文系学习，开始文学创作。大学毕业后，任《陕西文艺》（今为《延河》）编辑。1980年发表《惊心动魄的一幕》，获第一届全国优秀中篇小说奖。1982年发表中篇小说《人生》，获第二届全国优秀中篇小说奖。1988年完成百万字长篇巨著《平凡的世界》，于1991年获茅盾文学奖。1992年11月17日上午8时20分，路遥因病医治无效在西安逝世，年仅42岁。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;生活不能等到别人安排，要自己去争取和奋斗；不论其结果是喜是悲，你总不枉在这人世上活了一场人。</p><p align="right">—— 引自 第1页</p><p>&emsp;&emsp;这黄土地上养育出来的人，尽管穿戴土俗，文化粗浅，但精人能人如同天上的星星一般稠密。</p><p align="right">—— 引自 第238页</p><p>&emsp;&emsp;在这个世界上，不是所有合理的和美好的都能按照自己的愿望存在或者实现。</p><p align="right">—— 引自 第175页</p><p>&emsp;&emsp;哭，笑，都是因为欢乐。哭的人知道而笑的人并不知道，这欢乐是多少痛苦所换来的…… </p><p align="right">—— 引自 第1200页</p><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/book/01/01_01.jpg"></div><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/book/01/01_03.jpg"></div><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/book/01/01_02.jpg"></div></div></div></details><br><h5 id="02-《活着》"><a href="#02-《活着》" class="headerlink" title="02 《活着》"></a>02 《活着》</h5><details><summary>查看</summary><br><p><strong>内容简介</strong><br>&emsp;&emsp;《活着》(新版）讲述了农村人福贵悲惨的人生遭遇。福贵本是个阔少爷，可他嗜赌如命，终于赌光了家业，一贫如洗。他的父亲被他活活气死，母亲则在穷困中患了重病，福贵前去求药，却在途中被国民党抓去当壮丁。经过几番波折回到家里，才知道母亲早已去世，妻子家珍含辛茹苦地养大两个儿女。此后更加悲惨的命运一次又一次降临到福贵身上，他的妻子、儿女和孙子相继死去，最后只剩福贵和一头老牛相依为命，但老人依旧活着，仿佛比往日更加洒脱与坚强。</p><p>&emsp;&emsp;《活着》(新版）荣获意大利格林扎纳•卡佛文学奖最高奖项（1998年）、台湾《中国时报》10本好书奖（1994年）、香港“博益”15本好书奖（1994年）、第三届世界华文“冰心文学奖”（2002年），入选香港《亚洲周刊》评选的“20世纪中文小说百年百强”、中国百位批评家和文学编辑评选的“20世纪90年代最有影响的10部作品”。</p><p><strong>作者简介</strong><br>&emsp;&emsp;余华，1960年出生，1983年开始写作。至今已经出版长篇小说4部，中短篇小说集6部，随笔集4部。主要作品有《兄弟》《活着》《许三观卖血记》《在细雨中呼喊》等。其作品已被翻译成20多种语言在美国、英国、法国、德国、意大利、西班牙、荷兰、瑞典、挪威、希腊、俄罗斯、保加利亚、匈牙利、捷克、塞尔维亚、斯洛伐克、波兰、巴西、以色列、日本、韩国、越南、泰国和印度等国出版。曾获意大利格林扎纳·卡佛文学奖（1998年）、法国文学和艺术骑士勋章（2004年）、中华图书特殊贡献奖（2005年）、法国国际信使外国小说奖（2008年）等。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;生活是属于每个人自己的感受，不属于任何别人的看法。</p><p align="right">—— 引自 第1页</p></details><br><h5 id="03-《三体》"><a href="#03-《三体》" class="headerlink" title="03 《三体》"></a>03 《三体》</h5><details><summary>查看</summary><br><p><strong>内容简介</strong><br>&emsp;&emsp;文化大革命如火如荼进行的同时。军方探寻外星文明的绝秘计划“红岸工程”取得了突破性进展。但在按下发射键的那一刻，历经劫难的叶文洁没有意识到，她彻底改变了人类的命运。地球文明向宇宙发出的第一声啼鸣，以太阳为中心，以光速向宇宙深处飞驰……</p><p>&emsp;&emsp;四光年外，“三体文明”正苦苦挣扎——三颗无规则运行的太阳主导下的百余次毁灭与重生逼迫他们逃离母星。而恰在此时。他们接收到了地球发来的信息。在运用超技术锁死地球人的基础科学之后。三体人庞大的宇宙舰队开始向地球进发……</p><p>&emsp;&emsp;人类的末日悄然来临。</p><p><strong>作者简介</strong><br>&emsp;&emsp;刘慈欣，祖籍河南，长于山西，中国科普作家协会会员，山西省作家协会会员，高级工程师。</p><p>&emsp;&emsp;自1999年处女作《鲸歌》问世以来，刘慈欣已发表短篇科幻小说三十余篇、出版长篇科幻小说六部，并创下连续八年荣获中国科幻最高奖“银河奖”的纪录。他的长篇作品《三体》开创《科幻世界》月刊连载原创作品的先例，成为2006年度最受关注、最畅销的科幻小说。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;无限长的曲线就是宇宙的抽象，一头连着无限的过去，另一头连着无限的未来，中间只有无规律无生命的随机起伏，一个个高低错落的波峰就像一粒粒大小不等的沙子，整条曲线就像是所有沙粒排成行形成的一维沙漠，荒凉寂寥，长得更令人无法忍受。你可以沿着它向前向后走无限远，但永远找不到归宿。</p><p align="right">—— 引自 第202页</p></details><br><h5 id="04-《三国志（全四册）》"><a href="#04-《三国志（全四册）》" class="headerlink" title="04 《三国志（全四册）》"></a>04 《三国志（全四册）》</h5><details><summary>查看</summary><br><p><strong>作者:</strong>  陈寿 / 校注 陈君慧 </p><p><strong>内容简介</strong><br>&emsp;&emsp;《三国志(全4册)》的主要特点是：一、为魏、蜀、吴三国各自修史，合成一书，充分显示了陈寿的史才。史料取舍非常用心，再三审慎。记载史事，据实直书，评价人物，较客观公正。清代学者赵翼在批评陈寿的同时，也不得不赞赏他“剪裁斟酌处，亦自有下笔不苟者，参订他书而后知其矜慎也。”二、叙事生动，语言洗练干净，评论中肯得当。书中塑造的谋臣武将各具特色，性格鲜明。谋臣既足智多谋又人格完美，如荀彧、程昱、郭嘉；武将虽勇冠三军，却有明显的缺点，如狂傲的关羽，暴躁的张飞等。今天，三国文化已成为许多学者、管理部门及企业人士关注的课题。</p><p><strong>作者简介</strong><br>&emsp;&emsp;陈寿（233年～297年），字承祚。巴西郡安汉县（今四川省南充市）人。三国时蜀汉及西晋时著名史学家。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;汉末，天下大乱，雄豪并起，而袁绍虎眎四州，强盛莫敌。太祖运筹演谋，鞭挞宇内，揽申、商之法术，该韩、白之奇策，官方授材，各因其器，矫情任算，不念旧恶，终能总御皇机，克成洪业者，惟其明略最优也。抑可谓非常之人，超世之杰矣。</p><p align="right">—— 引自 卷一 魏书一 武帝纪</p></details><br><h5 id="05-《人生》"><a href="#05-《人生》" class="headerlink" title="05 《人生》"></a>05 《人生》</h5><details><summary>查看</summary><br><p><strong>内容简介</strong><br>&emsp;&emsp;《人生》是路遥的一部中篇小说，发表于1982年，它以改革时期陕北高原的城乡生活为时空背景，叙述了高中毕业生高加林回到土地又离开土地，再回到土地这样人生的变化过程。高加林同农村姑娘刘巧珍、城市姑娘黄亚萍之间的感情纠葛构成了故事发展的矛盾，也正是体现那种艰难选择的悲剧。</p><p><strong>作者简介</strong><br>&emsp;&emsp;路遥（1949-1992），原名王卫国，1949年12月3日生于陕西榆林市清涧县一个贫困的农民家庭，因家贫7岁即过继给延川县农村的伯父。曾在延川县立中学学习，1969年回乡务农。其间做过许多临时性工作，并在农村一小学教书一年。1973年进入延安大学中文系学习，开始文学创作。大学毕业后，任《陕西文艺》（今为《延河》）编辑。1980年发表《惊心动魄的一幕》，获第一届全国优秀中篇小说奖。1982年发表中篇小说《人生》，获第二届全国优秀中篇小说奖。1988年完成百万字长篇巨著《平凡的世界》，于1991年获茅盾文学奖。1992年11月17日上午8时20分，路遥因病医治无效在西安逝世，年仅42岁。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;人生的道路虽然漫长，但紧要处常常只有几步，特别是当人年轻的时候。 没有一个人的生活道路是笔直的、没有岔道的。有些岔道口，譬如政治上的岔道口，事业上的岔道口，个人生活上的岔道口，你走错一步，可以影响人生的一个时期，也可以影响一生。 ——柳青</p><p align="right">—— 引自 第1页</p><p>&emsp;&emsp;对待社会，我们常说要向前看，对一个人来说，也要向前看。生活总是这样，不能叫人处处都满意。但我们还要热情地活下去。人活一生，值得爱的东西很多，不要因为一个方面不满意，就灰心。比如说我吧，梦里都想上大学，但没考上，我就不活人了吗？我现在就好好教书，让村里的其他娃娃将来多考及格大学生！就是不能教书，回村劳动了，该怎样还要怎样哩…… </p><p align="right">—— 引自 第220页</p><p>&emsp;&emsp;作为青年人自己来说，重要的是正确对待理想和现实生活。哪怕你的追求是正当的，也不能通过邪门歪道去实现啊！而且一旦摔了跤，反过来会给人造成一种多大的痛苦； 甚至能毁掉人的一生！</p><p align="right">—— 引自章节：彩虹与桥</p></details><br>]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>分类</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
     <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/blog/"/>
-    <url>/blog/</url>
-    
-    <content type="html"><![CDATA[const fs = require('fs-extra');const path = require('path');const imageSize = require('image-size');const rootPath="photos/"class PhotoExtension {    constructor() {        this.size = 64;        this.offset = [0, 0];    }}class Photo {    constructor() {        this.dirName = '';        this.fileName = '';        this.iconID = '';        this.extension = new PhotoExtension();    }}class PhotoGroup {    constructor() {        this.name = '';        this.children = [];    }}function createPlotIconsData() {    let allPlots = [];    let allPlotGroups = [];    const plotJsonFile = path.join(__dirname, './photosInfo.json');    const plotGroupJsonFile = path.join(__dirname, './photos.json');    if (fs.existsSync(plotJsonFile)) {        allPlots = JSON.parse(fs.readFileSync(plotJsonFile));    }    if (fs.existsSync(plotGroupJsonFile)) {        allPlotGroups = JSON.parse(fs.readFileSync(plotGroupJsonFile));    }    fs.readdirSync(__dirname).forEach(function(dirName) {        const stats = fs.statSync(path.join(__dirname, dirName));        const isDir = stats.isDirectory();        if (isDir) {            const subfiles = fs.readdirSync(path.join(__dirname, dirName));            subfiles.forEach(function(subfileName) {                // 如果已经存在 则不再处理                // if (allPlots.find(o => o.fileName === subfileName && o.dirName === dirName)) {                //     return;                // }                // 新增标                const plot = new Photo();                plot.dirName = dirName;                plot.fileName = subfileName;                const imageInfo = imageSize(rootPath+dirName + "/" + subfileName);                plot.iconID = imageInfo.width + '.' + imageInfo.height + ' ' + subfileName;                allPlots.push(plot);                console.log(`RD: createPlotIconsData -> new plot`, plot);                // 为新增标添加分组 暂时以它所处的文件夹为分组                let group = allPlotGroups.find(o => o.name === dirName);                if (!group) {                    group = new PhotoGroup();                    group.name = dirName;                    allPlotGroups.push(group);                    console.log(`RD: createPlotIconsData -> new group`, group);                }                group.children.push(plot.iconID);            });        }    });    fs.writeJSONSync(plotJsonFile, allPlots);    fs.writeJSONSync(plotGroupJsonFile, allPlotGroups);}createPlotIconsData();]]></content>
     
   </entry>
   
@@ -529,22 +532,22 @@
   
   
   <entry>
-    <title>相册</title>
+    <title>书单</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<div align="center">    <h2>Book List</h2></div><div class="note note-success">            <p>这里推荐了一些书籍。</p>          </div><h5 id="01-《平凡的世界》"><a href="#01-《平凡的世界》" class="headerlink" title="01 《平凡的世界》"></a>01 《平凡的世界》</h5><details><summary>查看</summary><br><p><strong>内容简介</strong><br>&emsp;&emsp;《平凡的世界(套装共3册)》是一部现实主义小说，也是小说化的家族史。作家高度浓缩了中国西北农村的历史变迁过程，作品达到了思想性与艺术性的高度统一，特别是主人公面对困境艰苦奋斗的精神，对今天的大学生朋友仍有启迪。这是一部全景式地表现中国当代城乡社会生活的长篇小说。《平凡的世界(套装共3册)》共三部。作者在近十年间广阔背景上，通过复杂的矛盾纠葛，刻画了社会各阶层众多普通人的形象。劳动与爱情，挫折与追求，痛苦与欢乐，日常生活与巨大社会冲突，纷繁地交织在一起，深刻地展示了普通人在大时代历史进程中所走过的艰难曲折的道路。</p><p><strong>作者简介</strong><br>&emsp;&emsp;路遥（1949-1992），原名王卫国，1949年12月3日生于陕西榆林市清涧县一个贫困的农民家庭，因家贫7岁即过继给延川县农村的伯父。曾在延川县立中学学习，1969年回乡务农。其间做过许多临时性工作，并在农村一小学教书一年。1973年进入延安大学中文系学习，开始文学创作。大学毕业后，任《陕西文艺》（今为《延河》）编辑。1980年发表《惊心动魄的一幕》，获第一届全国优秀中篇小说奖。1982年发表中篇小说《人生》，获第二届全国优秀中篇小说奖。1988年完成百万字长篇巨著《平凡的世界》，于1991年获茅盾文学奖。1992年11月17日上午8时20分，路遥因病医治无效在西安逝世，年仅42岁。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;生活不能等到别人安排，要自己去争取和奋斗；不论其结果是喜是悲，你总不枉在这人世上活了一场人。</p><p align="right">—— 引自 第1页</p><p>&emsp;&emsp;这黄土地上养育出来的人，尽管穿戴土俗，文化粗浅，但精人能人如同天上的星星一般稠密。</p><p align="right">—— 引自 第238页</p><p>&emsp;&emsp;在这个世界上，不是所有合理的和美好的都能按照自己的愿望存在或者实现。</p><p align="right">—— 引自 第175页</p><p>&emsp;&emsp;哭，笑，都是因为欢乐。哭的人知道而笑的人并不知道，这欢乐是多少痛苦所换来的…… </p><p align="right">—— 引自 第1200页</p><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/book/01/01_01.jpg"></div><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/book/01/01_03.jpg"></div><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/book/01/01_02.jpg"></div></div></div></details><br><h5 id="02-《活着》"><a href="#02-《活着》" class="headerlink" title="02 《活着》"></a>02 《活着》</h5><details><summary>查看</summary><br><p><strong>内容简介</strong><br>&emsp;&emsp;《活着》(新版）讲述了农村人福贵悲惨的人生遭遇。福贵本是个阔少爷，可他嗜赌如命，终于赌光了家业，一贫如洗。他的父亲被他活活气死，母亲则在穷困中患了重病，福贵前去求药，却在途中被国民党抓去当壮丁。经过几番波折回到家里，才知道母亲早已去世，妻子家珍含辛茹苦地养大两个儿女。此后更加悲惨的命运一次又一次降临到福贵身上，他的妻子、儿女和孙子相继死去，最后只剩福贵和一头老牛相依为命，但老人依旧活着，仿佛比往日更加洒脱与坚强。</p><p>&emsp;&emsp;《活着》(新版）荣获意大利格林扎纳•卡佛文学奖最高奖项（1998年）、台湾《中国时报》10本好书奖（1994年）、香港“博益”15本好书奖（1994年）、第三届世界华文“冰心文学奖”（2002年），入选香港《亚洲周刊》评选的“20世纪中文小说百年百强”、中国百位批评家和文学编辑评选的“20世纪90年代最有影响的10部作品”。</p><p><strong>作者简介</strong><br>&emsp;&emsp;余华，1960年出生，1983年开始写作。至今已经出版长篇小说4部，中短篇小说集6部，随笔集4部。主要作品有《兄弟》《活着》《许三观卖血记》《在细雨中呼喊》等。其作品已被翻译成20多种语言在美国、英国、法国、德国、意大利、西班牙、荷兰、瑞典、挪威、希腊、俄罗斯、保加利亚、匈牙利、捷克、塞尔维亚、斯洛伐克、波兰、巴西、以色列、日本、韩国、越南、泰国和印度等国出版。曾获意大利格林扎纳·卡佛文学奖（1998年）、法国文学和艺术骑士勋章（2004年）、中华图书特殊贡献奖（2005年）、法国国际信使外国小说奖（2008年）等。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;生活是属于每个人自己的感受，不属于任何别人的看法。</p><p align="right">—— 引自 第1页</p></details><br><h5 id="03-《三体》"><a href="#03-《三体》" class="headerlink" title="03 《三体》"></a>03 《三体》</h5><details><summary>查看</summary><br><p><strong>内容简介</strong><br>&emsp;&emsp;文化大革命如火如荼进行的同时。军方探寻外星文明的绝秘计划“红岸工程”取得了突破性进展。但在按下发射键的那一刻，历经劫难的叶文洁没有意识到，她彻底改变了人类的命运。地球文明向宇宙发出的第一声啼鸣，以太阳为中心，以光速向宇宙深处飞驰……</p><p>&emsp;&emsp;四光年外，“三体文明”正苦苦挣扎——三颗无规则运行的太阳主导下的百余次毁灭与重生逼迫他们逃离母星。而恰在此时。他们接收到了地球发来的信息。在运用超技术锁死地球人的基础科学之后。三体人庞大的宇宙舰队开始向地球进发……</p><p>&emsp;&emsp;人类的末日悄然来临。</p><p><strong>作者简介</strong><br>&emsp;&emsp;刘慈欣，祖籍河南，长于山西，中国科普作家协会会员，山西省作家协会会员，高级工程师。</p><p>&emsp;&emsp;自1999年处女作《鲸歌》问世以来，刘慈欣已发表短篇科幻小说三十余篇、出版长篇科幻小说六部，并创下连续八年荣获中国科幻最高奖“银河奖”的纪录。他的长篇作品《三体》开创《科幻世界》月刊连载原创作品的先例，成为2006年度最受关注、最畅销的科幻小说。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;无限长的曲线就是宇宙的抽象，一头连着无限的过去，另一头连着无限的未来，中间只有无规律无生命的随机起伏，一个个高低错落的波峰就像一粒粒大小不等的沙子，整条曲线就像是所有沙粒排成行形成的一维沙漠，荒凉寂寥，长得更令人无法忍受。你可以沿着它向前向后走无限远，但永远找不到归宿。</p><p align="right">—— 引自 第202页</p></details><br><h5 id="04-《三国志（全四册）》"><a href="#04-《三国志（全四册）》" class="headerlink" title="04 《三国志（全四册）》"></a>04 《三国志（全四册）》</h5><details><summary>查看</summary><br><p><strong>作者:</strong>  陈寿 / 校注 陈君慧 </p><p><strong>内容简介</strong><br>&emsp;&emsp;《三国志(全4册)》的主要特点是：一、为魏、蜀、吴三国各自修史，合成一书，充分显示了陈寿的史才。史料取舍非常用心，再三审慎。记载史事，据实直书，评价人物，较客观公正。清代学者赵翼在批评陈寿的同时，也不得不赞赏他“剪裁斟酌处，亦自有下笔不苟者，参订他书而后知其矜慎也。”二、叙事生动，语言洗练干净，评论中肯得当。书中塑造的谋臣武将各具特色，性格鲜明。谋臣既足智多谋又人格完美，如荀彧、程昱、郭嘉；武将虽勇冠三军，却有明显的缺点，如狂傲的关羽，暴躁的张飞等。今天，三国文化已成为许多学者、管理部门及企业人士关注的课题。</p><p><strong>作者简介</strong><br>&emsp;&emsp;陈寿（233年～297年），字承祚。巴西郡安汉县（今四川省南充市）人。三国时蜀汉及西晋时著名史学家。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;汉末，天下大乱，雄豪并起，而袁绍虎眎四州，强盛莫敌。太祖运筹演谋，鞭挞宇内，揽申、商之法术，该韩、白之奇策，官方授材，各因其器，矫情任算，不念旧恶，终能总御皇机，克成洪业者，惟其明略最优也。抑可谓非常之人，超世之杰矣。</p><p align="right">—— 引自 卷一 魏书一 武帝纪</p></details><br><h5 id="05-《人生》"><a href="#05-《人生》" class="headerlink" title="05 《人生》"></a>05 《人生》</h5><details><summary>查看</summary><br><p><strong>内容简介</strong><br>&emsp;&emsp;《人生》是路遥的一部中篇小说，发表于1982年，它以改革时期陕北高原的城乡生活为时空背景，叙述了高中毕业生高加林回到土地又离开土地，再回到土地这样人生的变化过程。高加林同农村姑娘刘巧珍、城市姑娘黄亚萍之间的感情纠葛构成了故事发展的矛盾，也正是体现那种艰难选择的悲剧。</p><p><strong>作者简介</strong><br>&emsp;&emsp;路遥（1949-1992），原名王卫国，1949年12月3日生于陕西榆林市清涧县一个贫困的农民家庭，因家贫7岁即过继给延川县农村的伯父。曾在延川县立中学学习，1969年回乡务农。其间做过许多临时性工作，并在农村一小学教书一年。1973年进入延安大学中文系学习，开始文学创作。大学毕业后，任《陕西文艺》（今为《延河》）编辑。1980年发表《惊心动魄的一幕》，获第一届全国优秀中篇小说奖。1982年发表中篇小说《人生》，获第二届全国优秀中篇小说奖。1988年完成百万字长篇巨著《平凡的世界》，于1991年获茅盾文学奖。1992年11月17日上午8时20分，路遥因病医治无效在西安逝世，年仅42岁。</p><p><strong>原文摘录</strong><br>&emsp;&emsp;人生的道路虽然漫长，但紧要处常常只有几步，特别是当人年轻的时候。 没有一个人的生活道路是笔直的、没有岔道的。有些岔道口，譬如政治上的岔道口，事业上的岔道口，个人生活上的岔道口，你走错一步，可以影响人生的一个时期，也可以影响一生。 ——柳青</p><p align="right">—— 引自 第1页</p><p>&emsp;&emsp;对待社会，我们常说要向前看，对一个人来说，也要向前看。生活总是这样，不能叫人处处都满意。但我们还要热情地活下去。人活一生，值得爱的东西很多，不要因为一个方面不满意，就灰心。比如说我吧，梦里都想上大学，但没考上，我就不活人了吗？我现在就好好教书，让村里的其他娃娃将来多考及格大学生！就是不能教书，回村劳动了，该怎样还要怎样哩…… </p><p align="right">—— 引自 第220页</p><p>&emsp;&emsp;作为青年人自己来说，重要的是正确对待理想和现实生活。哪怕你的追求是正当的，也不能通过邪门歪道去实现啊！而且一旦摔了跤，反过来会给人造成一种多大的痛苦； 甚至能毁掉人的一生！</p><p align="right">—— 引自章节：彩虹与桥</p></details><br>]]></content>
     
   </entry>
   
   
   
   <entry>
-    <title>标签</title>
+    <title></title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[const fs = require('fs-extra');const path = require('path');const imageSize = require('image-size');const rootPath="photos/"class PhotoExtension {    constructor() {        this.size = 64;        this.offset = [0, 0];    }}class Photo {    constructor() {        this.dirName = '';        this.fileName = '';        this.iconID = '';        this.extension = new PhotoExtension();    }}class PhotoGroup {    constructor() {        this.name = '';        this.children = [];    }}function createPlotIconsData() {    let allPlots = [];    let allPlotGroups = [];    const plotJsonFile = path.join(__dirname, './photosInfo.json');    const plotGroupJsonFile = path.join(__dirname, './photos.json');    if (fs.existsSync(plotJsonFile)) {        allPlots = JSON.parse(fs.readFileSync(plotJsonFile));    }    if (fs.existsSync(plotGroupJsonFile)) {        allPlotGroups = JSON.parse(fs.readFileSync(plotGroupJsonFile));    }    fs.readdirSync(__dirname).forEach(function(dirName) {        const stats = fs.statSync(path.join(__dirname, dirName));        const isDir = stats.isDirectory();        if (isDir) {            const subfiles = fs.readdirSync(path.join(__dirname, dirName));            subfiles.forEach(function(subfileName) {                // 如果已经存在 则不再处理                // if (allPlots.find(o => o.fileName === subfileName && o.dirName === dirName)) {                //     return;                // }                // 新增标                const plot = new Photo();                plot.dirName = dirName;                plot.fileName = subfileName;                const imageInfo = imageSize(rootPath+dirName + "/" + subfileName);                plot.iconID = imageInfo.width + '.' + imageInfo.height + ' ' + subfileName;                allPlots.push(plot);                console.log(`RD: createPlotIconsData -> new plot`, plot);                // 为新增标添加分组 暂时以它所处的文件夹为分组                let group = allPlotGroups.find(o => o.name === dirName);                if (!group) {                    group = new PhotoGroup();                    group.name = dirName;                    allPlotGroups.push(group);                    console.log(`RD: createPlotIconsData -> new group`, group);                }                group.children.push(plot.iconID);            });        }    });    fs.writeJSONSync(plotJsonFile, allPlots);    fs.writeJSONSync(plotGroupJsonFile, allPlotGroups);}createPlotIconsData();]]></content>
     
   </entry>
   
@@ -562,11 +565,22 @@
   
   
   <entry>
-    <title>关于</title>
+    <title>标签</title>
     <link href="/blog/"/>
     <url>/blog/</url>
     
-    <content type="html"><![CDATA[<hr><p>&emsp;&emsp;学习不是一种鞭策，不是只热衷于专业，而是一种人生态度，是一种对生活的认真，对未来的负责。</p><h2 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome"></a>Welcome</h2><div class="note note-danger">            <p>这里归档的信息基于网络整理</p>          </div><div class="note note-danger">            <p>因不可抗拒因素，评论区不开放。</p>          </div><div class="note note-success">            <p>这里存档的信息会不断地更新、校对。</p>          </div><div class="note note-success">            <p>初衷是让读者能从中受益</p>          </div><div class="note note-success">            <p>风格：简洁 优雅 高效 连续</p>          </div><p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/about/about.png"></p><h2 class="Time-Container">Time - Container</h2><div class="note note-success">            <p>Question：Time - Container ？</p>          </div><div class="note note-success">            <p>Answer：Time 和 Container 拼接，意为时间容器。</p>          </div><div class="note note-success">            <p>Question：Time - Container 的用途 ？ </p>          </div><div class="note note-success">            <p>Answer：码字人选择性的在这里存放了一些内容。</p>          </div><div class="note note-success">            <p>Question：Time - Container 的风格 ？ </p>          </div><div class="note note-success">            <p>Answer： 保持简单，保持优雅，保持连续。</p>          </div><h2 id="版权问题"><a href="#版权问题" class="headerlink" title="版权问题"></a>版权问题</h2><div class="note note-danger">            <p>部分存档内容来源于网络，如有侵权，请联系作者删除。</p>          </div><h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>&emsp;&emsp;计算机呈现了一个基于真实世界的虚拟世界。计算机的发明让人们用 0 和 1 映射了自身存在的真实世界，它是人类有力的工具之一，它像是真实世界的一面镜子，把真实世界有选择的映射在计算机构建的虚拟世界里，之后，人们便可以透过虚拟的世界去控制真实的世界（当然，前提是拥有足够的权限）。<br>&emsp;&emsp;计算机存档的万物的信息可以为万物生成“数字生命”。如果人们愿意，计算机可以完整的映射并存档这个星球的真实数据，这些数据是超体量的。万物不仅仅可以相互通信，他们存在的“痕迹”也可以被记录并存档，万物仿佛有了“长生不老”的本领，他们拥有了“数字生命”。这里举个例子，你祖父的父亲的一生被以数字的形式存档下来，也许你与他未曾谋面，但通过他的“数字生命”，你了解到他了，你可以知道他想让你知道的一切。你从他的生命历程中有了你的借鉴，而这可以为你的人生路提供参考。如果用在科学探索里，他可以为人们探索未知提供参考。<br>&emsp;&emsp;信息具有力量，是一把双刃剑，需要被妥善使用。Google 的一个宣传视频里，曾经有这样一个片段，一个当地的农民发现自己的农作物经常由于害虫侵害而产量低下，通过 Google 他搜索到了一些解决的办法并更好的解决了这一问题。这让人意识到，信息能赋予人力量，只要有一份说明书式的操作文档，人们就可以自主的思考并更好的解决问题。而搭建一个博客，人们就可以把经验、专业知识这些信息归档并存储以便在需要时使用、分享给遇到同样问题的人使用。如果每一个人都参与进来，分享有质量的信息，这将使每一个使用的人从中受益。</p><h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img src="https://cdn.jsdelivr.net/gh/time-container/CDN@1.1.1/images/pages/about/about_next.webp"></p><p>&emsp;&emsp;工作后人际关系更加复杂，喧嚣的社交网络已经不再适合谈及生活与思想，只有自己开辟一片净土，在此延续另一种形态的社交。<br>&emsp;&emsp;如果你在浏览的过程中发现了任何问题（如错别字、链接无效、图片无法显示等），欢迎电邮码字人。</p><p>&emsp;&emsp;<b>脚踏实地，稳步成长</b>。</p><hr>]]></content>
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>相册</title>
+    <link href="/blog/"/>
+    <url>/blog/</url>
+    
+    <content type="html"><![CDATA[]]></content>
     
   </entry>
   
@@ -578,6 +592,17 @@
     <url>/blog/</url>
     
     <content type="html"><![CDATA[<div align="center">    <h2>Video List</h2></div><div class="note note-success">            <p>这里的信息采集于网络，作者有选择性的进行了过滤。</p>          </div><h5 id="01-《平凡的世界》电视剧片尾曲"><a href="#01-《平凡的世界》电视剧片尾曲" class="headerlink" title="01 《平凡的世界》电视剧片尾曲"></a>01 《平凡的世界》电视剧片尾曲</h5><p>&emsp;&emsp;生活啊！什么是生活？生活就是有那么多的未知。我们无法去推测他们后来的人生是怎么样，十年，二十年 …… 起起落落又将是怎样一种景象？只是，让我们祝福他们吧，这群善良的人，和这片温暖的土地。长的是苦难，短的是人生。只要春天不死，生命就不会死，活着，就是那么的充满希望！</p><p>去围观 —&gt; <a href="https://music.163.com/video?id=EBEFB353EAC91003D76271B21E2E727D&userid=1432097035">Go</a></p><h5 id="02-《相依为命》"><a href="#02-《相依为命》" class="headerlink" title="02 《相依为命》"></a>02 《相依为命》</h5><p>&emsp;&emsp;年华像细水冲走几个爱人与知己。</p><p>去围观 —&gt; <a href="https://music.163.com/mv/?id=5643810&userid=1432097035">Go</a></p><h5 id="03-《平凡之路》"><a href="#03-《平凡之路》" class="headerlink" title="03 《平凡之路》"></a>03 《平凡之路》</h5><p>&emsp;&emsp;年年岁岁里的岁岁年年。</p><p>去围观 —&gt; <a href="https://music.163.com/mv/?id=290244&userid=1432097035">Go</a></p>]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>404 Not Found：该页无法显示</title>
+    <link href="/blog/"/>
+    <url>/blog/</url>
+    
+    <content type="html"><![CDATA[<html>    <head>         <meta charset="UTF-8" />         <title>404</title>                                                                                                                                            </head>    <body>         <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" homePageName="返回首页" homePageUrl="https://www.nickyam.com"></script>true</body></html>]]></content>
     
   </entry>
   
